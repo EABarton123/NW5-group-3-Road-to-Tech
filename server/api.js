@@ -16,10 +16,7 @@ const mailgun = () =>
 		domain: MAILGUN_DOMAIN,
 	});
 
-
-
 router.post("/", (request, response) => {
-
 	const textToEveryOne = `Your email has been verified Click Here`;
 	const { email, certificateNum } = request.body;
 	const messageData = {
@@ -28,15 +25,17 @@ router.post("/", (request, response) => {
 		certificateNum: `${certificateNum}`,
 		text: `<p> ${textToEveryOne} </p>`,
 	};
-	mailgun().messages().send(messageData, (error, body) => {
-		if (error) {
-			console.log(error);
-			response.status(500).send({ message: "Error in sending email" });
-		} else {
-			console.log(body);
-			response.send({ message: "Email sent successfully" });
-		}
-	});
+	mailgun()
+		.messages()
+		.send(messageData, (error, body) => {
+			if (error) {
+				console.log(error);
+				response.status(500).send({ message: "Error in sending email" });
+			} else {
+				console.log(body);
+				response.send({ message: "Email sent successfully" });
+			}
+		});
 });
 
 export default router;

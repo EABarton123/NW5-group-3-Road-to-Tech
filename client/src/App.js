@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 
-function App (){
+function App() {
 	return (
 		<div>
 			{/* <Routes>
@@ -14,9 +14,9 @@ function App (){
 		<Route path="/about/this/site" element={<About />} />
 		
 	</Routes> */}
-	{/* <About/>
+			{/* <About/>
 	<Home /> */}
-	<VerifyCertificateNum/>
+			<VerifyCertificateNum />
 		</div>
 	);
 }
