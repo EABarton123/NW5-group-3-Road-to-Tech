@@ -5,7 +5,7 @@ import "./Signup.css";
 export const Signup = () => {
   const [subFormDate, setSubFormDate] = useState({
     email:"",
-    employeeId: "",
+    certificateNumber: "",
     userName:"",
     password:"" });
 
@@ -13,17 +13,17 @@ export const Signup = () => {
       e.preventDefault();
       console.log("clicked");
 
-    alert(` Email ${ subFormDate.email}, EmployeeId: ${subFormDate.employeeId}, UserName: ${subFormDate.userName},  Password: ${ subFormDate.password},`);
+    alert(` Email ${ subFormDate.email}, Certificate Number: ${subFormDate.certificateNumber}, UserName: ${subFormDate.userName},  Password: ${ subFormDate.password},`);
     setSubFormDate({
       email:"",
-      employeeId: "",
+      certificateNumber: "",
       userName:"",
       password:"" });
   };
     return (
     <div className="form-conteiner">
      <form onSubmit={(e) => signupSubmit(e)}>
-      <h1> Admin SIGN UP</h1>
+      <h1> Graduete SIGN UP</h1>
       <div>
     <label> Email: </label>
     <input type="text" placeholder='Email' value={subFormDate.email} onChange = {(e) => setSubFormDate({
@@ -31,9 +31,9 @@ export const Signup = () => {
     </div>
 
     <div>
-    <label> Employee ID:</label>
-    <input type="number" placeholder='Employee ID' value={subFormDate.employeeId} onChange = {(e) => setSubFormDate({
-  ...subFormDate, employeeId:e.target.value })} />
+    <label> Certificate Number:</label>
+    <input type="number" placeholder='Certificate Number' value={subFormDate.certificateNumber} onChange = {(e) => setSubFormDate({
+  ...subFormDate, certificateNumber:e.target.value })} />
     </div>
 
     <div>
