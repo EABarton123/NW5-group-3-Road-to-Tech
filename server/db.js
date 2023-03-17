@@ -14,6 +14,7 @@ const pool = new Pool({
 export const connectDb = async () => {
 	let client;
 	try {
+		//small-change
 		client = await pool.connect();
 	} catch (err) {
 		logger.error("%O", err);
