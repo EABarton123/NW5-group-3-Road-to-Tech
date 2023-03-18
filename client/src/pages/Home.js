@@ -28,6 +28,7 @@ export function Home() {
 			<div>
 				<img
 					className="logo"
+					ç
 					data-qa="logo"
 					src={logo}
 					alt="Just the React logo"
@@ -36,6 +37,8 @@ export function Home() {
 					{message}
 				</h1>
 				<Link to="/about/this/site">About</Link>
+				<Link to="/admin/logged/in">Admin Jobs Page</Link>
+				<Link to="/grad/logged/in">Graduate Jobs Page</Link>
 			</div>
 		</main>
 	);
