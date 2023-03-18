@@ -6,16 +6,16 @@ import logger from "./utils/logger";
 
 const router = Router();
 
-router.get("/", (_, res) => {
-	logger.debug("Welcoming everyone...");
-	res.json({ message: "Hello, world!" });
-});
+// router.get("/", (_, res) => {
+// 	logger.debug("Welcoming everyone...");
+// 	res.json({ message: "Hello, world!" });
+// });
 
 router.get("/signup/grads", (req, res) => {
 	db.query("select * from  signedupgrads")
 		.then((grads) => res.status(200).json(grads.rows))
 		.catch((err) => {
-			console.error(err);
+			// console.error(err);
 			res.status(500).send(err);
 		});
 });
@@ -68,7 +68,7 @@ router.post("/signup/grads", (request, response) => {
 					(err, results) => {
 						if (err) {
 							// throw error;
-							console.error(err);
+							// console.error(err);
 							return response.status(400).json({ dupCertificateNumFound });
 						}
 						response.status(200).send("Grads registered");
