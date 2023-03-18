@@ -1,6 +1,6 @@
-import { request, response, Router } from "express";
+import { Router } from "express";
 import db from "./db";
-import logger from "./utils/logger";
+// import logger from "./utils/logger";
 // const app = express();
 // app.use(express.urlencoded({ extended: false }));
 
@@ -11,12 +11,12 @@ const router = Router();
 // 	res.json({ message: "Hello, world!" });
 // });
 
-router.get("/signup/grads", (req, res) => {
+router.get("/signup/grads", (request, response) => {
 	db.query("select * from  signedupgrads")
-		.then((grads) => res.status(200).json(grads.rows))
+		.then((grads) => response.status(200).json(grads.rows))
 		.catch((err) => {
 			// console.error(err);
-			res.status(500).send(err);
+			response.status(500).send(err);
 		});
 });
 
@@ -65,14 +65,14 @@ router.post("/signup/grads", (request, response) => {
 				db.query(
 					query,
 					[newEmail, newCertificateNum, newUserName, newPassword],
-					(err, results) => {
+					(err) => {
 						if (err) {
 							// throw error;
 							// console.error(err);
 							return response.status(400).json({ dupCertificateNumFound });
 						}
 						response.status(200).send("Grads registered");
-						// console.log(results.rows);
+						//  console.log(results.rows);
 					}
 				);
 			}
