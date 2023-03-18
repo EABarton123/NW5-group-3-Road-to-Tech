@@ -1,13 +1,27 @@
-import { Route, Routes } from "react-router-dom";
+import React,{ Component } from "react";
+// import "./App.css";
 
-import About from "./pages/About";
-import Home from "./pages/Home";
+import  Slide  from "./components/slide";
+import  Login  from "./components/login";
+import "./assets/css/content.css";
+class App extends Component {
 
-const App = () => (
-	<Routes>
-		<Route path="/" element={<Home />} />
-		<Route path="/about/this/site" element={<About />} />
-	</Routes>
-);
+  render() {
+    return (
+    <>
+     <div className="maincontainer">
+
+      <hr />
+      <div className='content'>
+       <Slide />
+       <Login />
+       </div>
+      <hr />
+
+    </div>
+    </>
+   );
+  }
+}
 
 export default App;
