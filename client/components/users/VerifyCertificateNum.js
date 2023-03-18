@@ -38,7 +38,7 @@ export function VerifyCertificateNum() {
 			<h2 className="signUpHeader"> Sign Up As A Graduate </h2>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<label for="email"> Email</label>
+					<label htmlFor="email"> Email</label>
 					<br></br>
 					<input
 						// required
@@ -49,7 +49,10 @@ export function VerifyCertificateNum() {
 					/>
 				</div>
 				<div>
-					<label for="certificateNumber"> Graduation Certificate Number</label>
+					<label htmlFor="certificateNumber">
+						{" "}
+						Graduation Certificate Number
+					</label>
 					<br></br>
 					<input
 						// required
