@@ -38,7 +38,8 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 				<Link to="/admin/logged/in">Admin Jobs Page</Link>
-				<Link to="/grad/logged/in">Graduate Jobs Page</Link>
+				<Link to="">Graduate Jobs Page</Link>
+				<Link to="/search/jobs">SEarch Jobs</Link>
 			</div>
 		</main>
 	);
