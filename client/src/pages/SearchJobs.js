@@ -14,12 +14,6 @@ function SearchJobs() {
 		getData();
 	}, []);
 
-	 render() {
-    const log = data; // data to be logged
-
-    console.log(data);
-	 };
-
 	const [jobs, setJobs] = useState(data);
 	const [selectedJob, setSelectedJob] = useState({});
 
@@ -61,7 +55,6 @@ function SearchJobs() {
 							<p id="type">{job.job.type}</p>
 							<p id="salary">{job.job.salaryRange}</p>
 						</div>
-						<p>{data}</p>
 						<p>company: {job.job.companyName}</p>
 						<button
 							onClick={() => {
