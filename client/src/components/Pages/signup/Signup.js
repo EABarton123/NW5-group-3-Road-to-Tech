@@ -1,6 +1,7 @@
 import React,{ useState }from "react";
 import Button from "../../Buttons/Buttons";
 import "./Signup.css";
+import axios from "axios";
 
 export const Signup = () => {
   const [subFormDate, setSubFormDate] = useState({
@@ -9,11 +10,22 @@ export const Signup = () => {
     username:"",
     password:"" });
 
-    const signupSubmit =(e) =>{
+
+
+
+    const signupSubmit = async (e) =>{
       e.preventDefault();
       console.log("clicked");
 
     alert(` Email ${ subFormDate.email}, Certificate Number: ${subFormDate.certificateNum}, UserName: ${subFormDate.username},  Password: ${ subFormDate.password},`);
+          //axios
+        // GET, POST
+        // API endpoint/Route
+
+        const backendURL ="http://localhost:3000/api/signup/grads,"
+      const response = await axios.post(backendURL, { subFormDate });
+     console.log(response);
+
     setSubFormDate({
       email:"",
       certificateNum: "",
@@ -43,10 +55,10 @@ export const Signup = () => {
     </div>
     <div>
     <label htmlFor = "password">  Password:</label>
-    <input type="password" placeholder="password" name="password" required value={subFormDate. password} onChange = {(e) => setSubFormDate({
+    <input type="password" placeholder="password" name="password" required value={subFormDate.password} onChange = {(e) => setSubFormDate({
   ...subFormDate,password:e.target.value })} />
     </div>
-    <Button />
+    <Button Type={"submit"} text={"SIGNUP"} />
       </form>
     </div>
   );
