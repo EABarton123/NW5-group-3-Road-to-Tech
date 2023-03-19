@@ -1,12 +1,15 @@
 .Box {
-    margin: 30px;
+    margin: 8px;
     border: 5px black;
     background: white;
-    border-radius: 15;
+    border-radius: 5px;
     border-color: red;
     box-sizing: 4;
-    border-radius: 25px;
-    padding: 0px;
+    border-radius: 5px;
+    padding: 6px;
+    height: 40px;
+    width: 190px;
+    text-align: center;
   }
   
   .Box_content {
@@ -17,8 +20,8 @@
 
   #box1 {
     background: white;
-    border-radius: 45px;
-    border-radius: 50%;
+    border-radius: 5px;
+    
     padding-left: 0px;
     color: red;
     height: 30px;

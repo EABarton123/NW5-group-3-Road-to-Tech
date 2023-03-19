@@ -1,17 +1,17 @@
-import React from "react";
-import "../assets/css/signupMenu.css";
+import React from 'react'
+import '../assets/css/signupMenu.css'
 function SignupMenu() {
   return (
-
-    <div className="dropdown">
-  <button className="dropbtn">SIGNUP</button>
-  <div className="dropdown-content">
-    <a href="graduates">GRADUATES</a>
-    <a href="employabilityteam">EMPLOYABILITY TEAM</a>
+    
+    <div class="dropdown" style={{marginLeft:"40px"}}>
+  <button class="dropbtn">SIGN UP</button>
+  <div class="dropdown-content">
+    <a href="#">GRADUATE</a>
+    <a href="#">RESOURCES</a>
     </div>
-
+    
 </div>
-  );
+  )
 }
 
-export default SignupMenu;
+export default SignupMenu

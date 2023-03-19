@@ -1,17 +1,23 @@
 .dropbtn {
   background-color:red;
   color: white;
-  padding: 36px;
+  padding: 0px;
   font-size: 16px;
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+
 }
 
 .dropdown {
   position: relative;
+  margin-right: 100px;
   display: inline-block;
-  margin: 30px;
+  margin: 0px;
   border-radius: 25px;
+  margin-top: 10px;
 }
 
 .dropdown-content {
