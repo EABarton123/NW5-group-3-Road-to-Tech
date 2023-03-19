@@ -4,67 +4,25 @@ import logger from "./utils/logger";
 
 const router = Router();
 
-router.get("/", (_, res) => {
+router.get("/",  (_, res) => {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
 });
 
+router.post("/job", async (req, res) => {
+	const reqBody=req.body;
 
-router.post("/job", (req, res) => {
-	// const reqBody=req.body
-const reqBody = {
-	title: "title",
-	type: "type",
-	description: "description",
-	responsibilities: "responsibilities",
-	numberOfGitCommits: 1234,
-	codewarKataLevel: 5,
-	codewarPoints: 456,
-	codalitiyTestPoints: 789,
-	category: "category",
-	salaryRange: { min: 13000, max: 30000 },
-	contactName: "name",
-	contactEmail: "email",
-	contactPhone: 9876543,
-	companyName: "companyName",
-	companyWebSite: "companyWebSite",
-	companyLogo: "url",
-	requirements: "requirements",
-	applicationsDeadline: "applicationsDeadline",
-	numberOfStudentsCanApply:951,
-};
+	const sqlQuery = "INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codalitiy_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
 
+  const values = [reqBody.title, reqBody.type,reqBody.description,reqBody.responsibilities,reqBody.numberOfGitCommits,reqBody.codewarKataLevel,reqBody.codewarPoints,reqBody.codalitiyTestPoints,reqBody.category,reqBody.salaryRange.min,reqBody.salaryRange.max,reqBody.contactName,reqBody.contactEmail,reqBody.contactPhone,reqBody.companyName,reqBody.companyWebSite,reqBody.companyLogo,reqBody.requirements,reqBody.applicationsDeadline,reqBody.numberOfStudentsCanApply];
 
-	console.log("Test",{ data:req.body });  // TODO: Database  insert
-
-	const sqlQuery = "INSERT INTO job(title,type) VALUES($1, $2) RETURNING *";
- const values = [reqBody.title, reqBody.type];
-
-
- // callback
-  db.query(sqlQuery, values, (err, res) => {
-  if (err) {
-    console.log(err.stack);
-
-				res.status(500);
-
-  } else {
-    console.log(res.rows[0]);
-    // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
-
-				res.json({ message: "Succesfully  Job form is created" });
+  try {
+    const dbData = await db.query(sqlQuery, values);
+    res.status(200).json(dbData.rows);
+  } catch (error) {
+    res.status(500).json({ error });
   }
-});
-
-
-
-
 
 });
-
-
-
-
-
 
 export default router;
