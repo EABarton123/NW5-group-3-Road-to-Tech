@@ -1,29 +1,28 @@
 #menu li {
-    display: inline;
-    list-style: none;
-    padding: 0;
+	display: inline;
+	list-style: none;
+	padding: 0;
 }
 
 #menu li a {
-
-    border: 1px solid white;
-    padding: 15px 20px 15px 20px;
-    text-decoration: none;
-    color: black;
-    margin-left: -5px;
-    /* This is the background used for the animation */
-    background-image: url('image.jpg');
-    /* Align the background image position to the left of the link */
-    background-position: left;
-    -webkit-transition: all 0.8s ease-in-out;
-    /* Animation with transition in Firefox (No supported Yet) */
-    -moz-transition: all 0.8s ease-in-out;
-    /* Animation with transition in Opera (No supported Yet)*/
-    -o-transition: all 0.8s ease-in-out;
+	border: 1px solid white;
+	padding: 15px 20px 15px 20px;
+	text-decoration: none;
+	color: black;
+	margin-left: -5px;
+	/* This is the background used for the animation */
+	background-image: url("image.jpg");
+	/* Align the background image position to the left of the link */
+	background-position: left;
+	-webkit-transition: all 0.8s ease-in-out;
+	/* Animation with transition in Firefox (No supported Yet) */
+	-moz-transition: all 0.8s ease-in-out;
+	/* Animation with transition in Opera (No supported Yet)*/
+	-o-transition: all 0.8s ease-in-out;
 }
 
 #menu li a:hover {
-    color: white;
-    /* Align the background image position of the background to the right*/
-    background-position: right;
+	color: white;
+	/* Align the background image position of the background to the right*/
+	background-position: right;
 }
