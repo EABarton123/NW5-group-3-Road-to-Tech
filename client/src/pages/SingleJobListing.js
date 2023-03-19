@@ -20,6 +20,11 @@ function SingleJobListing({ job }) {
 	postingDate,
 	applicationsDeadline,
 	numberOfStudentsCanApply } = job;
+
+	function handleClick() {
+  window.location.href = job.companyWebSite;
+}
+
 	return (
 		<div>
 			<div key={id}>
@@ -43,6 +48,9 @@ function SingleJobListing({ job }) {
 				<p>contact name: {contactName}</p>
 				<p>contact email: {contactEmail}</p>
 				<p>contact phone number: {contactPhone}</p>
+				<button onClick={handleClick} type="Submit">
+					Apply
+				</button>
 			</div>
 		</div>
 	);
