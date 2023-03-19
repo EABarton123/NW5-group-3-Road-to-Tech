@@ -1,3 +1,7 @@
+body {
+    font-family: "Raleway", sans-serif;
+}
+
 #job-card-applied {
     border: 0.5px solid transparent;
     border-radius: 10px;

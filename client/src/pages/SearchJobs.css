@@ -1,3 +1,7 @@
+body {
+    font-family: "Raleway", sans-serif;
+}
+
 #div-main {
     display: flex;
     justify-content: center;
@@ -21,6 +25,7 @@
 
 #searchbar {
     padding: 10px;
+    border-radius: 5%;
 }
 
 #job-card {
@@ -36,6 +41,7 @@
 #container {
     display: flex;
     padding: 10px;
+    border-radius: 5%;
 }
 
 #type {

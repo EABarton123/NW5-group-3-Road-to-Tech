@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
+import Jobs from "./Jobs.json";
+
 
 function SearchJobs() {
 	const today = new Date();
@@ -55,7 +57,7 @@ function SearchJobs() {
 		},
 	];
 
-	const [jobs, setJobs] = useState(jobsArr);
+	const [jobs, setJobs] = useState({});
 	const [selectedJob, setSelectedJob] = useState({});
 
 	const handleSubmit = (event) => {
@@ -66,7 +68,7 @@ function SearchJobs() {
 			return;
 		}
 		// Filter the job listings based on the search term
-		const filteredJobs = jobsArr.filter((job) =>
+		const filteredJobs = jobs.filter((job) =>
 			job.title.toLowerCase().includes(search.toLowerCase())
 		);
 		setJobs(filteredJobs);
