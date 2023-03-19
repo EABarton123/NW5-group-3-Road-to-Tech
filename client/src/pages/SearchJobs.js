@@ -1,70 +1,33 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
-import Jobs from "./Jobs.json";
-
+import roles from "./roles.json";
 
 function SearchJobs() {
-	const today = new Date();
-	const year = today.getFullYear();
-	const month = String(today.getMonth() + 1).padStart(2, "0");
-	const day = String(today.getDate()).padStart(2, "0");
 
-	const formattedDate = `${year}-${month}-${day}`;
+	const [data, setData] = useState([]);
 
-	const jobsArr = [
-		{
-			title: "job role",
-			type: "",
-			description: "",
-			responsibilities: "",
-			numberOfGitCommits: "",
-			codewarKataLevel: "",
-			codewarPoints: "",
-			category: "",
-			salaryRange: "",
-			contactName: "",
-			contactEmail: "",
-			contactPhone: "",
-			companyName: "",
-			companyWebSite: "",
-			companyLogo: "",
-			requirements: "",
-			postingDate: formattedDate,
-			applicationsDeadline: "",
-			numberOfStudentsCanApply: "",
-		},
-		{
-			title: "dev",
-			type: "",
-			description: "",
-			responsibilities: "",
-			numberOfGitCommits: "",
-			codewarKataLevel: "",
-			codewarPoints: "",
-			category: "",
-			salaryRange: "",
-			contactName: "",
-			contactEmail: "",
-			contactPhone: "",
-			companyName: "",
-			companyWebSite: "",
-			companyLogo: "",
-			requirements: "",
-			postingDate: formattedDate,
-			applicationsDeadline: "",
-			numberOfStudentsCanApply: "",
-		},
-	];
+	useEffect(() => {
+		function getData() {
+			setData(roles);
+		}
+		getData();
+	}, []);
 
-	const [jobs, setJobs] = useState({});
+	 render() {
+    const log = data; // data to be logged
+
+    console.log(data);
+	 };
+
+	const [jobs, setJobs] = useState(data);
 	const [selectedJob, setSelectedJob] = useState({});
 
 	const handleSubmit = (event) => {
 		const search = event.target.value;
 		event.preventDefault();
 		if (search === "") {
-			setJobs(jobsArr);
+			setJobs(data);
 			return;
 		}
 		// Filter the job listings based on the search term
@@ -91,14 +54,15 @@ function SearchJobs() {
 				</form>
 				{jobs.map((job) => (
 					<div key={job.id} id="job-card">
-						<h2>title: {job.title}</h2>
-						<p>description: {job.description}</p>
-						<p>category: {job.category}</p>
+						<h2>title: {job.job.title}</h2>
+						<p>description: {job.job.description}</p>
+						<p>category: {job.job.category}</p>
 						<div id="container">
-							<p id="type">{job.type}</p>
-							<p id="salary">{job.salaryRange}</p>
+							<p id="type">{job.job.type}</p>
+							<p id="salary">{job.job.salaryRange}</p>
 						</div>
-						<p>company: {job.companyName}</p>
+						<p>{data}</p>
+						<p>company: {job.job.companyName}</p>
 						<button
 							onClick={() => {
 								handleJobExpand(job);
