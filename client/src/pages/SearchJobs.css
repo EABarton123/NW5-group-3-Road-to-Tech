@@ -1,14 +1,59 @@
-.div-main {
-  
-
+#div-main {
+    display: flex;
+    justify-content: center;
+    background-color:#f1f1f1;
 }
 
-.div-left {
-    display: inline-block
-
-}
-
-.div-right {
+#div-left {
+    flex: 1;
+    padding: 10px;
    
-
 }
+
+#div-right {
+    flex: 1;
+    padding: 10px;
+    border: black 0.5px solid;
+    border-radius: 5%;
+    margin-top: 40px;
+    background-color: white;
+}
+
+#searchbar {
+    padding: 10px;
+}
+
+#job-card {
+    border: 0.5px solid transparent;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    padding: 12px;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+#container {
+    display: flex;
+    padding: 10px;
+}
+
+#type {
+    background-color: #f1f1f1;
+    color: red;
+    padding: 10px;
+    border-radius: 12px;
+    flex: 1;
+    margin-right: 20px;
+}
+
+#salary {
+    background-color: #f1f1f1;
+    color: red;
+    padding: 10px;
+    border-radius: 12px;
+    flex: 1;
+}
+
+
+

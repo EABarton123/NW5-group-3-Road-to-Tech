@@ -1,7 +1,7 @@
 import React from "react";
 
-function SingleJobListing({
-	id,
+function SingleJobListing({ job }) {
+ const { id,
 	title,
 	type,
 	description,
@@ -19,8 +19,7 @@ function SingleJobListing({
 	requirements,
 	postingDate,
 	applicationsDeadline,
-	numberOfStudentsCanApply,
-}) {
+	numberOfStudentsCanApply } = job;
 	return (
 		<div>
 			<div key={id}>

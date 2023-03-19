@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
 
-function SearchJobs(props) {
+function SearchJobs() {
 	const today = new Date();
 	const year = today.getFullYear();
 	const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -55,7 +56,7 @@ function SearchJobs(props) {
 	];
 
 	const [jobs, setJobs] = useState(jobsArr);
-	const [selectedJob, setSelectedJob] = useState(jobs);
+	const [selectedJob, setSelectedJob] = useState({});
 
 	const handleSubmit = (event) => {
 		const search = event.target.value;
@@ -72,13 +73,14 @@ function SearchJobs(props) {
 	};
 
 	function handleJobExpand(job) {
+		console.log(job);
 		setSelectedJob(job);
 	}
 
 	return (
 		<div id="div-main">
 			<div id="div-left">
-				<form>
+				<form id="searchbar">
 					<input
 						type="text"
 						placeholder="Search Jobs"
@@ -86,17 +88,18 @@ function SearchJobs(props) {
 					/>
 				</form>
 				{jobs.map((job) => (
-					<div key={job.id}>
+					<div key={job.id} id="job-card">
 						<h2>title: {job.title}</h2>
-						<p>type: {job.type}</p>
 						<p>description: {job.description}</p>
 						<p>category: {job.category}</p>
-						<p>salary: {job.salaryRange}</p>
+						<div id="container">
+							<p id="type">{job.type}</p>
+							<p id="salary">{job.salaryRange}</p>
+						</div>
 						<p>company: {job.companyName}</p>
 						<button
-							onSubmit={() => {
+							onClick={() => {
 								handleJobExpand(job);
-
 							}}
 							type="Submit"
 						>
@@ -106,7 +109,7 @@ function SearchJobs(props) {
 				))}
 			</div>
 			<div id="div-right">
-				<SingleJobListing {...selectedJob} />
+				<SingleJobListing job={selectedJob} />
 			</div>
 		</div>
 	);
