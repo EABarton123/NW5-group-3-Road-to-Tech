@@ -13,11 +13,11 @@ function SearchJobs() {
 		const search = event.target.value;
 		event.preventDefault();
 		if (search === "") {
-			setJobs(roles.jobs);
+			setJobs(defaultJobs);
 			return;
 		}
 		// Filter the job listings based on the search term
-		const filteredJobs = roles.jobs.filter((job) =>
+		const filteredJobs = defaultJobs.filter((job) =>
 			job.title.toLowerCase().includes(search.toLowerCase())
 		);
 		setJobs(filteredJobs);
