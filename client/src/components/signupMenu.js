@@ -6,7 +6,7 @@ function SignupMenu() {
 			<button className="dropbtn">SIGN UP</button>
 			<div className="dropdown-content">
 				<a href="grad">GRADUATE</a>
-				<a href="emp">EMPLOYABILITY</a>
+				<a href="admin">EMPLOYABILITY</a>
 			</div>
 		</div>
 	);
