@@ -2,9 +2,9 @@ import SearchJobs from "./SearchJobs";
 
 function AdminJobs() {
 	return (
-			<div>
-				<SearchJobs />
-			</div>
+		<div>
+			<SearchJobs />
+		</div>
 	);
 }
 
