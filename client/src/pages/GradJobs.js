@@ -4,10 +4,10 @@ import "./GradJobs.css";
 
 function GradJobs() {
 	return (
-			<div>
-				<SearchJobs />
-				<GradAppliedJobs />
-			</div>
+		<div>
+			<SearchJobs />
+			<GradAppliedJobs />
+		</div>
 	);
 }
 
