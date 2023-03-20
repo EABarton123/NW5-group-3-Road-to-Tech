@@ -1,29 +1,31 @@
 import React from "react";
 
 function SingleJobListing({ job }) {
- const { id,
-	title,
-	type,
-	description,
-	responsibilities,
-	numberOfGitCommits,
-	codewarKataLevel,
-	codewarPoints,
-	category,
-	salaryRange,
-	contactName,
-	contactEmail,
-	contactPhone,
-	companyName,
-	companyWebSite,
-	requirements,
-	postingDate,
-	applicationsDeadline,
-	numberOfStudentsCanApply } = job;
+	const {
+		id,
+		title,
+		type,
+		description,
+		responsibilities,
+		numberOfGitCommits,
+		codewarKataLevel,
+		codewarPoints,
+		category,
+		salaryRange,
+		contactName,
+		contactEmail,
+		contactPhone,
+		companyName,
+		companyWebSite,
+		requirements,
+		postingDate,
+		applicationsDeadline,
+		numberOfStudentsCanApply,
+	} = job;
 
 	function handleClick() {
-  window.location.href = job.companyWebSite;
-}
+		window.location.href = job.companyWebSite;
+	}
 
 	return (
 		<div>

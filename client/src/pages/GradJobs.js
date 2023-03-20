@@ -7,7 +7,7 @@ function GradJobs() {
 		<div>
 			<div>
 				<SearchJobs />
-                <GradAppliedJobs />
+				<GradAppliedJobs />
 			</div>
 		</div>
 	);

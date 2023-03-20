@@ -67,4 +67,3 @@ function SearchJobs() {
 }
 
 export default SearchJobs;
-
