@@ -3,7 +3,6 @@ import JobForm from "./pages/JobForm/JobForm";
 import About from "./pages/About";
 import Home from "./pages/Home";
 
-
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />

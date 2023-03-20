@@ -131,7 +131,6 @@ function JobForm() {
 								/>
 							</Form.Group>
 
-
 							<Form.Group className="mb-3">
 								<Form.Label>codewarKataLevel</Form.Label>
 								<Form.Control
@@ -192,7 +191,6 @@ function JobForm() {
 									onChange={handleForm}
 								/>
 							</Form.Group>
-
 						</div>
 						<div>
 							<Form.Group className="mb-3" controlId="title">
@@ -225,7 +223,6 @@ function JobForm() {
 									onChange={handleForm}
 								/>
 							</Form.Group>
-
 						</div>
 						<div>
 							<Form.Group className="mb-3" controlId="title">
@@ -258,9 +255,7 @@ function JobForm() {
 									onChange={handleForm}
 								/>
 							</Form.Group>
-
 						</div>
-
 
 						<Button variant="primary" type="submit">
 							PREVIEWS
