@@ -28,7 +28,6 @@ export function Home() {
 			<div>
 				<img
 					className="logo"
-					ç
 					data-qa="logo"
 					src={logo}
 					alt="Just the React logo"
