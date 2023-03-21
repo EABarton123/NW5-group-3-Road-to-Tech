@@ -6,7 +6,6 @@ import axios from "axios";
 export const Signup = () => {
   const [subFormDate, setSubFormDate] = useState({
     email:"",
-    certificateNum: "",
     username:"",
     password:"" });
 
@@ -17,8 +16,9 @@ export const Signup = () => {
       e.preventDefault();
       console.log("clicked");
 
-    alert(` Email: ${ subFormDate.email}, Certificate Number: ${subFormDate.certificateNum}, UserName: ${subFormDate.username},  Password: ${ subFormDate.password}.`);
-          //axios
+    // alert();
+    // (` Email: ${ subFormDate.email}, Certificate Number: ${subFormDate.certificateNum}, UserName: ${subFormDate.username},  Password: ${ subFormDate.password}.`);
+        //  axios
         // GET, POST
         // API endpoint/Route
 
@@ -28,7 +28,6 @@ export const Signup = () => {
 
     setSubFormDate({
       email:"",
-      certificateNum: "",
       username:"",
       password:"" });
   };
@@ -41,13 +40,6 @@ export const Signup = () => {
     <input type="text" placeholder='Enter Email' name="email" required value={subFormDate.email} onChange = {(e) => setSubFormDate({
   ...subFormDate, email:e.target.value })} />
     </div>
-
-    <div>
-    <label htmlFor="certificateNum"> Certificate Number:</label>
-    <input type="number" placeholder='Enter Certificate Number'name="certificateNum" required value={subFormDate.certificateNum} onChange = {(e) => setSubFormDate({
-  ...subFormDate, certificateNum:e.target.value })} />
-    </div>
-
     <div>
     <label htmlFor="userName"> User Name:</label>
     <input type="text" placeholder='Enter User Name' name="username" required value={subFormDate.username} onChange = {(e) => setSubFormDate({
