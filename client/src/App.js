@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import JobForm from "./JobForm";
 import React, { Component } from "react";
 import "./App.css";
 import CustomHeader from "./components/customHeader"; //Include Heder
@@ -31,6 +32,7 @@ class App extends Component {
 						<Route path="/about" element={<About />} />
 						<Route path="/admin" element={<AdminJobs />} />
 						<Route path="/grad" element={<GradJobs />} />
+						<Route path="/job" element={<JobForm />} />
 					</Routes>
 				</div>
 			</div>
