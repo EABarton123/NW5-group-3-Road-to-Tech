@@ -50,12 +50,19 @@ function JobForm() {
 			});
 	}, []);
 
+	// const addPost = data => {
+	// 	fetch('', {	method:'POST', body:	JSON.stringify(data)})
+	// .then(res =>	res.json())
+	// .then(data =>	console.log(data))
+	// .catch((err) =>	console.error(err))
+	// }
 	return (
-		<Container className="mt-5">
+		<Container className="container ">
+			<h1 className="heading">Post a Job</h1>
 			<Row className="justify-content-center">
 				<Col md={5}>
-					<Form noValidate onSubmit={handleSubmit}>
-						<div>
+					<Form className="main p-2" noValidate onSubmit={handleSubmit}>
+						<div className="section mx-4 my-2">
 							<Form.Group className="mb-3" controlId="title">
 								<Form.Label>Title</Form.Label>
 								<Form.Control
@@ -81,7 +88,7 @@ function JobForm() {
 								<Form.Label>Description</Form.Label>
 								<Form.Control
 									name="description"
-									type="text"
+									as="textarea"
 									placeholder="Enter description"
 									value={formData.description}
 									onChange={handleForm}
@@ -92,16 +99,18 @@ function JobForm() {
 								<Form.Label>responsibilities</Form.Label>
 								<Form.Control
 									name="responsibilities"
-									type="text"
+									as="textarea"
 									placeholder="Enter responsibilities"
 									value={formData.responsibilities}
 									onChange={handleForm}
 								/>
 							</Form.Group>
+						</div>
 
+						<div>
 							<Form.Group className="mb-3">
 								<Form.Label>Category</Form.Label>
-								<Form.Select disabled>
+								<Form.Select>
 									<option>Disabled select</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -111,16 +120,14 @@ function JobForm() {
 
 							<Form.Group className="mb-3">
 								<Form.Label>SalaryRange</Form.Label>
-								<Form.Select disabled>
+								<Form.Select>
 									<option>Disabled select</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
 									<option value="3">Three</option>
 								</Form.Select>
 							</Form.Group>
-						</div>
-
-						<div>
+							<h3 className="mb-4">CONSTRAINTS:</h3>
 							<Form.Group className="mb-3">
 								<Form.Label>numberOfGitCommits</Form.Label>
 								<Form.Control
@@ -161,6 +168,7 @@ function JobForm() {
 							</Form.Group>
 						</div>
 						<div>
+							<h3 className="mb-4">CONTACT INFORMATION:</h3>
 							<Form.Group className="mb-3" controlId="title">
 								<Form.Label>contactName</Form.Label>
 								<Form.Control
@@ -176,7 +184,7 @@ function JobForm() {
 								<Form.Control
 									name="contactEmail"
 									type="email"
-									placeholder="Enter contactEmail"
+									placeholder="name@example.com"
 									value={formData.contactEmail}
 									onChange={handleForm}
 								/>
@@ -193,6 +201,7 @@ function JobForm() {
 							</Form.Group>
 						</div>
 						<div>
+							<h3 className="mb-4">COMPANY INFORMATION:</h3>
 							<Form.Group className="mb-3" controlId="title">
 								<Form.Label>companyName</Form.Label>
 								<Form.Control
@@ -256,13 +265,14 @@ function JobForm() {
 								/>
 							</Form.Group>
 						</div>
-
-						<Button variant="primary" type="submit">
-							PREVIEWS
-						</Button>
-						<Button variant="primary" type="submit">
-							PUBLISH
-						</Button>
+						<div className="d-flex justify-content-end p-2">
+							<Button variant="danger" type="submit">
+								PREVIEWS
+							</Button>
+							<Button variant="danger" type="submit">
+								PUBLISH
+							</Button>
+						</div>
 					</Form>
 				</Col>
 			</Row>
