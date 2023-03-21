@@ -1,22 +1,10 @@
 import React from "react";
 import { Signup } from "./components/Pages/signup/Signup";
 
-
-
-
 const App = () => (
-<>
-<Signup />
-
-</>
+	<>
+		<Signup />
+	</>
 );
 
 export default App;
-
-
-
-
-
-
-
-
