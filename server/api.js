@@ -11,7 +11,7 @@ const router = Router();
 // 	res.json({ message: "Hello, world!" });
 // });
 
-router.get("/signup/grads", (request, response) => {
+router.get("/signup", (request, response) => {
 	db.query("select * from  signedupgrads")
 		.then((grads) => response.status(200).json(grads.rows))
 		.catch((err) => {
@@ -20,7 +20,7 @@ router.get("/signup/grads", (request, response) => {
 		});
 });
 
-router.post("/signup/grads", (request, response) => {
+router.post("/signup", (request, response) => {
 	const failureObject = {
 		result: "failure",
 		message: "Please enter all fields",
@@ -40,41 +40,37 @@ router.post("/signup/grads", (request, response) => {
 	};
 
 	const newEmail = request.body.email;
-	const newCertificateNum = request.body.certificateNum;
+	// const newCertificateNum = request.body.certificateNum;
 	const newUserName = request.body.username;
 	const newPassword = request.body.password;
 
 	// console.log({newEmail, newCertificateNum, newUserName, newPassword});
-	if (!newEmail || !newCertificateNum || !newUserName || !newPassword) {
+	if (!newEmail || !newUserName || !newPassword) {
 		response.status(400).json({ failureObject });
 	}
 
-	if (newPassword.length < 6) {
+	if (newPassword.length < 8) {
 		response.status(400).json({ failurePassword });
 	}
 
 	db.query(
-		"SELECT * FROM signedupgrads WHERE email=$1",
+		"SELECT * FROM  signedupgrads WHERE email=$1",
 		[newEmail],
 		(err, result) => {
 			if (result.rowCount > 0) {
 				return response.status(400).json({ dupEmailFound });
 			} else {
 				const query =
-					"INSERT INTO signedupgrads (email, certificateNum, username, password) VALUES ($1, $2, $3, $4)";
-				db.query(
-					query,
-					[newEmail, newCertificateNum, newUserName, newPassword],
-					(err) => {
-						if (err) {
-							// throw error;
-							// console.error(err);
-							return response.status(400).json({ dupCertificateNumFound });
-						}
-						response.status(200).send("Grads registered");
-						//  console.log(results.rows);
+					"INSERT INTO  signedupgrads (email, username, password) VALUES ($1, $2, $3)";
+				db.query(query, [newEmail, newUserName, newPassword], (err) => {
+					if (err) {
+						// throw error;
+						// console.error(err);
+						return response.status(400).json({ dupCertificateNumFound });
 					}
-				);
+					response.status(200).send("Registered");
+					//  console.log(results.rows);
+				});
 			}
 		}
 	);
