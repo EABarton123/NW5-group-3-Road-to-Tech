@@ -1,0 +1,10 @@
+body {
+	font-family: "Raleway", sans-serif;
+}
+
+.MenuRow {
+	display: flex;
+	background-color: #efefef;
+	height: 70px;
+	width: 100%;
+}
