@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import "./JobForm.css";
 
@@ -31,31 +31,20 @@ function JobForm() {
 	};
 
 	const handleSubmit = (e) => {
+		console.log({ formData });
 		e.preventDefault();
+		postJob(formData);
 	};
 
-	useEffect(() => {
-		fetch("/api")
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error(res.statusText);
-				}
-				return res.json();
-			})
-			.then((body) => {
-				console.log({ body });
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}, []);
 
-	// const addPost = data => {
-	// 	fetch('', {	method:'POST', body:	JSON.stringify(data)})
-	// .then(res =>	res.json())
-	// .then(data =>	console.log(data))
-	// .catch((err) =>	console.error(err))
-	// }
+
+	const postJob = (data) => {
+		fetch("http://localhost:3100/api/job", { method: "POST", header: { "Content-Type": "application/json" }, body:	JSON.stringify(data) })
+	.then((res) =>	res.json())
+	.then((data) =>	console.log(data))
+	.catch((err) =>	console.error(err));
+	};
+
 	return (
 		<Container className="container ">
 			<h1 className="heading">Post a Job</h1>
@@ -135,6 +124,7 @@ function JobForm() {
 									type="number"
 									placeholder="Enter responsibilities"
 									value={formData.numberOfGitCommits}
+									onChange={handleForm}
 								/>
 							</Form.Group>
 
@@ -145,6 +135,7 @@ function JobForm() {
 									type="number"
 									placeholder="Enter codewarKataLevel"
 									value={formData.codewarKataLevel}
+									onChange={handleForm}
 								/>
 							</Form.Group>
 
@@ -155,15 +146,17 @@ function JobForm() {
 									type="number"
 									placeholder="Enter codewarPoints"
 									value={formData.codewarPoints}
+									onChange={handleForm}
 								/>
 							</Form.Group>
 							<Form.Group className="mb-3">
-								<Form.Label>codalitiyTestPoints</Form.Label>
+								<Form.Label>codalityTestPoints</Form.Label>
 								<Form.Control
-									name="codalitiyTestPoints"
+									name="codalityTestPoints"
 									type="number"
 									placeholder="Enter codalitiyTestPoints"
 									value={formData.codalityTestPoints}
+									onChange={handleForm}
 								/>
 							</Form.Group>
 						</div>
@@ -248,7 +241,7 @@ function JobForm() {
 								<Form.Label>applicationsDeadline</Form.Label>
 								<Form.Control
 									name="applicationsDeadline"
-									type="text"
+									type="date"
 									placeholder="Enter applicationsDeadline"
 									value={formData.applicationsDeadline}
 									onChange={handleForm}
@@ -266,9 +259,6 @@ function JobForm() {
 							</Form.Group>
 						</div>
 						<div className="d-flex justify-content-end p-2">
-							<Button variant="danger" type="submit">
-								PREVIEWS
-							</Button>
 							<Button variant="danger" type="submit">
 								PUBLISH
 							</Button>
