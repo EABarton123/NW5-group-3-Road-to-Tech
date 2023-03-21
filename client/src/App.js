@@ -7,6 +7,10 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import AdminJobs from "./pages/AdminJobs";
 import GradJobs from "./pages/GradJobs";
+import Slide from "./components/slide";
+import Login from "./components/login";
+import "./assets/css/content.css";
+
 class App extends Component {
 	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
 	render() {
@@ -14,6 +18,13 @@ class App extends Component {
 			<div>
 				<div className="maincontainer">
 					<CustomHeader MenuItemTexts={this.MenuItemTexts}></CustomHeader>
+				</div>
+				<div>
+					<hr />
+					<div className="content"></div>
+					<Slide />
+					<Login />
+					<hr />
 				</div>
 				<div>
 					<Routes>
