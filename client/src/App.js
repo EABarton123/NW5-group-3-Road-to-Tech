@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import JobForm from "./pages/JobForm/JobForm";
+import JobForm from "./JobForm";
 import React, { Component } from "react";
 import "./App.css";
 import CustomHeader from "./components/customHeader"; //Include Heder
