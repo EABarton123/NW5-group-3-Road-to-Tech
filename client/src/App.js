@@ -1,8 +1,6 @@
 //import { Route, Routes } from "react-router-dom";
 import SignUp from "./pages/SignUp/SignUp";
 
-
-
 const App = () => (
 	// <Routes>
 	// 	<Route path="/" element={<Home />} />
@@ -10,7 +8,7 @@ const App = () => (
 
 	// </Routes>
 	<>
-<SignUp />
+		<SignUp />
 	</>
 );
 
