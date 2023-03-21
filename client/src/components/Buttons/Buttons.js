@@ -2,10 +2,10 @@ import React from "react";
 import "./Buttons.css";
 
 
-const Button = ({ onClick, Type = "button" }) => {
+const Button = ({ onClick, Type = "button",text }) => {
   return (
     <button type={Type} onClick={onClick}>
-      SIGN UP
+      {text}
     </button>
   );
 };
