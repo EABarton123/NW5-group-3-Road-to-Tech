@@ -10,9 +10,10 @@ export const Signup = () => {
 		password: "",
 	});
 
+
 	const signupSubmit = async (e) => {
 		e.preventDefault();
-		console.log("clicked");
+		console.log("subFormDate");
 
 		// alert();
 		// (` Email: ${ subFormDate.email}, Certificate Number: ${subFormDate.certificateNum}, UserName: ${subFormDate.username},  Password: ${ subFormDate.password}.`);
