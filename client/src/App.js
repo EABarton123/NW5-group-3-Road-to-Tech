@@ -1,12 +1,12 @@
 import React from "react";
-import { Signup } from "./components/Pages/signup/Signup";
+import ProfileS from "./components/pages/Profile/ProfileS";
 
 
 
 
 const App = () => (
 <>
-<Signup />
+<ProfileS />
 
 </>
 );
