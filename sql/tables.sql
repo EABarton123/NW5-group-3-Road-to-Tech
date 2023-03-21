@@ -7,3 +7,11 @@ CREATE TABLE IF NOT EXISTS testTable
     name   varchar(250) NOT NULL,
     PRIMARY KEY (itemId)
 );
+
+CREATE TABLE public.user_data (
+	"id primary key" bigserial not NULL,
+	email character varying(120) not NULL,
+	username character varying(50) not NULL,
+	"password" character varying(200) not NULL
+);
+
