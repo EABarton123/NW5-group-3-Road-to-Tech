@@ -22,15 +22,32 @@ export const Signup = () => {
         // GET, POST
         // API endpoint/Route
 
-        const backendURL ="http://localhost:3000/api/signup/grads,";
-      const response = await axios.post(backendURL, { subFormDate });
-     console.log(response);
+    //     const backendURL ="http://localhost:3000/api/signup/grads,";
+    //   const response = await axios.post(backendURL, { subFormDate });
+    //  console.log(response);
 
-    setSubFormDate({
-      email:"",
-      certificateNum: "",
-      username:"",
-      password:"" });
+    // setSubFormDate({
+    //   email:"",
+    //   certificateNum: "",
+    //   username:"",
+    //   password:"" });
+axios
+	.post("http://localhost:3000/api/signup/grads", subFormDate)
+	.then((res) => {
+		console.log(res.data);
+		alert("Signup successful!");
+		setSubFormDate({
+			email: "",
+			employeeId: "",
+			userName: "",
+			password: "",
+		});
+	})
+	.catch((err) => {
+		console.error(err);
+		alert("Signup failed. Please try again later.");
+	});
+
   };
     return (
     <div className="form-conteiner">
