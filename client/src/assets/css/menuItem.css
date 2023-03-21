@@ -1,3 +1,7 @@
+body {
+	font-family: "Raleway", sans-serif;
+}
+
 .Box {
 	margin: 8px;
 	border: 5px black;
