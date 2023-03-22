@@ -18,7 +18,7 @@ const mailgun = () =>
 	});
 
 router.post("/", (request, response) => {
-	const textToEveryOne = `Your email has been verified Click Here`;
+	const textToEveryOne = "Your email has been verified Click Here";
 	const { email, certificateNum } = request.body;
 	const messageData = {
 		from: "adiba.fin@gmail.com",
@@ -28,17 +28,14 @@ router.post("/", (request, response) => {
 	};
 	mailgun()
 		.messages()
-		.send(messageData, (error, body) => {
+		.send(messageData, (error) => {
 			if (error) {
-				console.log(error);
 				response.status(500).send({ message: "Error in sending email" });
 			} else {
-				console.log(body);
 				response.send({ message: "Email sent successfully" });
 			}
 		});
 });
-
 
 router.post("/job", async (req, res) => {
 	const reqBody = req.body;
@@ -184,7 +181,7 @@ router.post("/job", async (req, res) => {
 });
 router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
-		res.json({ message: "Hello, world!" });
+	res.json({ message: "Hello, world!" });
 });
 
 router.get("/signup/grads", (request, response) => {
@@ -257,7 +254,7 @@ router.post("/signup/grads", (request, response) => {
 });
 
 router.post("/", (request, response) => {
-	const textToEveryOne = `Your email has been verified Click Here`;
+	const textToEveryOne = "Your email has been verified Click Here";
 	const { email, certificateNum } = request.body;
 	const messageData = {
 		from: "adiba.fin@gmail.com",
@@ -267,16 +264,13 @@ router.post("/", (request, response) => {
 	};
 	mailgun()
 		.messages()
-		.send(messageData, (error, body) => {
+		.send(messageData, (error) => {
 			if (error) {
-				console.log(error);
 				response.status(500).send({ message: "Error in sending email" });
 			} else {
-				console.log(body);
 				response.send({ message: "Email sent successfully" });
 			}
 		});
 });
-
 
 export default router;

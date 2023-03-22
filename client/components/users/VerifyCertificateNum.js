@@ -16,7 +16,7 @@ export function VerifyCertificateNum() {
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post(`/api`, {
+			const { data } = await axios.post("/api", {
 				email,
 				certificateNum,
 			});
@@ -57,14 +57,14 @@ export function VerifyCertificateNum() {
 					<input
 						// required
 						type="text"
-						placeholder="Enter Certificate Number "
+						placeholder="Enter Certificate Number"
 						value={certificateNum}
 						onChange={(event) => setCertificateNum(event.target.value)}
 					/>
 				</div>
 
 				<div id="certificateNumHelp">
-					We'll never share your certificate number with anyone else.
+					We will never share your certificate number with anyone else.
 				</div>
 
 				<div>
