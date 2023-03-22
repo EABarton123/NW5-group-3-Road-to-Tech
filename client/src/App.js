@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
@@ -8,6 +7,7 @@ import Home from "./pages/Home";
 import "./assets/css/content.css";
 import AdminJobs from "./pages/AdminJobs";
 import GradJobs from "./pages/GradJobs";
+import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 
 class App extends Component {
 	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
@@ -22,25 +22,12 @@ class App extends Component {
 						<Route path="/" element={<Home />} />
 						<Route path="/admin" element={<AdminJobs />} />
 						<Route path="/grad" element={<GradJobs />} />
+						<Route path="/gradsignup" element={<VerifyCertificateNum />} />
 					</Routes>
 				</div>
 			</div>
 		);
 	}
-}
-function App() {
-	return (
-		<div>
-			{/* <Routes>
-		<Route path="/" element={<Home />} />
-		<Route path="/about/this/site" element={<About />} />
-		
-	</Routes> */}
-			{/* <About/>
-	<Home /> */}
-			<VerifyCertificateNum />
-		</div>
-	);
 }
 
 export default App;
