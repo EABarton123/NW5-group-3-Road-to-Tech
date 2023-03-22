@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Slide from "../components/slide";
 import Login from "../components/login";
 import "./Home.css";
@@ -6,7 +5,7 @@ import "./Home.css";
 export function Home() {
 	// const [message, setMessage] = useState("Loading...");
 
-	// useEffect(() => {
+	// useEffect(() =>
 	// 	fetch("/api")
 	// 		.then((res) => {
 	// 			if (!res.ok) {
