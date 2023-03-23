@@ -1,6 +1,5 @@
 import Slide from "../components/slide";
 import Login from "../components/login";
-import "./Home.css";
 
 export function Home() {
 	return (
