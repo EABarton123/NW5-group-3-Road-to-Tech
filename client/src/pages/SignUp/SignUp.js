@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
-import Button from "../Button/Button ";
+import Button from "../Button/Button";
 
 const SignUp = () => {
 	const [dataForm, setDataForm] = useState({
@@ -11,18 +11,9 @@ const SignUp = () => {
 		password: "",
 	});
 
-	//3: use an onChangeHandler
 	const SignUpForm = async (e) => {
 		e.preventDefault();
 		console.log("Clicked");
-
-		// alert(
-		// 	`Email: ${dataForm.email},Employer Id: ${dataForm.employerId}, User Name: ${dataForm.userName}, & Password: ${dataForm.password} `
-		// );
-
-		//axios
-		// GET, POST
-		// API endpoint/Route
 
 		const backendURL = "http://localhost:3000/api/signup/grads";
 		const response = await axios.post(backendURL, { dataForm });
