@@ -8,7 +8,7 @@ function SignupMenu() {
 			<button className="dropbtn">SIGN UP</button>
 			<div className="dropdown-content">
 				<Link to="/admin">EMPLOYABILITY</Link>
-				<Link to="/gradsignup">GRADUATE</Link>
+				<Link to="/verify">GRADUATE</Link>
 			</div>
 		</div>
 	);
