@@ -125,19 +125,15 @@ router.post("/signup", (request, response) => {
 			} else {
 				const query =
 					"INSERT INTO user_data (email, username, password) VALUES ($1, $2, $3)";
-				db.query(
-					query,
-					[newEmail, newUserName, newPassword],
-					(err) => {
-						if (err) {
-							// throw error;
-							// console.error(err);
-							return response.status(400).json({ dupFound });
-						}
-						response.status(200).send("Grads registered");
-						//  console.log(results.rows);
+				db.query(query, [newEmail, newUserName, newPassword], (err) => {
+					if (err) {
+						// throw error;
+						// console.error(err);
+						return response.status(400).json({ dupFound });
 					}
-				);
+					response.status(200).send("Grads registered");
+					//  console.log(results.rows);
+				});
 			}
 		}
 	);
