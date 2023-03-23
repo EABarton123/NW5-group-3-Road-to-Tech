@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faFacebook,
+    faInstagram,
+    faLinkedin,
+    faGit,
+  } from "@fortawesome/free-brands-svg-icons";
+  import "./ProfileS.css";
 
- const ProfileS = () => {
+
+  const ProfileS = () => {
     const [formData, setFormData]= useState({
         firstName:"",
         // lastName:"",
@@ -59,6 +68,7 @@ import React, { useState } from "react";
       <form onSubmit={handleSubmit}>
 
       <div>
+        <div className="card1">
       <h1>Basic Information:</h1>
       <div>
       <label htmlFor>First Name:</label>
@@ -84,8 +94,9 @@ import React, { useState } from "react";
     </select>
       </div>
       </div>
+      </div>
 
-      <div>
+      <div className="card2">
       <h1>Contact Details:</h1>
       <div>
       <label htmlFor>Email:</label>
@@ -97,13 +108,28 @@ import React, { useState } from "react";
       <input type="text" placeholder="Enter Phone:" name="phone:"
        required value={formData.phone} onChange={handleChange} />
       </div>
-      <div>
-      <label htmlFor>Social Media:</label>
-      <input type="url" id="myURL" placeholder="URL" name="socialMedia:"
-       required value={formData.socialMedia} onChange={handleChange} />
+
+      <label htmlFor="social-media">Connect with us:</label><br></br>
+      <div className="socialCard">
+      <a href="https://www.facebook.com/learnbuildteach/"
+        className="facebook social">
+        <FontAwesomeIcon icon={faFacebook} size="2x" />
+      </a>
+      <a href="https://www.instagram.com/learnbuildteach"
+        className="instagram social">
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+      </a>
+      <a href="https://www.Linkedin.com/learnbuildteach"
+        className="Linkedin social">
+        <FontAwesomeIcon icon={faLinkedin} size="2x" />
+      </a>
+      <a href="https://www.Git.com/learnbuildteach"
+        className="Git social">
+        <FontAwesomeIcon icon={faGit} size="2x" />
+      </a>
        </div>
        </div>
-       <div>
+       <div className="card3">
        <h1>Constraints:</h1>
       <div>
       <label htmlFor>Number of Git Commits:</label>
@@ -121,6 +147,11 @@ import React, { useState } from "react";
     <input type="link" placeholder="" name="codeWarPoints"
     required value={formData.codeWarPoints} onChange={handleChange} />
     </div>
+
+
+
+
+
        </div>
       </form>
    </div>

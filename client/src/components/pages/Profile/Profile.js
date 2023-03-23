@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DownloadCV from "../DownloadCv/DownloadCv";
 
 const CandidateDashboard = () =>{
   // State variables to hold the search values
@@ -77,6 +78,9 @@ const CandidateDashboard = () =>{
       <div>
         <label>Number of Git Commits</label>
         <input type="text" value={gitCommits} onChange={(e) => setGitCommits(e.target.value)} />
+        </div>
+        <div>
+          <DownloadCV />
         </div>
         </div>
   );

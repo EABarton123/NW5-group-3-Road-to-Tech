@@ -1,0 +1,66 @@
+.card1 {
+    box-shadow: 0 4px 8px 0 rgba(75, 26, 26, 0.2);
+    max-width: 300px;
+    height: 450px;
+    text-align: left;
+    font-family: arial;
+    margin: 10px 10px;
+    justify-content: center;
+  }
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    color: rgb(171, 170, 170);
+
+  }
+
+input[type="text"],
+input[type="number"],
+input[type="link"],
+select {
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(86, 34, 34, 0.3);
+  width: 80%;
+  font-size: 10px;
+  color: rgb(69, 68, 68);
+  margin: 10px;
+
+}
+h1 {
+    color: rgb(248, 11, 11);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 50px;
+  }
+  .card2{
+    box-shadow: 0 4px 8px 0 rgba(73, 10, 10, 0.2);
+    max-width: 300px;
+    height: 450px;
+    text-align: left;
+    font-family: arial;
+    margin: 10px 10px;
+    justify-content: center;
+  }
+
+  .card3{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    height: 320px;
+    text-align: left;
+    font-family: arial;
+    margin: 10px 10px;
+    justify-content: center;
+  }
+  .socialCard a{
+   margin-left: 20px;
+   margin-top: 20px;
+   padding: 5px;
+
+}
