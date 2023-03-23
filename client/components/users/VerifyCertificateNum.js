@@ -3,6 +3,7 @@ import "./VerifyCertificateNum.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export function VerifyCertificateNum() {
 	const [email, setEmail] = useState("");
@@ -74,6 +75,7 @@ export function VerifyCertificateNum() {
 						className="btn btn-secondary"
 					>
 						{loading ? "Sending ..." : "Submit"}
+						<Link to="/signup">Sign Up</Link>
 					</button>
 				</div>
 			</form>
