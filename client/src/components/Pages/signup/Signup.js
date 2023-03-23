@@ -10,16 +10,9 @@ export const Signup = () => {
 		password: "",
 	});
 
-
 	const signupSubmit = async (e) => {
 		e.preventDefault();
 		console.log("subFormDate");
-
-		// alert();
-		// (` Email: ${ subFormDate.email}, Certificate Number: ${subFormDate.certificateNum}, UserName: ${subFormDate.username},  Password: ${ subFormDate.password}.`);
-		//  axios
-		// GET, POST
-		// API endpoint/Route
 
 		const backendURL = "http://localhost:3000/api/signup/grads,";
 		const response = await axios.post(backendURL, { subFormDate });
