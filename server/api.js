@@ -34,7 +34,7 @@ router.post("/signup", (request, response) => {
 		message: "Grads/Email is already registered",
 	};
 
-	const dupCertificateNumFound = {
+	const dupFound = {
 		result: "Error in registering",
 		message: "Grads is already registered",
 	};
@@ -69,7 +69,7 @@ router.post("/signup", (request, response) => {
 						if (err) {
 							// throw error;
 							// console.error(err);
-							return response.status(400).json({ dupCertificateNumFound });
+							return response.status(400).json({ dupFound });
 						}
 						response.status(200).send("Grads registered");
 						//  console.log(results.rows);
