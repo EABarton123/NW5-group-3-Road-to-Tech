@@ -10,6 +10,7 @@ import GradJobs from "./pages/GradJobs";
 import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 import { Signup } from "./components/Pages/signup/Signup";
 import SignUp from "./pages/SignUp/SignUp";
+import JobForm from "./pages/JobForm/JobForm";
 
 class App extends Component {
 	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
@@ -27,6 +28,7 @@ class App extends Component {
 						<Route path="/verify" element={<VerifyCertificateNum />} />
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/signupadmin" element={<SignUp />} />
+						<Route path="/job" element={<JobForm />} />
 					</Routes>
 				</div>
 			</div>
