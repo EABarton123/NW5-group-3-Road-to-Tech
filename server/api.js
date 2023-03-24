@@ -5,19 +5,22 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = Router();
-const MAILGUN_DOMAIN = "sandbox02afd029aa3943e8b405f995365c67b8.mailgun.org";
-const MAILGUN_API_KEY = "4847b7149dd9d399482ac14d3a78f82e-b36d2969-1f8ba3ad";
+const dotenv = require("dotenv");
+dotenv.config();
+
+// const MAILGUN_DOMAIN = process.env.DOMAIN;
+// const MAILGUN_API_KEY = process.env.API_KEY;
 
 const mg = require("mailgun-js");
-
+// console.log(process.env);
 const mailgun = () =>
 	mg({
-		apiKey: MAILGUN_API_KEY,
-		domain: MAILGUN_DOMAIN,
+		apiKey: process.env.API_KEY,
+		domain: process.env.DOMAIN,
 	});
 
 router.post("/", (request, response) => {
-	const textToEveryOne = `Your email has been verified Click Here`;
+	const textToEveryOne = "Your email has been verified Click Here";
 	const { email, certificateNum } = request.body;
 	const messageData = {
 		from: "adiba.fin@gmail.com",
