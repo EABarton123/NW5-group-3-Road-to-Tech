@@ -12,8 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = Router();
-// const MAILGUN_DOMAIN = "sandboxfb0362d1d36e42b7b01acea2f803e028.mailgun.org";
-// const MAILGUN_API_KEY = "dd9fc793e4a5d76c82b1a224e7ad04c2-30344472-3721db3c";
+
 
 const mailgun = () =>
 	mg({
