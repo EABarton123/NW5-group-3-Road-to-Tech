@@ -4,15 +4,13 @@ import logger from "./utils/logger";
 const express = require("express");
 const mg = require("mailgun-js");
 
-
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = Router();
-
 
 const mailgun = () =>
 	mg({
@@ -24,7 +22,8 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 router.post("/", (request, response) => {
-	const textToEveryOne = "Congratulation You are registered as a CYF Graduates";
+	const textToEveryOne =
+		"Congratulations! You are registered as a CYF graduate. Please go to the Signup page to create an account";
 	const { email, certificateNum } = request.body;
 	const messageData = {
 		from: "adiba.fin@gmail.com",
@@ -34,13 +33,15 @@ router.post("/", (request, response) => {
 	};
 	mailgun()
 		.messages()
-		.send(messageData, (error, body) => {
+		.send(messageData, (error) => {
 			if (error) {
-				console.log(error)
-				response.status(500).send({ message: "Not Registerd Grads.Error in sending email" });
+				// console.log(error)
+				response
+					.status(500)
+					.send({ message: "Not Registerd Grads.Error in sending email" });
 			} else {
-				console.log(body)
-				response.send({ message: "Verified.Email sent successfully" });
+				// console.log(body)
+				response.send({ message: "Verified.Please check email" });
 			}
 		});
 });
