@@ -20,13 +20,13 @@
 	background-color: var(--ifm-color-secondary-darker);
 	margin: 0 auto;
 	padding: 2rem;
-	max-width: 1600px;
+	width: 100%;
 }
 .heading {
 	color: red;
 	text-align: center;
 }
-.main {
+.jobform {
 	display: flex;
 	justify-content: space-around;
 	width: 100%;
