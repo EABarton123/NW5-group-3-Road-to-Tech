@@ -3,6 +3,7 @@ import "./VerifyCertificateNum.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export function VerifyCertificateNum() {
 	const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export function VerifyCertificateNum() {
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post(`/api`, {
+			const { data } = await axios.post("/api", {
 				email,
 				certificateNum,
 			});
@@ -57,14 +58,14 @@ export function VerifyCertificateNum() {
 					<input
 						// required
 						type="text"
-						placeholder="Enter Certificate Number "
+						placeholder="Enter Certificate Number"
 						value={certificateNum}
 						onChange={(event) => setCertificateNum(event.target.value)}
 					/>
 				</div>
 
 				<div id="certificateNumHelp">
-					We'll never share your certificate number with anyone else.
+					We will never share your certificate number with anyone else.
 				</div>
 
 				<div>
@@ -74,6 +75,7 @@ export function VerifyCertificateNum() {
 						className="btn btn-secondary"
 					>
 						{loading ? "Sending ..." : "Submit"}
+						<Link to="/signup">Sign Up</Link>
 					</button>
 				</div>
 			</form>
