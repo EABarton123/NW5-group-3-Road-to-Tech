@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
 import axios from "axios";
+import salaryRange from "./salaryRange.json";
 
 function JobForm() {
 	const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ function JobForm() {
 		applicationsDeadline: "applicationsDeadlinea",
 		numberOfStudentsCanApply: 0,
 	});
+
 
 	const handleForm = (e) => {
 		const { name, value } = e.target;
@@ -175,10 +177,7 @@ function JobForm() {
 					<Form.Group className="group mb-3 d-flex">
 						<Form.Label className="formLabel">SALARY RANGE:</Form.Label>
 						<Form.Select>
-							<option>Disabled select</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+							{salaryRange.map(salary => <option key={salary.id}>{salary.range}</option>)}
 						</Form.Select>
 					</Form.Group>
 					<h3 className="mb-4">CONTACT INFORMATION:</h3>
