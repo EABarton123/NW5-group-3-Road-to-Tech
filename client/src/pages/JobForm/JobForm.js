@@ -5,25 +5,25 @@ import axios from "axios";
 
 function JobForm() {
 	const [formData, setFormData] = useState({
-		"title": "titlea",
-		"type": "typea",
-		"description": "descriptiona",
-		"responsibilities": "responsibilitiesa",
-		"numberOfGitCommits": 0,
-		"codewarKataLevel": 0,
-		"codewarPoints": 0,
-		"codalitiyTestPoints": 0,
-		"category": "categorya",
-		"salaryRange": { "min": 10000, "max": 20000 },
-		"contactName": "namea",
-		"contactEmail": "emaila",
-		"contactPhone": 123456789,
-		"companyName": "companyNamea",
-		"companyWebSite": "companyWebSitea",
-		"companyLogo": "urll",
-		"requirements": "requirementss",
-		"applicationsDeadline": "applicationsDeadlinea",
-		"numberOfStudentsCanApply": 0,
+		title: "titlea",
+		type: "typea",
+		description: "descriptiona",
+		responsibilities: "responsibilitiesa",
+		numberOfGitCommits: 0,
+		codewarKataLevel: 0,
+		codewarPoints: 0,
+		codalitiyTestPoints: 0,
+		category: "categorya",
+		salaryRange: { min: 10000, max: 20000 },
+		contactName: "namea",
+		contactEmail: "emaila",
+		contactPhone: 123456789,
+		companyName: "companyNamea",
+		companyWebSite: "companyWebSitea",
+		companyLogo: "urll",
+		requirements: "requirementss",
+		applicationsDeadline: "applicationsDeadlinea",
+		numberOfStudentsCanApply: 0,
 	});
 
 	const handleForm = (e) => {
@@ -40,7 +40,6 @@ function JobForm() {
 	const postJob = async (formData) => {
 		try {
 			const { resData } = await axios.post("/api/job", {
-
 				...formData,
 			});
 			console.log({ resData });
@@ -51,7 +50,7 @@ function JobForm() {
 	return (
 		<div className="container">
 			<h1 className="heading">POST A JOB</h1>
-			<div className="jobform p-2"  >
+			<div className="jobform p-2">
 				<div className="section mx-4 my-2">
 					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">Job Title:</Form.Label>
