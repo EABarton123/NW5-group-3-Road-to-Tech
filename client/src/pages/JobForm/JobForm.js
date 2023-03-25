@@ -55,7 +55,6 @@ function JobForm() {
 					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">Job Title:</Form.Label>
 						<Form.Control
-							// className="rounded-sm"
 							name="title"
 							type="text"
 							placeholder="Enter title"
