@@ -10,23 +10,30 @@ export const Signup = () => {
 		password: "",
 	});
 
-	const signupSubmit = async (e) => {
+	const signupSubmit = (e) => {
 		e.preventDefault();
-		console.log("subFormDate");
+		// console.log("subFormDate");
 
-		const backendURL = "http://localhost:3000/api/signup/grads,";
-		const response = await axios.post(backendURL, { subFormDate });
-		console.log(response);
+		axios
+			.post("http://localhost:3000/api/signup", subFormDate)
+			.then((res) => {
+				console.log(res.data);
+				alert("Signup successful!");
 
-		setSubFormDate({
-			email: "",
-			username: "",
-			password: "",
-		});
+				setSubFormDate({
+					email: "",
+					username: "",
+					password: "",
+				});
+			})
+			.catch((err) => {
+				console.error(err);
+				alert("Signup failed. Please try again later.");
+			});
 	};
 	return (
 		<div className="form-conteiner">
-			<form onSubmit={(e) => signupSubmit(e)}>
+			<form onSubmit={signupSubmit}>
 				<h1> Graduate Sign Up</h1>
 				<div>
 					<label htmlFor="email"> Email: </label>
