@@ -2,23 +2,25 @@ import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
 const express = require("express");
+const mg = require("mailgun-js");
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = Router();
-const MAILGUN_DOMAIN = "sandbox02afd029aa3943e8b405f995365c67b8.mailgun.org";
-const MAILGUN_API_KEY = "4847b7149dd9d399482ac14d3a78f82e-b36d2969-1f8ba3ad";
-
-const mg = require("mailgun-js");
 
 const mailgun = () =>
 	mg({
-		apiKey: MAILGUN_API_KEY,
-		domain: MAILGUN_DOMAIN,
+		apiKey: process.env.MAILGUN_API_KEY,
+		domain: process.env.MAILGUN_DOMAIN,
 	});
-
+router.get("/", (_, res) => {
+	logger.debug("Welcoming everyone...");
+	res.json({ message: "Hello, world!" });
+});
 router.post("/", (request, response) => {
-	const textToEveryOne = "Your email has been verified Click Here";
+	const textToEveryOne =
+		"Congratulations! You are registered as a CYF graduate. Please go to the Signup page to create an account";
 	const { email, certificateNum } = request.body;
 	const messageData = {
 		from: "adiba.fin@gmail.com",
@@ -30,9 +32,13 @@ router.post("/", (request, response) => {
 		.messages()
 		.send(messageData, (error) => {
 			if (error) {
-				response.status(500).send({ message: "Error in sending email" });
+				// console.log(error)
+				response
+					.status(500)
+					.send({ message: "Not Registerd Grads.Error in sending email" });
 			} else {
-				response.send({ message: "Email sent successfully" });
+				// console.log(body)
+				response.send({ message: "Verified.Please check email" });
 			}
 		});
 });
@@ -138,48 +144,6 @@ router.post("/signup", (request, response) => {
 		}
 	);
 });
-
-router.post("/job", async (req, res) => {
-	const reqBody = req.body;
-
-	const sqlQuery =
-		"INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codalitiy_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
-
-	const values = [
-		reqBody.title,
-		reqBody.type,
-		reqBody.description,
-		reqBody.responsibilities,
-		reqBody.numberOfGitCommits,
-		reqBody.codewarKataLevel,
-		reqBody.codewarPoints,
-		reqBody.codalitiyTestPoints,
-		reqBody.category,
-		reqBody.salaryRange.min,
-		reqBody.salaryRange.max,
-		reqBody.contactName,
-		reqBody.contactEmail,
-		reqBody.contactPhone,
-		reqBody.companyName,
-		reqBody.companyWebSite,
-		reqBody.companyLogo,
-		reqBody.requirements,
-		reqBody.applicationsDeadline,
-		reqBody.numberOfStudentsCanApply,
-	];
-
-	try {
-		const dbData = await db.query(sqlQuery, values);
-		res.status(200).json(dbData.rows);
-	} catch (error) {
-		res.status(500).json({ error });
-	}
-});
-router.get("/", (_, res) => {
-	logger.debug("Welcoming everyone...");
-	res.json({ message: "Hello, world!" });
-});
-
 router.get("/signup/grads", (request, response) => {
 	db.query("select * from  signedupgrads")
 		.then((grads) => response.status(200).json(grads.rows))
@@ -247,26 +211,6 @@ router.post("/signup/grads", (request, response) => {
 			}
 		}
 	);
-});
-
-router.post("/", (request, response) => {
-	const textToEveryOne = "Your email has been verified Click Here";
-	const { email, certificateNum } = request.body;
-	const messageData = {
-		from: "adiba.fin@gmail.com",
-		to: `${email}`,
-		certificateNum: `${certificateNum}`,
-		text: `<p> ${textToEveryOne} </p>`,
-	};
-	mailgun()
-		.messages()
-		.send(messageData, (error) => {
-			if (error) {
-				response.status(500).send({ message: "Error in sending email" });
-			} else {
-				response.send({ message: "Email sent successfully" });
-			}
-		});
 });
 
 export default router;

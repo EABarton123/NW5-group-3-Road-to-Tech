@@ -1,0 +1,70 @@
+:root {
+	--docusaurus-progress-bar-color: var(--ifm-color-primary);
+	--ifm-color-primary: #d12f2f;
+	--ifm-color-primary-dark: #bd2a2a;
+	--ifm-color-primary-darker: #b22727;
+	--ifm-color-primary-darkest: #932020;
+	--ifm-color-primary-light: #d64444;
+	--ifm-color-primary-lighter: #d84e4e;
+	--ifm-color-primary-lightest: #df6e6e;
+	--ifm-color-secondary-dark: #d4d5d8;
+	--ifm-color-secondary-darker: #c8c9cc;
+	--ifm-color-secondary-darkest: #a4a6a8;
+	--ifm-color-secondary-light: #eef0f2;
+	--ifm-color-secondary-lighter: #f1f2f5;
+	--ifm-color-secondary-lightest: #f5f6f8;
+	--ifm-color-secondary-contrast-background: #fdfdfe;
+	--ifm-color-secondary-contrast-foreground: #474748;
+}
+.container {
+	background-color: var(--ifm-color-secondary-darker);
+	margin: 0 auto;
+	padding: 2rem;
+	width: 100%;
+}
+.heading {
+	color: red;
+	text-align: center;
+}
+.jobform {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	color: red;
+}
+.formLabel {
+	display: inline;
+	width: 30%;
+}
+.section {
+	width: 100%;
+}
+
+button {
+	margin-left: 12px;
+}
+@media (max-width: 960px) {
+	.main {
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+}
+
+@media (max-width: 780px) {
+	.main {
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+
+	.formLabel {
+		margin-right: 4px;
+		font-size: 0.875rem;
+	}
+
+	.group {
+		flex-direction: column;
+		margin: auto;
+	}
+}
