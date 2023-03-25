@@ -9,7 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = Router();
 
-
 const mailgun = () =>
 	mg({
 		apiKey: process.env.MAILGUN_API_KEY,
