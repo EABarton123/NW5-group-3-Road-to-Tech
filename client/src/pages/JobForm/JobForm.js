@@ -1,28 +1,29 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
+import axios from "axios";
 
 function JobForm() {
 	const [formData, setFormData] = useState({
-		title: "",
-		type: "",
-		description: "",
-		responsibilities: "",
-		numberOfGitCommits: "",
-		codewarKataLevel: "",
-		codewarPoints: "",
-		codalityTestPoints: "",
-		category: "",
-		salaryRange: "",
-		contactName: "",
-		contactEmail: "",
-		contactPhone: "",
-		companyName: "",
-		companyWebSite: "",
-		companyLogo: "",
-		requirements: "",
-		applicationsDeadline: "",
-		numberOfStudentsCanApply: "",
+		title: "titlea",
+		type: "typea",
+		description: "descriptiona",
+		responsibilities: "responsibilitiesa",
+		numberOfGitCommits: 0,
+		codewarKataLevel: 0,
+		codewarPoints: 0,
+		codalitiyTestPoints: 0,
+		category: "categorya",
+		salaryRange: { min: 10000, max: 20000 },
+		contactName: "namea",
+		contactEmail: "emaila",
+		contactPhone: 123456789,
+		companyName: "companyNamea",
+		companyWebSite: "companyWebSitea",
+		companyLogo: "urll",
+		requirements: "requirementss",
+		applicationsDeadline: "applicationsDeadlinea",
+		numberOfStudentsCanApply: 0,
 	});
 
 	const handleForm = (e) => {
@@ -35,21 +36,21 @@ function JobForm() {
 		e.preventDefault();
 		postJob(formData);
 	};
-	const postJob = (data) => {
-		fetch("http://localhost:3100/api/job", {
-			method: "POST",
-			header: { "Content-Type": "application/json" },
-			body: JSON.stringify(data),
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data))
-			.catch((err) => console.error(err));
-	};
 
+	const postJob = async (formData) => {
+		try {
+			const { resData } = await axios.post("/api/job", {
+				...formData,
+			});
+			console.log({ resData });
+		} catch (err) {
+			console.log({ err });
+		}
+	};
 	return (
 		<div className="container">
 			<h1 className="heading">POST A JOB</h1>
-			<Form className="main p-2" noValidate onSubmit={handleSubmit}>
+			<div className="jobform p-2">
 				<div className="section mx-4 my-2">
 					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">Job Title:</Form.Label>
@@ -255,12 +256,12 @@ function JobForm() {
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end p-2">
-						<Button variant="danger" type="submit">
+						<Button variant="danger" type="submit" onClick={handleSubmit}>
 							PUBLISH
 						</Button>
 					</div>
 				</div>
-			</Form>
+			</div>
 		</div>
 	);
 }
