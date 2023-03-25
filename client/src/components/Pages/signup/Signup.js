@@ -4,6 +4,7 @@ import "./Signup.css";
 import axios from "axios";
 
 export const Signup = () => {
+	const backendUrl = process.env.BACKEND_URL;
 	const [subFormDate, setSubFormDate] = useState({
 		email: "",
 		username: "",
@@ -14,7 +15,7 @@ export const Signup = () => {
 		e.preventDefault();
 		console.log("subFormDate");
 
-		const backendURL = "http://localhost:3000/api/signup/grads,";
+		const backendURL = `${backendUrl}/api/signup/grads`;
 		const response = await axios.post(backendURL, { subFormDate });
 		console.log(response);
 
@@ -25,7 +26,7 @@ export const Signup = () => {
 		});
 	};
 	return (
-		<div className="form-conteiner">
+		<div className="form-container">
 			<form onSubmit={(e) => signupSubmit(e)}>
 				<h1> Graduate Sign Up</h1>
 				<div>

@@ -74,8 +74,10 @@ export function VerifyCertificateNum() {
 						type="submit"
 						className="btn btn-secondary"
 					>
-						{loading ? "Sending ..." : "Submit"}
-						<Link to="/signup">Sign Up</Link>
+						{loading ? "Sending ..." : "Verify"}
+						<Link to="/signup" className="link">
+							Sign Up
+						</Link>
 					</button>
 				</div>
 			</form>

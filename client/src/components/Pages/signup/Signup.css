@@ -4,20 +4,29 @@ form {
 	text-align: center;
 	justify-content: center;
 	background: #dad7d7;
-	margin: 5rem;
-	padding: 5rem;
+	margin: auto;
+	padding: 10px;
 	border-radius: 2rem;
+	font-family: "Raleway", sans-serif;
+}
+
+.form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	margin-bottom: 100px;
 }
 
 form label {
-	float: left;
+	justify-self: center;
 	font-size: 0.9rem;
-	margin: 0;
-	padding: 0;
+	margin-left: 250px;
+	padding: 150px;
+	border-radius: 10px;
 }
 label {
 	color: rgb(108, 106, 106);
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1.2rem;
 }
 
