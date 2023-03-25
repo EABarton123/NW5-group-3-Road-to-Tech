@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./VerifyCertificateNum.css";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 

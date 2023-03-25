@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../Buttons/Buttons";
+import Button from "./Buttons/Buttons";
 import "./Signup.css";
 import axios from "axios";
 
@@ -29,7 +29,7 @@ export const Signup = () => {
 			<form onSubmit={(e) => signupSubmit(e)}>
 				<h1> Graduate Sign Up</h1>
 				<div>
-					<label htmlFor="email"> Email: </label>
+					<label  htmlFor="email"> Email: </label>
 					<input
 						type="text"
 						placeholder="Enter Email"
