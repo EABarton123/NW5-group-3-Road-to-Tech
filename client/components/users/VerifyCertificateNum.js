@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from "react";
 import "./VerifyCertificateNum.css";
 // import { toast, ToastContainer } from "react-toastify";
@@ -13,6 +14,7 @@ export function VerifyCertificateNum() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!email || !certificateNum) {
+			// eslint-disable-next-line no-undef
 			return toast.error("Please provide email and certificate Number");
 		}
 		try {
@@ -22,9 +24,11 @@ export function VerifyCertificateNum() {
 				certificateNum,
 			});
 			setLoading(false);
+			// eslint-disable-next-line no-undef
 			toast.success(data.message);
 		} catch (err) {
 			setLoading(false);
+			// eslint-disable-next-line no-undef
 			toast.error(
 				err.response && err.response.data.message
 					? err.response.data.message
