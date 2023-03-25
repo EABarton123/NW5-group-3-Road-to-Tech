@@ -4,24 +4,26 @@ import logger from "./utils/logger";
 const express = require("express");
 const mg = require("mailgun-js");
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = Router();
-const MAILGUN_DOMAIN = "sandbox02afd029aa3943e8b405f995365c67b8.mailgun.org";
-const MAILGUN_API_KEY = "4847b7149dd9d399482ac14d3a78f82e-b36d2969-1f8ba3ad";
 
 const mailgun = () =>
 	mg({
-		apiKey: MAILGUN_API_KEY,
-		domain: MAILGUN_DOMAIN,
+		apiKey: process.env.MAILGUN_API_KEY,
+		domain: process.env.MAILGUN_DOMAIN,
 	});
 router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
 });
 router.post("/", (request, response) => {
-	const textToEveryOne = "Your email has been verified Click Here";
+	const textToEveryOne =
+		"Congratulations! You are registered as a CYF graduate. Please go to the Signup page to create an account";
 	const { email, certificateNum } = request.body;
 	const messageData = {
 		from: "adiba.fin@gmail.com",
@@ -33,9 +35,13 @@ router.post("/", (request, response) => {
 		.messages()
 		.send(messageData, (error) => {
 			if (error) {
-				response.status(500).send({ message: "Error in sending email" });
+				// console.log(error)
+				response
+					.status(500)
+					.send({ message: "Not Registerd Grads.Error in sending email" });
 			} else {
-				response.send({ message: "Email sent successfully" });
+				// console.log(body)
+				response.send({ message: "Verified.Please check email" });
 			}
 		});
 });
