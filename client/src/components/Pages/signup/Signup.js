@@ -7,8 +7,11 @@ export const Signup = () => {
 	const [subFormDate, setSubFormDate] = useState({
 		email: "",
 		username: "",
+		role: "",
 		password: "",
 	});
+	console.log(subFormDate);
+	// console.log(setSubFormDate)
 
 	const signupSubmit = (e) => {
 		e.preventDefault();
@@ -23,6 +26,7 @@ export const Signup = () => {
 				setSubFormDate({
 					email: "",
 					username: "",
+					role: "",
 					password: "",
 				});
 			})
@@ -66,6 +70,32 @@ export const Signup = () => {
 							})
 						}
 					/>
+				</div>
+				<div>
+					<input
+						onChange={(e) =>
+							setSubFormDate({
+								...subFormDate,
+								role: e.target.value,
+							})
+						}
+						type="radio"
+						value="Admin"
+						name="role"
+					/>{" "}
+					Admin
+					<input
+						onChange={(e) =>
+							setSubFormDate({
+								...subFormDate,
+								role: e.target.value,
+							})
+						}
+						type="radio"
+						value="Graduate"
+						name="role"
+					/>{" "}
+					Graduate
 				</div>
 				<div>
 					<label htmlFor="password"> Password:</label>
