@@ -1,17 +1,70 @@
-body {
-	font-family: "Raleway", sans-serif;
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,700&display=swap');
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+    --ifm-color-primary: #d12f2f;
+    --ifm-color-primary-darkest: #932020;
+    --ifm-color-primary-light: #d64444;
+    --ifm-color-primary: #3578e5;
+    --ifm-color-secondary: #ebedf0;
+    --ifm-color-success: #00a400;
+    --ifm-color-secondary-dark: #d4d5d8;
+    --ifm-color-secondary-darker: #c8c9cc;
+    --ifm-color-secondary-darkest: #a4a6a8;
+    --ifm-color-secondary-light: #eef0f2;
+    --ifm-color-secondary-lightest: #f5f6f8;
+    --ifm-color-secondary-contrast-background: #fdfdfe;
+    --ifm-color-secondary-contrast-foreground: #474748;
 }
+
 
 
 #searchbar{
-	background-color: aqua;
+    background-color: var(--ifm-background-color);
 	margin: 0;
-	height: 100px;
+	height: 200px;
+	display: grid;
+	border: none;
 }
-/* #job-card{
-	background-color: rgb(245, 245, 246);
+#searchbar input{
+	margin: 0;
+	width: 400px;
+	box-shadow: inset 0 0 5px #d12f2f;
 }
-#div-right{
-background-color: bisque;
-} */
+
+#job-card{
+	text-align: left;
+	box-shadow: inset 0 0 5px #d12f2f;
+	margin: 100px;
+	padding: 70px;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	width: 1200px;
+	border-radius: 10px;
+}
+
+#job-card h2{
+
+font-family: 'Cormorant', serif;
+font-size: 2.7rem;
+font-weight: bold;
+text-align: left;
+border-radius: 10px;
+padding: 10px;
+box-shadow: inset 0 0 5px #d12f2f;
+}
+#job-card p{
+font-family: 'Roboto', sans-serif;
+font-size: 1.5rem;
+box-shadow: inset 0 0 5px #333;
+padding: 10px;
+border-radius: 10px;
+text-decoration: none;
+padding-left: 30px;
+}
+#job-card button{
+	width: 220px;
+	height: 70px;
+}
