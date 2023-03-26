@@ -7,3 +7,12 @@ CREATE TABLE IF NOT EXISTS testTable
     name   varchar(250) NOT NULL,
     PRIMARY KEY (itemId)
 );
+
+CREATE TABLE public."user-data" (
+	"id PRIMARY KEY" bigserial NOT NULL,
+	email varchar(200) NOT NULL,
+	username varchar(200) NOT NULL,
+	"password" varchar(200) NOT NULL,
+	"role" varchar(100) NOT NULL
+);
+
