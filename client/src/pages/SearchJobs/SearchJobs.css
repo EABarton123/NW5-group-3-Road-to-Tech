@@ -1,0 +1,17 @@
+body {
+	font-family: "Raleway", sans-serif;
+
+}
+
+
+#searchbar{
+	background-color: aqua;
+	margin: 0;
+	height: 100px;
+}
+/* #job-card{
+	background-color: rgb(245, 245, 246);
+}
+#div-right{
+background-color: bisque;
+} */
