@@ -10,26 +10,14 @@ import GradJobs from "./pages/GradJobs/GradJobs";
 import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 import { Signup } from "./components/Pages/signup/Signup";
 
-class App extends Component {
-	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
-	render() {
-		return (
-			<div>
-				<div className="maincontainer">
-					<CustomHeader MenuItemTexts={this.MenuItemTexts}></CustomHeader>
-				</div>
-				<div>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/admin" element={<AdminJobs />} />
-						<Route path="/grad" element={<GradJobs />} />
-						<Route path="/verify" element={<VerifyCertificateNum />} />
-						<Route path="/signup" element={<Signup />} />
-					</Routes>
-				</div>
-			</div>
-		);
-	}
-}
+
+
+
+const App = () => (
+<>
+<Signup />
+
+</>
+);
 
 export default App;
