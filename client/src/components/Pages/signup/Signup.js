@@ -10,7 +10,7 @@ export const Signup = () => {
 		role: "",
 		password: "",
 	});
-	console.log(subFormDate);
+	// console.log(subFormDate);
 	// console.log(setSubFormDate)
 
 	const signupSubmit = (e) => {
@@ -72,6 +72,7 @@ export const Signup = () => {
 					/>
 				</div>
 				<div>
+					<label htmlFor="role"> Role:</label>
 					<input
 						onChange={(e) =>
 							setSubFormDate({
