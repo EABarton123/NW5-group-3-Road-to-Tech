@@ -137,7 +137,7 @@ router.post("/signup", (request, response) => {
 					(err) => {
 						if (err) {
 							// throw error;
-							console.error(err);
+							// console.error(err);
 							return response.status(400).json({ errorFound });
 						}
 						response.status(200).send("Grads registered");

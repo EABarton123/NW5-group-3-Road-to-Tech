@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Button from "../../Buttons/Buttons";
 import "./Signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
+	const navigate = useNavigate();
 	const [subFormDate, setSubFormDate] = useState({
 		email: "",
 		username: "",
@@ -16,24 +18,27 @@ export const Signup = () => {
 	const signupSubmit = (e) => {
 		e.preventDefault();
 		// console.log("subFormDate");
+		if (
+			axios
+				.post("http://localhost:3000/api/signup", subFormDate)
+				.then((res) => {
+					console.log(res.data);
+					alert("Signup successful!");
 
-		axios
-			.post("http://localhost:3000/api/signup", subFormDate)
-			.then((res) => {
-				console.log(res.data);
-				alert("Signup successful!");
-
-				setSubFormDate({
-					email: "",
-					username: "",
-					role: "",
-					password: "",
-				});
-			})
-			.catch((err) => {
-				console.error(err);
-				alert("Signup failed. Please try again later.");
-			});
+					setSubFormDate({
+						email: "",
+						username: "",
+						role: "",
+						password: "",
+					});
+				})
+		) {
+			navigate("/Home");
+		}
+		// .catch((err) => {
+		// 	console.error(err);
+		// 	alert("Signup failed. Please try again later.");
+		// })
 	};
 	return (
 		<div className="form-conteiner">
