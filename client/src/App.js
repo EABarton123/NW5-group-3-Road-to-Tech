@@ -9,6 +9,8 @@ import AdminJobs from "./pages/AdminJobs";
 import GradJobs from "./pages/GradJobs/GradJobs";
 import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 import { Signup } from "./components/Pages/signup/Signup";
+import SignUp from "./pages/SignUp/SignUp";
+import JobForm from "./pages/JobForm/JobForm";
 
 
 

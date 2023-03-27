@@ -2,27 +2,43 @@ import React, { useState } from "react";
 import Button from "../../Buttons/Buttons";
 import "./Signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
+	const navigate = useNavigate();
 	const [subFormDate, setSubFormDate] = useState({
 		email: "",
 		username: "",
+		role: "",
 		password: "",
 	});
+	// console.log(subFormDate);
+	// console.log(setSubFormDate)
 
-	const signupSubmit = async (e) => {
+	const signupSubmit = (e) => {
 		e.preventDefault();
-		console.log("subFormDate");
+		// console.log("subFormDate");
+		if (
+			axios
+				.post("http://localhost:3000/api/signup", subFormDate)
+				.then((res) => {
+					console.log(res.data);
+					alert("Signup successful!");
 
-		const backendURL = "http://localhost:3000/api/signup/grads,";
-		const response = await axios.post(backendURL, { subFormDate });
-		console.log(response);
-
-		setSubFormDate({
-			email: "",
-			username: "",
-			password: "",
-		});
+					setSubFormDate({
+						email: "",
+						username: "",
+						role: "",
+						password: "",
+					});
+				})
+		) {
+			navigate("/Home");
+		}
+		// .catch((err) => {
+		// 	console.error(err);
+		// 	alert("Signup failed. Please try again later.");
+		// })
 	};
 	return (
 		<div className="form-conteiner">
@@ -59,6 +75,33 @@ export const Signup = () => {
 							})
 						}
 					/>
+				</div>
+				<div>
+					<label htmlFor="role"> Role:</label>
+					<input
+						onChange={(e) =>
+							setSubFormDate({
+								...subFormDate,
+								role: e.target.value,
+							})
+						}
+						type="radio"
+						value="Admin"
+						name="role"
+					/>{" "}
+					Admin
+					<input
+						onChange={(e) =>
+							setSubFormDate({
+								...subFormDate,
+								role: e.target.value,
+							})
+						}
+						type="radio"
+						value="Graduate"
+						name="role"
+					/>{" "}
+					Graduate
 				</div>
 				<div>
 					<label htmlFor="password"> Password:</label>
