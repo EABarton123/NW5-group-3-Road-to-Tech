@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
 import axios from "axios";
-import salaryRange  from "./salaryRange";
+import salaryRange from "./salaryRange";
 
 function JobForm() {
 	const [formData, setFormData] = useState({
@@ -177,7 +177,9 @@ function JobForm() {
 						<Form.Label className="formLabel">SALARY RANGE:</Form.Label>
 						<Form.Select>
 							{salaryRange.map((salary) => (
-								<option key={salary.id}>Min: {salary.min} - Max: {salary.max}</option>
+								<option key={salary.id}>
+									Min: {salary.min} - Max: {salary.max}
+								</option>
 							))}
 						</Form.Select>
 					</Form.Group>
