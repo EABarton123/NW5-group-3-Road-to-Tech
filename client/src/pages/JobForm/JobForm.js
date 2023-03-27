@@ -15,7 +15,7 @@ function JobForm() {
 		codewarPoints: 0,
 		codalitiyTestPoints: 0,
 		category: "",
-		salaryRange: {},
+		salaryRange: { min: 0, max: 0 },
 		contactName: "",
 		contactEmail: "",
 		contactPhone: 123456789,
@@ -31,7 +31,22 @@ function JobForm() {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
-
+	const handleCategory = (e) => {
+		if (e.target.value == "none") {
+			setFormData({ ...formData, category: "" });
+		} else {
+			setFormData({ ...formData, category: e.target.value });
+		}
+	};
+	const handleSalary = (e) => {
+		const value = parseInt(e.target.value);
+		if (value == -1) {
+			setFormData({ ...formData, salaryRange: { min: 0, max: 0 } });
+		} else {
+			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
+			setFormData({ ...formData, salaryRange: { min, max } });
+		}
+	};
 	const handleSubmit = (e) => {
 		console.log({ formData });
 		e.preventDefault();
@@ -169,19 +184,20 @@ function JobForm() {
 				<div className="section mx-4 my-2">
 					<Form.Group className="group mb-3 d-flex">
 						<Form.Label className="formLabel">JOB CATEGORY:</Form.Label>
-						<Form.Select>
-							<option>Disabled select</option>
-							<option value="1">Software Developer</option>
-							<option value="2">Tester</option>
-							<option value="3">Designer</option>
+						<Form.Select onChange={handleCategory}>
+							<option value="none">Disabled select</option>
+							<option value="Software Developer">Software Developer</option>
+							<option value="Tester">Tester</option>
+							<option value="Designer">Designer</option>
 						</Form.Select>
 					</Form.Group>
 
 					<Form.Group className="group mb-3 d-flex">
 						<Form.Label className="formLabel">SALARY RANGE:</Form.Label>
-						<Form.Select>
+						<Form.Select onChange={handleSalary}>
+							<option value="-1">Disabled select</option>
 							{salaryRange.map((salary) => (
-								<option key={salary.id}>
+								<option value={salary.id} key={salary.id}>
 									Min: {salary.min} - Max: {salary.max}
 								</option>
 							))}
