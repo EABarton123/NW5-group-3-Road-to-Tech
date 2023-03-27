@@ -16,6 +16,9 @@
 	--ifm-color-secondary-contrast-background: #fdfdfe;
 	--ifm-color-secondary-contrast-foreground: #474748;
 }
+body {
+	font-family: "Raleway", sans-serif;
+}
 .container {
 	background-color: var(--ifm-color-secondary-darker);
 	margin: 0 auto;
@@ -34,10 +37,13 @@
 }
 .formLabel {
 	display: inline;
-	width: 30%;
+	width: 40%;
 }
 .section {
 	width: 100%;
+}
+.group {
+	align-items: center;
 }
 
 button {

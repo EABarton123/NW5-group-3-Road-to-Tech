@@ -2,27 +2,28 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
 import axios from "axios";
+import salaryRange from "./salaryRange";
 
 function JobForm() {
 	const [formData, setFormData] = useState({
-		title: "titlea",
-		type: "typea",
-		description: "descriptiona",
-		responsibilities: "responsibilitiesa",
+		title: "",
+		type: "",
+		description: "",
+		responsibilities: "",
 		numberOfGitCommits: 0,
 		codewarKataLevel: 0,
 		codewarPoints: 0,
 		codalitiyTestPoints: 0,
-		category: "categorya",
-		salaryRange: { min: 10000, max: 20000 },
-		contactName: "namea",
-		contactEmail: "emaila",
+		category: "",
+		salaryRange: { min: 0, max: 0 },
+		contactName: "",
+		contactEmail: "",
 		contactPhone: 123456789,
-		companyName: "companyNamea",
-		companyWebSite: "companyWebSitea",
-		companyLogo: "urll",
-		requirements: "requirementss",
-		applicationsDeadline: "applicationsDeadlinea",
+		companyName: "",
+		companyWebSite: "",
+		companyLogo: "",
+		requirements: "",
+		applicationsDeadline: "",
 		numberOfStudentsCanApply: 0,
 	});
 
@@ -30,7 +31,22 @@ function JobForm() {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
-
+	const handleCategory = (e) => {
+		if (e.target.value == "none") {
+			setFormData({ ...formData, category: "" });
+		} else {
+			setFormData({ ...formData, category: e.target.value });
+		}
+	};
+	const handleSalary = (e) => {
+		const value = parseInt(e.target.value);
+		if (value == -1) {
+			setFormData({ ...formData, salaryRange: { min: 0, max: 0 } });
+		} else {
+			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
+			setFormData({ ...formData, salaryRange: { min, max } });
+		}
+	};
 	const handleSubmit = (e) => {
 		console.log({ formData });
 		e.preventDefault();
@@ -62,7 +78,7 @@ function JobForm() {
 							onChange={handleForm}
 						/>
 					</Form.Group>
-					<Form.Group className="group mb-3 d-flex" controlId="type">
+					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">Job Type:</Form.Label>
 						<Form.Control
 							name="type"
@@ -103,6 +119,7 @@ function JobForm() {
 						<Form.Control
 							name="numberOfGitCommits"
 							type="number"
+							min="0"
 							placeholder="Enter responsibilities"
 							value={formData.numberOfGitCommits}
 							onChange={handleForm}
@@ -113,6 +130,7 @@ function JobForm() {
 						<Form.Control
 							name="codewarKataLevel"
 							type="number"
+							min="0"
 							placeholder="Enter codewarKataLevel"
 							value={formData.codewarKataLevel}
 							onChange={handleForm}
@@ -123,6 +141,7 @@ function JobForm() {
 						<Form.Control
 							name="codewarPoints"
 							type="number"
+							min="0"
 							placeholder="Enter codewarPoints"
 							value={formData.codewarPoints}
 							onChange={handleForm}
@@ -133,6 +152,7 @@ function JobForm() {
 						<Form.Control
 							name="codalityTestPoints"
 							type="number"
+							min="0"
 							placeholder="Enter codalitiyTestPoints"
 							value={formData.codalityTestPoints}
 							onChange={handleForm}
@@ -164,21 +184,23 @@ function JobForm() {
 				<div className="section mx-4 my-2">
 					<Form.Group className="group mb-3 d-flex">
 						<Form.Label className="formLabel">JOB CATEGORY:</Form.Label>
-						<Form.Select>
-							<option>Disabled select</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+						<Form.Select onChange={handleCategory}>
+							<option value="none">Disabled select</option>
+							<option value="Software Developer">Software Developer</option>
+							<option value="Tester">Tester</option>
+							<option value="Designer">Designer</option>
 						</Form.Select>
 					</Form.Group>
 
 					<Form.Group className="group mb-3 d-flex">
 						<Form.Label className="formLabel">SALARY RANGE:</Form.Label>
-						<Form.Select>
-							<option>Disabled select</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+						<Form.Select onChange={handleSalary}>
+							<option value="-1">Disabled select</option>
+							{salaryRange.map((salary) => (
+								<option value={salary.id} key={salary.id}>
+									Min: {salary.min} - Max: {salary.max}
+								</option>
+							))}
 						</Form.Select>
 					</Form.Group>
 					<h3 className="mb-4">CONTACT INFORMATION:</h3>
@@ -250,6 +272,7 @@ function JobForm() {
 						<Form.Control
 							name="numberOfStudentsCanApply"
 							type="number"
+							min="0"
 							placeholder="Enter numberOfStudentsCanApply"
 							value={formData.numberOfStudentsCanApply}
 							onChange={handleForm}
