@@ -6,7 +6,6 @@ import Button from "../Button/Button";
 const SignUp = () => {
 	const [dataForm, setDataForm] = useState({
 		email: "",
-		employerId: "",
 		userName: "",
 		password: "",
 	});
@@ -22,15 +21,14 @@ const SignUp = () => {
 		// clear the fields
 		setDataForm({
 			email: "",
-			employerId: "",
 			userName: "",
 			password: "",
 		});
 	};
 	return (
-		<div>
+		<div className="form-conteiner">
 			<form onSubmit={(e) => SignUpForm(e)}>
-				<h1>Sign Up</h1>
+				<h1>SIGN UP</h1>
 				<div>
 					<label htmlFor="email"> Email:</label>
 					<input
@@ -39,24 +37,9 @@ const SignUp = () => {
 						name="email"
 						required
 						value={dataForm.email}
-						onChange={(e) =>
-							setDataForm({ ...dataForm, email: e.target.value })
-						}
-					/>
+						onChange={(e) =>setDataForm({ ...dataForm, email: e.target.value })} />
 				</div>
-				<div>
-					<label htmlFor="text">Employer Id: </label>
-					<input
-						type="number"
-						placeholder="Enter Employer Id"
-						name="employerId"
-						required
-						value={dataForm.employerId}
-						onChange={(e) =>
-							setDataForm({ ...dataForm, employerId: e.target.value })
-						}
-					/>
-				</div>
+
 				<div>
 					<label htmlFor="text">User Name:</label>
 					<input
@@ -83,7 +66,7 @@ const SignUp = () => {
 						}
 					/>
 				</div>
-				<Button Type={"submit"} text={"SIGNUP"} />
+				<Button Type={"submit"} text={"SIGN UP"} />
 			</form>
 		</div>
 	);
