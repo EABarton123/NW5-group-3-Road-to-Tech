@@ -17,10 +17,13 @@ export function VerifyCertificateNum() {
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post("/api", {
-				email,
-				certificateNum,
-			});
+			const { data } = await axios.post(
+				"https://starter-kit-nqe2.onrender.com/verify",
+				{
+					email,
+					certificateNum,
+				}
+			);
 			setLoading(false);
 			toast.success(data.message);
 		} catch (err) {
