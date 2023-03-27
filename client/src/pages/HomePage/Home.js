@@ -1,5 +1,5 @@
-import Slide from "../components/slide";
-import Login from "../components/login";
+import Slide from "./Slide/slide";
+import Login from "./Login/login";
 
 export function Home() {
 	return (

@@ -1,6 +1,7 @@
 import React from "react";
-import "../assets/css/login.css";
-import login_sub_image from "../assets/css/outreach.jpg";
+import "./login.css";
+import login_sub_image from "./outreach.jpg";
+
 function Login() {
 	return (
 		<>

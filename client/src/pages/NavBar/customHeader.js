@@ -1,11 +1,11 @@
-import MenuItem from "./menuItem";
-import SignupMenu from "./signupMenu";
-import React from "react";
-import "../assets/css/menu.css";
-import "../assets/css/customMenu.css";
-import "../assets/css/menuItem.css";
-import logo from "../assets/css/cyf_logo.png";
 import { Link } from "react-router-dom";
+import React from "react";
+import MenuItem from "./menuItem";
+import SignupMenu from "./SignUpMenu/signupMenu";
+import "./menu.css";
+import "./customMenu.css";
+import "./menuItem.css";
+import logo from "./cyf_logo.png";
 
 function CustomHeader({ MenuItemTexts }) {
 	return (
