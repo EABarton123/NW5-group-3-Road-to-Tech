@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
-import Button from "../Button/Button";
+import Button from "./Button/Button";
 
 const SignUp = () => {
 	const [dataForm, setDataForm] = useState({
