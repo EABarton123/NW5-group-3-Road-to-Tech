@@ -1,4 +1,4 @@
-import "./GradJobs.css";
+import "./GradDashboard/GradJobs.css";
 
 function GradAppliedJobs() {
 	const jobApplied = [{ id: 1 }, { id: 2 }, { id: 3 }];

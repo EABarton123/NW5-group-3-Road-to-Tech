@@ -1,6 +1,6 @@
 import React from "react";
-import "../assets/css/menuItem.css";
-import "../assets/css/customMenu.css";
+import "./menuItem.css";
+import "./customMenu.css";
 
 function MenuItem({ menuText }) {
 	return (
