@@ -1,5 +1,4 @@
 .signUpInfoContainer {
-    margin-top: 100PX;
 	box-shadow: inset 0 0 10px var(--ifm-color-primary-darkest);
 	display: flex;
 	flex-direction: column;
@@ -7,16 +6,22 @@
 	align-items: center;
 	height: auto;
 }
-.signUpInfoContainer form{
-	box-shadow: inset 0 0 5px var(--ifm-color-secondary-darkest);
+
+.signUpInfoContainer form {
+	box-shadow: inset 0 0 10px var(--ifm-color-secondary-darkest);
 	width: 600px;
 	height: 650px;
 	text-align: center;
 	justify-content: center;
 	background: #dad7d7;
-	margin: 5rem;
-	padding: 5rem;
+	padding:5rem;
 	border-radius: 2rem;
+}
+.signUpInfoContainer h2{
+	display: grid;
+	background-color:white;
+	color: #e50303;
+	font-size: 2.5rem;
 }
 label {
 	color: rgb(108, 106, 106);
@@ -25,48 +30,68 @@ label {
 	font-size: 1.2rem;
 	color: #e50303;
 }
+.emailLabel label{
+	margin-top: 50px;
+	color: #e50303;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1.5rem;
+
+}
+.graduateLabel label{
+	color: #e50303;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+#certificateNumHelp{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	color:rgb(90, 90, 90);
+}
 input {
-	width: 100%;
+	width: 500px;
 	padding: 15px;
-	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
 	background: var(--ifm-color-secondary-contrast-background);
-	border-radius: 2rem;}
-
+	border-radius: 2rem;
+}
 
 .signUpHeader {
-	margin: 1rem;
-	/* font-size: 1rem; */
+font-size: 1rem;
 }
 form > div {
-	margin: 1rem;
+margin: 0.5rem;
 }
 
 form > div > label {
 	margin: 0.5rem;
 }
-form > div > input {
-	padding: 0.5rem;
-	min-width: 20rem;
-	/* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+ form > div > input {
+ padding: 0.5rem;
+ min-width: 20rem;
+ /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 .btn {
 	background-color: #e50303;
 	color: white;
+	font: 1.5em sans-serif;
 	border-radius: 12px;
 	cursor: pointer;
-	width:8rem;
+	width: 10rem;
 	opacity: 1;
-	height: 3rem;
+	height: 4rem;
 	font-weight: bold;
 	vertical-align: middle;
 	text-align: center;
 	position: relative;
-	padding: 3px;}
+	padding: 15px;
+	justify-content: center;
+}
 
-	.btn:hover {
-	background-color:#e50303 ;
+.btn:hover {
+	background-color: #e50303;
 	color: white;
-	border: solid 4px  white;
-	}
+	border: solid 4px white;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import  "./VerifyCertificateNum.css";
+import "./VerifyCertificateNum.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -38,7 +38,7 @@ export function VerifyCertificateNum() {
 			<ToastContainer position="bottom-center" limit={1} />
 			<h2 className="signUpHeader"> Sign Up As A Graduate </h2>
 			<form onSubmit={handleSubmit}>
-				<div>
+				<div className="emailLabel">
 					<label htmlFor="email"> Email</label>
 					<br></br>
 					<input
@@ -49,7 +49,7 @@ export function VerifyCertificateNum() {
 						onChange={(event) => setEmail(event.target.value)}
 					/>
 				</div>
-				<div>
+				<div className="graduateLabel">
 					<label htmlFor="certificateNumber">
 						{" "}
 						Graduation Certificate Number
