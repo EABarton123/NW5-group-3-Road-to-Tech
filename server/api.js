@@ -35,10 +35,10 @@ router.post("/", (request, response) => {
 				// console.log(error)
 				response
 					.status(500)
-					.send({ message: "Not Registerd Grads.Error in sending email" });
+					.send({ message: "Not Registered Graduate. Error in sending email" });
 			} else {
 				// console.log(body)
-				response.send({ message: "Verified.Please check email" });
+				response.send({ message: "Verified. Please check email" });
 			}
 		});
 });
