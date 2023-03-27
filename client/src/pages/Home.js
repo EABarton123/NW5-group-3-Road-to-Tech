@@ -1,5 +1,5 @@
-import Slide from "../components/slide";
-import Login from "../components/login";
+import Main from "../components/Main";
+
 
 export function Home() {
 	return (
@@ -7,8 +7,8 @@ export function Home() {
 			<div>
 				<hr />
 				<div className="content"></div>
-				<Slide />
-				<Login />
+				<Main />
+
 				<hr />
 			</div>
 		</main>
