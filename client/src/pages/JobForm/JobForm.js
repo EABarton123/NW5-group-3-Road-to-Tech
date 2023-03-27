@@ -6,24 +6,24 @@ import salaryRange from "./salaryRange";
 
 function JobForm() {
 	const [formData, setFormData] = useState({
-		title: "titlea",
-		type: "typea",
-		description: "descriptiona",
-		responsibilities: "responsibilitiesa",
+		title: "",
+		type: "",
+		description: "",
+		responsibilities: "",
 		numberOfGitCommits: 0,
 		codewarKataLevel: 0,
 		codewarPoints: 0,
 		codalitiyTestPoints: 0,
-		category: "categorya",
+		category: "",
 		salaryRange: {},
-		contactName: "namea",
-		contactEmail: "emaila",
+		contactName: "",
+		contactEmail: "",
 		contactPhone: 123456789,
-		companyName: "companyNamea",
-		companyWebSite: "companyWebSitea",
-		companyLogo: "urll",
-		requirements: "requirementss",
-		applicationsDeadline: "applicationsDeadlinea",
+		companyName: "",
+		companyWebSite: "",
+		companyLogo: "",
+		requirements: "",
+		applicationsDeadline: "",
 		numberOfStudentsCanApply: 0,
 	});
 
@@ -63,7 +63,7 @@ function JobForm() {
 							onChange={handleForm}
 						/>
 					</Form.Group>
-					<Form.Group className="group mb-3 d-flex" controlId="type">
+					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">Job Type:</Form.Label>
 						<Form.Control
 							name="type"
@@ -104,6 +104,7 @@ function JobForm() {
 						<Form.Control
 							name="numberOfGitCommits"
 							type="number"
+							min="0"
 							placeholder="Enter responsibilities"
 							value={formData.numberOfGitCommits}
 							onChange={handleForm}
@@ -114,6 +115,7 @@ function JobForm() {
 						<Form.Control
 							name="codewarKataLevel"
 							type="number"
+							min="0"
 							placeholder="Enter codewarKataLevel"
 							value={formData.codewarKataLevel}
 							onChange={handleForm}
@@ -124,6 +126,7 @@ function JobForm() {
 						<Form.Control
 							name="codewarPoints"
 							type="number"
+							min="0"
 							placeholder="Enter codewarPoints"
 							value={formData.codewarPoints}
 							onChange={handleForm}
@@ -134,6 +137,7 @@ function JobForm() {
 						<Form.Control
 							name="codalityTestPoints"
 							type="number"
+							min="0"
 							placeholder="Enter codalitiyTestPoints"
 							value={formData.codalityTestPoints}
 							onChange={handleForm}
@@ -167,9 +171,9 @@ function JobForm() {
 						<Form.Label className="formLabel">JOB CATEGORY:</Form.Label>
 						<Form.Select>
 							<option>Disabled select</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+							<option value="1">Software Developer</option>
+							<option value="2">Tester</option>
+							<option value="3">Designer</option>
 						</Form.Select>
 					</Form.Group>
 
@@ -252,6 +256,7 @@ function JobForm() {
 						<Form.Control
 							name="numberOfStudentsCanApply"
 							type="number"
+							min="0"
 							placeholder="Enter numberOfStudentsCanApply"
 							value={formData.numberOfStudentsCanApply}
 							onChange={handleForm}
