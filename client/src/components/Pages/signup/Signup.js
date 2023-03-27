@@ -27,7 +27,7 @@ export const Signup = () => {
 	return (
 		<div className="form-conteiner">
 			<form onSubmit={(e) => signupSubmit(e)}>
-				<h1>Sign Up</h1>
+				<h1>SIGN UP</h1>
 				<div>
 					<label htmlFor="email"> Email: </label>
 					<input
@@ -76,7 +76,7 @@ export const Signup = () => {
 						}
 					/>
 				</div>
-				<Button Type={"submit"} text={"Sign Up"} />
+				<Button Type={"submit"} text={"SIGN UP"} />
 			</form>
 		</div>
 	);

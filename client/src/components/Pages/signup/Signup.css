@@ -1,29 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,700&display=swap');
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+    --ifm-color-primary: #d12f2f;
+    --ifm-color-primary-darkest: #932020;
+    --ifm-color-primary-light: #d64444;
+    --ifm-color-primary: #3578e5;
+    --ifm-color-secondary: #ebedf0;
+    --ifm-color-success: #00a400;
+    --ifm-color-secondary-dark: #d4d5d8;
+    --ifm-color-secondary-darker: #c8c9cc;
+    --ifm-color-secondary-darkest: #a4a6a8;
+    --ifm-color-secondary-light: #eef0f2;
+    --ifm-color-secondary-lightest: #f5f6f8;
+    --ifm-color-secondary-contrast-background: #fdfdfe;
+    --ifm-color-secondary-contrast-foreground: #474748;
+}
+
+.form-conteiner{
+	display: flex;
+	justify-content: center;
+	box-shadow: inset 0 0 10px var(--ifm-color-primary-darkest);
+	margin-top: 100PX;
+}
+.form-conteiner h1{
+	color: #e50303;
+	font-weight: bold;
+}
+
 form {
-	width: 500px;
-	height: 500px;
+	box-shadow: inset 0 0 5px var(--ifm-color-secondary-darkest);
+	width: 600px;
+	height: 650px;
 	text-align: center;
 	justify-content: center;
 	background: #dad7d7;
 	margin: 5rem;
 	padding: 5rem;
 	border-radius: 2rem;
+
 }
 
 form label {
+	border-radius: 2rem;
 	float: left;
 	font-size: 0.9rem;
 	margin: 0;
 	padding: 0;
+	color: #e50303;
 }
 label {
 	color: rgb(108, 106, 106);
 	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 1.2rem;
 }
 
 .right-label {
 	float: right;
-
 	cursor: pointer;
 }
 input::placeholder {
@@ -38,5 +73,6 @@ input {
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
-	background: #efeded;
+	background: var(--ifm-color-secondary-contrast-background);
+	border-radius: 2rem;
 }
