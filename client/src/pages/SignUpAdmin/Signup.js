@@ -20,10 +20,7 @@ export const Signup = () => {
 		// console.log("subFormDate");
 		if (
 			axios
-				.post(
-					"https://starter-kit-nqe2.onrender.com/api/signup",
-					subFormDate
-				)
+				.post("https://starter-kit-nqe2.onrender.com/api/signup", subFormDate)
 				.then((res) => {
 					console.log(res.data);
 					alert("Signup successful!");
