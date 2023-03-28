@@ -80,6 +80,24 @@ router.post("/job", async (req, res) => {
 	}
 });
 
+router.get("/", (req, res) => {
+  const username = req.query.username;
+  const password = req.query.password;
+
+  const query = `SELECT * FROM user_data WHERE username='${username}' AND password='${password}'`;
+  db.query(query, (error, results) => {
+    if (error) {
+      res.status(500).send("Error");
+    } else {
+      if (results.length > 0) {
+        res.send("Login successful");
+      } else {
+        res.send("Invalid username or password");
+      }
+    }
+  });
+});
+
 router.get("/signup", (request, response) => {
 	db.query("select * from  user_data")
 		.then((grads) => response.status(200).json(grads.rows))
