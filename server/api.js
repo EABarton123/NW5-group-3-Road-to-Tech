@@ -115,11 +115,11 @@ router.post("/signup", (request, response) => {
 
 	// console.log({newEmail, newCertificateNum, newUserName, newPassword});
 	if (!newEmail || !newUserName || !newRole || !newPassword) {
-		response.status(400).json({ failureObject });
+		return response.status(400).json({ failureObject });
 	}
 
 	if (newPassword.length < 8) {
-		response.status(400).json({ failurePassword });
+		return response.status(400).json({ failurePassword });
 	}
 
 	db.query(
@@ -140,7 +140,7 @@ router.post("/signup", (request, response) => {
 							// console.error(err);
 							return response.status(400).json({ errorFound });
 						}
-						response.status(200).send("Grads registered");
+						return response.status(200).send("Grads registered");
 						//  console.log(results.rows);
 					}
 				);

@@ -2,17 +2,18 @@ import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
-import CustomHeader from "./components/customHeader"; //Include Heder
-import Home from "./pages/Home";
-import AdminJobs from "./pages/AdminJobs";
-import GradJobs from "./pages/GradJobs";
-import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
-import { Signup } from "./components/Pages/signup/Signup";
+import Main from "./components/Main";
+import CustomHeader from "./pages/NavBar/customHeader";
+import Home from "./pages/HomePage/Home";
+import "./pages/HomePage/Slide/content.css";
+import AdminJobs from "./pages/AdminDashboard/AdminJobs";
+import GradJobs from "./pages/GradDashboard/GradJobs";
+import VerifyCertificateNum from "./pages/VerifyCertNum/VerifyCertificateNum";
+import { Signup } from "./pages/SignUpAdmin/Signup";
 import SignUp from "./pages/SignUp/SignUp";
 import JobForm from "./pages/JobForm/JobForm";
-import Main from "./components/Main";
 class App extends Component {
-	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
+	MenuItemTexts = [];
 	render() {
 		return (
 			<div>
