@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Main from "./pages/HomePage/Main";
 import CustomHeader from "./pages/NavBar/customHeader";
-import Home from "./pages/HomePage/Home";
+// import Home from "./pages/HomePage/Home";
 // import "./pages/HomePage/Slide/content.css";
 import AdminJobs from "./pages/AdminDashboard/AdminJobs";
 import GradJobs from "./pages/GradDashboard/GradJobs";
@@ -22,7 +22,7 @@ class App extends Component {
 				</div>
 				<div>
 					<Routes>
-						<Route path="/" element={<Home />} />
+						{/* <Route path="/" element={<Home />} /> */}
 						<Route path="/admin" element={<AdminJobs />} />
 						<Route path="/grad" element={<GradJobs />} />
 						<Route path="/verify" element={<VerifyCertificateNum />} />
