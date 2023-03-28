@@ -1,92 +1,119 @@
 import React, { useState } from "react";
+import Buttons from "./Buttons/Buttons";
+import "./Signup.css";
 import axios from "axios";
-import "./SignUp.css";
-import Button from "./Button/Button";
+import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
-	const [dataForm, setDataForm] = useState({
+export const Signup = () => {
+	const navigate = useNavigate();
+	const [subFormDate, setSubFormDate] = useState({
 		email: "",
-		employerId: "",
-		userName: "",
+		username: "",
+		role: "",
 		password: "",
 	});
 
-	const SignUpForm = async (e) => {
+	const signupSubmit = (e) => {
 		e.preventDefault();
-		console.log("Clicked");
+		if (
+			axios
+				.post("https://starter-kit-nqe2.onrender.com/api/signup", subFormDate)
+				.then((res) => {
+					console.log(res.data);
+					alert("Signup successful!");
 
-		const backendURL = "http://localhost:3000/api/signup/grads";
-		const response = await axios.post(backendURL, { dataForm });
-		console.log(response);
-
-		// clear the fields
-		setDataForm({
-			email: "",
-			employerId: "",
-			userName: "",
-			password: "",
-		});
+					setSubFormDate({
+						email: "",
+						username: "",
+						role: "",
+						password: "",
+					});
+				})
+		) {
+			navigate("/");
+		}
 	};
 	return (
-		<div>
-			<form onSubmit={(e) => SignUpForm(e)}>
-				<h1>Sign Up</h1>
+		<div className="form-container">
+			<form onSubmit={signupSubmit}>
+				<h1> Sign Up</h1>
 				<div>
-					<label htmlFor="email"> Email:</label>
+					<label htmlFor="email"> Email: </label>
 					<input
 						type="text"
 						placeholder="Enter Email"
 						name="email"
 						required
-						value={dataForm.email}
+						value={subFormDate.email}
 						onChange={(e) =>
-							setDataForm({ ...dataForm, email: e.target.value })
+							setSubFormDate({
+								...subFormDate,
+								email: e.target.value,
+							})
 						}
 					/>
 				</div>
 				<div>
-					<label htmlFor="text">Employer Id: </label>
-					<input
-						type="number"
-						placeholder="Enter Employer Id"
-						name="employerId"
-						required
-						value={dataForm.employerId}
-						onChange={(e) =>
-							setDataForm({ ...dataForm, employerId: e.target.value })
-						}
-					/>
-				</div>
-				<div>
-					<label htmlFor="text">User Name:</label>
+					<label htmlFor="userName"> User Name:</label>
 					<input
 						type="text"
 						placeholder="Enter User Name"
-						name="userName"
+						name="username"
 						required
-						value={dataForm.userName}
+						value={subFormDate.username}
 						onChange={(e) =>
-							setDataForm({ ...dataForm, userName: e.target.value })
+							setSubFormDate({
+								...subFormDate,
+								username: e.target.value,
+							})
 						}
 					/>
 				</div>
 				<div>
-					<label htmlFor="text">Password:</label>
+					<label htmlFor="role"> Role:</label>
+					<input
+						onChange={(e) =>
+							setSubFormDate({
+								...subFormDate,
+								role: e.target.value,
+							})
+						}
+						type="radio"
+						value="Admin"
+						name="role"
+					/>{" "}
+					Admin
+					<input
+						onChange={(e) =>
+							setSubFormDate({
+								...subFormDate,
+								role: e.target.value,
+							})
+						}
+						type="radio"
+						value="Graduate"
+						name="role"
+					/>{" "}
+					Graduate
+				</div>
+				<div>
+					<label htmlFor="password"> Password:</label>
 					<input
 						type="password"
-						placeholder=" Enter Password"
+						placeholder="Enter Password"
 						name="password"
 						required
-						value={dataForm.password}
+						value={subFormDate.password}
 						onChange={(e) =>
-							setDataForm({ ...dataForm, password: e.target.value })
+							setSubFormDate({
+								...subFormDate,
+								password: e.target.value,
+							})
 						}
 					/>
 				</div>
-				<Button Type={"submit"} text={"SIGNUP"} />
+				<Buttons Type={"submit"} text={"Sign Up"} />
 			</form>
 		</div>
 	);
 };
-
-export default SignUp;

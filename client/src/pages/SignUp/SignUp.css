@@ -23,10 +23,11 @@ label {
 
 .right-label {
 	float: right;
+
 	cursor: pointer;
 }
 input::placeholder {
-	color: rgb(199, 196, 196);
+	color: rgb(190, 190, 190);
 	font-size: 0.7rem;
 	font-style: italic;
 }

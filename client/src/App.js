@@ -8,8 +8,7 @@ import "./pages/HomePage/Slide/content.css";
 import AdminJobs from "./pages/AdminDashboard/AdminJobs";
 import GradJobs from "./pages/GradDashboard/GradJobs";
 import VerifyCertificateNum from "./pages/VerifyCertNum/VerifyCertificateNum";
-import { Signup } from "./pages/SignUpAdmin/Signup";
-import SignUp from "./pages/SignUp/SignUp";
+import { Signup } from "./pages/SignUp/Signup";
 import JobForm from "./pages/JobForm/JobForm";
 class App extends Component {
 	MenuItemTexts = [];
@@ -26,7 +25,6 @@ class App extends Component {
 						<Route path="/grad" element={<GradJobs />} />
 						<Route path="/verify" element={<VerifyCertificateNum />} />
 						<Route path="/signup" element={<Signup />} />
-						<Route path="/signupadmin" element={<SignUp />} />
 						<Route path="/job" element={<JobForm />} />
 					</Routes>
 				</div>
