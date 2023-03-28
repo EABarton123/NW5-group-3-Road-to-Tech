@@ -1,11 +1,11 @@
 import React from "react";
-import "./Buttons.css";
+import "./Button.css";
 
-const Buttons = ({ onClick, Type = "button", text }) => {
+const Button = ({ onClick, Type = "button", text }) => {
 	return (
 		<button type={Type} onClick={onClick}>
 			{text}
 		</button>
 	);
 };
-export default Buttons;
+export default Button;
