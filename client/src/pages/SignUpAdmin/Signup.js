@@ -21,7 +21,7 @@ export const Signup = () => {
 		if (
 			axios
 				.post(
-					"https://starter-kit-nqe2.onrender.com/signup",
+					"https://starter-kit-nqe2.onrender.com/api/signup",
 					subFormDate
 				)
 				.then((res) => {
@@ -36,7 +36,7 @@ export const Signup = () => {
 					});
 				})
 		) {
-			navigate("/Home");
+			navigate("/grad");
 		}
 		// .catch((err) => {
 		// 	console.error(err);

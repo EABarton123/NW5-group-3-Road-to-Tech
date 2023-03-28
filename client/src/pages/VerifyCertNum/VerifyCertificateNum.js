@@ -13,7 +13,7 @@ export function VerifyCertificateNum() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!email || !certificateNum) {
-			return toast.error("Please provide email and certificate Number");
+			return toast.error("Please provide email and certificate number");
 		}
 		try {
 			setLoading(true);
