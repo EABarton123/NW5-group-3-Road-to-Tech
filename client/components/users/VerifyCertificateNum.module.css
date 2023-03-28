@@ -1,3 +1,8 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap');
+
+
 .signUpInfoContainer {
 	box-shadow: inset 0 0 10px var(--ifm-color-primary-darkest);
 	display: flex;
@@ -19,16 +24,18 @@
 	border-radius: 2rem;
 }
 .signUpInfoContainer h2{
+     font-family:Open Sans ;
 	display: grid;
 	background-color:rgb(218, 216, 216);
 	color: #e50303;
 	font-size: 2.5rem;
+	font-weight:bolder ;
 }
 
 .emailLabel label{
 	margin-top: 50px;
 	color: #e50303;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Open Sans;
 	font-weight: bold;
 	font-size: 1.5rem;
 	height: 50px;
@@ -38,7 +45,7 @@
 }
 .graduateLabel label{
 	color: #e50303;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Open Sans;
 	font-weight: bold;
 	font-size: 1.5rem;
 	margin-left: 50px;
@@ -54,7 +61,7 @@
 	padding-left: 20px;
 }
 #certificateNumHelp{
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Open Sans;
 	font-size: 1rem;
 	color:rgb(151, 150, 150);
 }
@@ -103,7 +110,7 @@ form > div > label {
 	margin-top: 100px;
 	background-color: #e50303;
 	color: white;
-	font: 1.5em sans-serif;
+	font: 1.5em Open Sans;
 	border-radius: 12px;
 	cursor: pointer;
 	width: 10rem;
@@ -114,7 +121,7 @@ form > div > label {
 	text-align: center;
 	position: relative;
 	justify-content: center;
-
+    padding-top: 1rem;
 }
 
 .btn_secondary:hover {
