@@ -12,12 +12,9 @@ export const Signup = () => {
 		role: "",
 		password: "",
 	});
-	// console.log(subFormDate);
-	// console.log(setSubFormDate)
 
 	const signupSubmit = (e) => {
 		e.preventDefault();
-		// console.log("subFormDate");
 		if (
 			axios
 				.post("https://starter-kit-nqe2.onrender.com/api/signup", subFormDate)
@@ -33,12 +30,8 @@ export const Signup = () => {
 					});
 				})
 		) {
-			navigate("/grad");
+			navigate("/");
 		}
-		// .catch((err) => {
-		// 	console.error(err);
-		// 	alert("Signup failed. Please try again later.");
-		// })
 	};
 	return (
 		<div className="form-container">
