@@ -18,7 +18,7 @@ router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
 });
-router.post("/", (request, response) => {
+router.post("/verify", (request, response) => {
 	const textToEveryOne =
 		"Congratulations! You are registered as a CYF graduate. Please go to the Signup page to create an account";
 	const { email, certificateNum } = request.body;
@@ -35,10 +35,10 @@ router.post("/", (request, response) => {
 				// console.log(error)
 				response
 					.status(500)
-					.send({ message: "Not Registerd Grads.Error in sending email" });
+					.send({ message: "Not Registered Graduate. Error in sending email" });
 			} else {
 				// console.log(body)
-				response.send({ message: "Verified.Please check email" });
+				return response.send({ message: "Verified. Please check email" });
 			}
 		});
 });
