@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../Buttons/Buttons";
-import "./Signup.css";
+import Styles from "./Signup.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -41,10 +41,10 @@ export const Signup = () => {
 		// })
 	};
 	return (
-		<div className="form-conteiner">
-			<form onSubmit={signupSubmit}>
-				<h1> Sign Up</h1>
-				<div>
+		<div className={Styles.conteiner}>
+			<form onSubmit={signupSubmit} className={Styles.formConteiner}>
+				<h1 className={Styles.conteinerTitle}> SIGN UP</h1>
+				<div className={Styles.input_form}>
 					<label htmlFor="email"> Email: </label>
 					<input
 						type="text"
@@ -76,7 +76,7 @@ export const Signup = () => {
 						}
 					/>
 				</div>
-				<div>
+				<div className={Styles.conteinerRole}>
 					<label htmlFor="role"> Role:</label>
 					<input
 						onChange={(e) =>

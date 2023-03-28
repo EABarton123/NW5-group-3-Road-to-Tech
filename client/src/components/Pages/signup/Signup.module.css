@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap');
+
+.conteiner{
+	display: flex;
+	justify-content: center;
+	 color:#e50303;
+}
+
+
+.formConteiner{
+
+	width: 500px;
+	height: 700px;
+	background: #dad7d7;
+	margin-top: 2rem;
+	margin-right: 4rem;
+	padding: 5rem;
+	border-radius: 2rem;
+
+}
+
+.formConteiner label {
+	float: left;
+	font-size: 0.9rem;
+	margin: 10px;
+	padding: 0;
+	font-family: Open Sans;
+	color:#e50303;
+	font-weight: bolder;
+	font-size: 1.5rem;
+	margin-left: 30px;
+}
+.conteinerTitle{
+	justify-content: center;
+	text-align: center;
+	font-weight: bolder;
+	font-family: Open Sans;
+}
+
+.right-label {
+	float: right;
+	cursor: pointer;
+}
+
+.formConteiner input::placeholder {
+	color: rgb(190, 190, 190);
+	font-size: 1rem;
+	font-style: italic;
+	padding-left: 1rem;
+}
+
+.formConteiner input {
+	width: 100%;
+	padding: px;
+	display: inline-block;
+	border: none;
+	background: #efeded;
+	border-radius: 2rem;
+
+}
+.conteinerRole {
+	text-align: center;
+	font-family: Open Sans;
+	font-weight: bolder;
+	font-size: 1.2rem;
+	padding: 0;
+	margin-top: 0;
+}
+
+
+.formConteiner button {
+	justify-content: center;
+	background-color: #e50303;
+	color: white;
+	border-radius: 12px;
+	cursor: pointer;
+	width:8rem;
+	opacity: 1;
+	height: 3rem;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;
+	justify-content: center;
+	padding: 3px;
+	}
+
+
+	.formConteiner button:hover {
+	background-color:#e50303 ;
+	color: white;
+	border: solid 4px  white;
+}

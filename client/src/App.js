@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
 import CustomHeader from "./components/customHeader"; //Include Heder
@@ -9,7 +9,6 @@ import AdminJobs from "./pages/AdminJobs";
 import GradJobs from "./pages/GradJobs";
 import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 import { Signup } from "./components/Pages/signup/Signup";
-import SignUp from "./pages/SignUp/SignUp";
 import JobForm from "./pages/JobForm/JobForm";
 
 class App extends Component {
