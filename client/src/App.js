@@ -10,9 +10,8 @@ import GradJobs from "./pages/GradJobs";
 import VerifyCertificateNum from "../components/users/VerifyCertificateNum";
 import { Signup } from "./components/Pages/signup/Signup";
 import JobForm from "./pages/JobForm/JobForm";
-
 class App extends Component {
-	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
+	MenuItemTexts = [];
 	render() {
 		return (
 			<div>

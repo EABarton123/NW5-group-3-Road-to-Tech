@@ -1,5 +1,5 @@
-import GradAppliedJobs from "./GradAppliedJobs";
-import SearchJobs from "./SearchJobs";
+import GradAppliedJobs from "../GradAppliedJobs";
+import SearchJobs from "../JobsList/SearchJobs";
 import "./GradJobs.css";
 
 function GradJobs() {
