@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./VerifyCertificateNum.css";
+import styles from "./VerifyCertificateNum.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export function VerifyCertificateNum() {
 	const [email, setEmail] = useState("");
@@ -34,11 +34,12 @@ export function VerifyCertificateNum() {
 	};
 
 	return (
-		<div className="signUpInfoContainer">
+		<div className={styles.signUpInfoContainer}>
 			<ToastContainer position="bottom-center" limit={1} />
-			<h2 className="signUpHeader"> Sign Up As A Graduate </h2>
+
 			<form onSubmit={handleSubmit}>
-				<div>
+			<h2 className="signUpHeader"> Graduate Verification </h2>
+				<div className={styles.emailLabel}>
 					<label htmlFor="email"> Email</label>
 					<br></br>
 					<input
@@ -49,7 +50,7 @@ export function VerifyCertificateNum() {
 						onChange={(event) => setEmail(event.target.value)}
 					/>
 				</div>
-				<div>
+				<div className={styles.graduateLabel}>
 					<label htmlFor="certificateNumber">
 						{" "}
 						Graduation Certificate Number
@@ -64,7 +65,7 @@ export function VerifyCertificateNum() {
 					/>
 				</div>
 
-				<div id="certificateNumHelp">
+				<div id={styles.certificateNumHelp}>
 					We will never share your certificate number with anyone else.
 				</div>
 
@@ -72,10 +73,10 @@ export function VerifyCertificateNum() {
 					<button
 						disabled={loading}
 						type="submit"
-						className="btn btn-secondary"
+						className={styles.btn_secondary}
 					>
 						{loading ? "Sending ..." : "Submit"}
-						<Link to="/signup">Sign Up</Link>
+						{/* <Link to="/signup">Sign Up</Link> */}
 					</button>
 				</div>
 			</form>
