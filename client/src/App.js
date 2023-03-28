@@ -12,7 +12,7 @@ import { Signup } from "./pages/SignUpAdmin/Signup";
 import SignUp from "./pages/SignUp/SignUp";
 import JobForm from "./pages/JobForm/JobForm";
 class App extends Component {
-	MenuItemTexts = ["STORIES", "INTERVIEW TIPS", "GRADUATE RESOURCES"];
+	MenuItemTexts = [];
 	render() {
 		return (
 			<div>
