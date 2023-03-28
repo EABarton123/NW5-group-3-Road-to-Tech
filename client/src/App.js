@@ -28,7 +28,7 @@ class App extends Component {
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/signupadmin" element={<SignUp />} />
 						<Route path="/job" element={<JobForm />} />
-                        <Route path="/main" element={<Main />} />
+						<Route path="/main" element={<Main />} />
 					</Routes>
 				</div>
 			</div>
