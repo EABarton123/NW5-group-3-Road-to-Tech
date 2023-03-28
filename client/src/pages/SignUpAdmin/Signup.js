@@ -20,7 +20,7 @@ export const Signup = () => {
 		// console.log("subFormDate");
 		if (
 			axios
-				.post("http://localhost:3000/api/signup", subFormDate)
+				.post("https://starter-kit-nqe2.onrender.com/api/signup", subFormDate)
 				.then((res) => {
 					console.log(res.data);
 					alert("Signup successful!");
@@ -33,7 +33,7 @@ export const Signup = () => {
 					});
 				})
 		) {
-			navigate("/Home");
+			navigate("/grad");
 		}
 		// .catch((err) => {
 		// 	console.error(err);
@@ -41,7 +41,7 @@ export const Signup = () => {
 		// })
 	};
 	return (
-		<div className="form-conteiner">
+		<div className="form-container">
 			<form onSubmit={signupSubmit}>
 				<h1> Sign Up</h1>
 				<div>
