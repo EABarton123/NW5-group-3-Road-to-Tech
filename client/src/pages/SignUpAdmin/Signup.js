@@ -12,12 +12,9 @@ export const Signup = () => {
 		role: "",
 		password: "",
 	});
-	// console.log(subFormDate);
-	// console.log(setSubFormDate)
 
 	const signupSubmit = (e) => {
 		e.preventDefault();
-		// console.log("subFormDate");
 		if (
 			axios
 				.post("http://localhost:3000/api/signup", subFormDate)
@@ -33,15 +30,11 @@ export const Signup = () => {
 					});
 				})
 		) {
-			navigate("/Home");
+			navigate("/");
 		}
-		// .catch((err) => {
-		// 	console.error(err);
-		// 	alert("Signup failed. Please try again later.");
-		// })
 	};
 	return (
-		<div className="form-conteiner">
+		<div className="form-container">
 			<form onSubmit={signupSubmit}>
 				<h1> Sign Up</h1>
 				<div>
