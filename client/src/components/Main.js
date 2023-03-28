@@ -42,7 +42,7 @@ function Main() {
 						</button>
 					</form>
 				</div>
-				<div className={MainCSS.video}>
+				<div className={MainCSS.video1}>
 					<iframe
 						width="100%"
 						height="178"
