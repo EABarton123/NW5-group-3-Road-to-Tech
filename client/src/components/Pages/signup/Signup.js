@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../Buttons/Buttons";
-import "./Signup.css";
+import  styles from "./Signup.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +41,7 @@ export const Signup = () => {
 		// })
 	};
 	return (
-		<div className="form-conteiner">
+		<div className={styles.formConteiner}>
 			<form onSubmit={signupSubmit}>
 				<h1> Sign Up</h1>
 				<div>
@@ -103,7 +103,7 @@ export const Signup = () => {
 					/>{" "}
 					Graduate
 				</div>
-				<div>
+				<div >
 					<label htmlFor="password"> Password:</label>
 					<input
 						type="password"
