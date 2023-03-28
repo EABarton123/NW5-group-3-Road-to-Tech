@@ -17,7 +17,7 @@ export const Signup = () => {
 		e.preventDefault();
 		if (
 			axios
-				.post("http://localhost:3000/api/signup", subFormDate)
+				.post("https://starter-kit-nqe2.onrender.com/api/signup", subFormDate)
 				.then((res) => {
 					console.log(res.data);
 					alert("Signup successful!");

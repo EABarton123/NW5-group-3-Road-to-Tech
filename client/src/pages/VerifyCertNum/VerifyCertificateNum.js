@@ -4,8 +4,10 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function VerifyCertificateNum() {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [certificateNum, setCertificateNum] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -13,16 +15,22 @@ export function VerifyCertificateNum() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!email || !certificateNum) {
-			return toast.error("Please provide email and certificate Number");
+			return toast.error("Please provide email and certificate number");
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post("/api", {
-				email,
-				certificateNum,
-			});
+			const { data } = await axios.post(
+				"https://starter-kit-nqe2.onrender.com/api/verify",
+				{
+					email,
+					certificateNum,
+				}
+			);
 			setLoading(false);
 			toast.success(data.message);
+			{
+				navigate("/signup");
+			}
 		} catch (err) {
 			setLoading(false);
 			toast.error(
