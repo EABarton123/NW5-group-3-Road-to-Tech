@@ -5,12 +5,13 @@
 	gap: 1rem;
 	align-items: center;
 	height: auto;
+	margin-top: 200px;
 }
 
 .signUpInfoContainer form {
 	box-shadow: inset 0 0 10px var(--ifm-color-secondary-darkest);
-	width: 600px;
-	height: 650px;
+	width: 700px;
+	height: 800px;
 	text-align: center;
 	justify-content: center;
 	background: #dad7d7;
@@ -19,17 +20,11 @@
 }
 .signUpInfoContainer h2{
 	display: grid;
-	background-color:white;
+	background-color:rgb(218, 216, 216);
 	color: #e50303;
 	font-size: 2.5rem;
 }
-label {
-	color: rgb(108, 106, 106);
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 1.2rem;
-	color: #e50303;
-}
+
 .emailLabel label{
 	margin-top: 50px;
 	color: #e50303;
@@ -37,25 +32,56 @@ label {
 	font-weight: bold;
 	font-size: 1.5rem;
 	height: 50px;
+	margin-left: 50px;
+	margin-bottom: 0;
+
 }
 .graduateLabel label{
 	color: #e50303;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	font-size: 1.5rem;
+	margin-left: 50px;
+	margin-bottom: 0;
+}
+.graduateLabel ::placeholder{
+	font-size: 1rem;
+	padding-left: 15px;
+
+}
+.emailLabel ::placeholder{
+	font-size: 1rem;
+	padding-left: 20px;
 }
 #certificateNumHelp{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 0.9rem;
+	font-size: 1rem;
 	color:rgb(151, 150, 150);
 }
-input {
+input  placeholder{
 	width: 500px;
 	padding: 15px;
 	display: inline-block;
 	border: none;
 	background: var(--ifm-color-secondary-contrast-background);
 	border-radius: 2rem;
+
+}
+
+.emailLabel input{
+	background: var(--ifm-color-secondary-contrast-background);
+	border-radius: 2rem;
+	width: 500px;
+	height: 60px;
+	margin-top: 0;
+	margin-bottom: 50px;
+
+}
+.graduateLabel input{
+	background: var(--ifm-color-secondary-contrast-background);
+	border-radius: 2rem;
+	width: 500px;
+	height: 60px;
 }
 
 .signUpHeader {
@@ -74,6 +100,7 @@ form > div > label {
  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 .btn_secondary {
+	margin-top: 100px;
 	background-color: #e50303;
 	color: white;
 	font: 1.5em sans-serif;

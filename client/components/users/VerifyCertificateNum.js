@@ -3,7 +3,7 @@ import styles from "./VerifyCertificateNum.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export function VerifyCertificateNum() {
 	const [email, setEmail] = useState("");
@@ -36,8 +36,9 @@ export function VerifyCertificateNum() {
 	return (
 		<div className={styles.signUpInfoContainer}>
 			<ToastContainer position="bottom-center" limit={1} />
-			<h2 className="signUpHeader"> Sign Up As A Graduate </h2>
+
 			<form onSubmit={handleSubmit}>
+			<h2 className="signUpHeader"> Graduate Verification </h2>
 				<div className={styles.emailLabel}>
 					<label htmlFor="email"> Email</label>
 					<br></br>
