@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
+import Main from "./pages/HomePage/Main";
 import CustomHeader from "./pages/NavBar/customHeader";
-import Home from "./pages/HomePage/Home";
-import "./pages/HomePage/Slide/content.css";
+// import Home from "./pages/HomePage/Home";
+// import "./pages/HomePage/Slide/content.css";
 import AdminJobs from "./pages/AdminDashboard/AdminJobs";
 import GradJobs from "./pages/GradDashboard/GradJobs";
 import VerifyCertificateNum from "./pages/VerifyCertNum/VerifyCertificateNum";
 import { Signup } from "./pages/SignUpAdmin/Signup";
-import SignUp from "./pages/SignUp/SignUp";
+// import SignUp from "./pages/SignUp/SignUp";
 import JobForm from "./pages/JobForm/JobForm";
 class App extends Component {
 	MenuItemTexts = [];
@@ -21,13 +22,14 @@ class App extends Component {
 				</div>
 				<div>
 					<Routes>
-						<Route path="/" element={<Home />} />
+						{/* <Route path="/" element={<Home />} /> */}
 						<Route path="/admin" element={<AdminJobs />} />
 						<Route path="/grad" element={<GradJobs />} />
 						<Route path="/verify" element={<VerifyCertificateNum />} />
 						<Route path="/signup" element={<Signup />} />
-						<Route path="/signupadmin" element={<SignUp />} />
+						{/* <Route path="/signupadmin" element={<SignUp />} /> */}
 						<Route path="/job" element={<JobForm />} />
+						<Route path="/main" element={<Main />} />
 					</Routes>
 				</div>
 			</div>
