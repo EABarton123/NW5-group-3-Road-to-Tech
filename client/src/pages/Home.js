@@ -7,7 +7,6 @@ export function Home() {
 				<hr />
 				<div className="content"></div>
 				<Main />
-
 				<hr />
 			</div>
 		</main>
