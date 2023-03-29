@@ -53,10 +53,8 @@ function JobForm() {
 		postJob(formData);
 	};
 
-
-
 	const [isUploadingImage, setIsUploadingImage] = useState(false);
- const [logoName,setLogoName] = useState("");
+	const [logoName] = useState("");
 	const handleFileUpload = (e) => {
 		console.log({ companyLogo: e.target.files[0].name });
 		// setFormData({ ...formData, companyLogo: e.target.files[0].name });
@@ -76,7 +74,7 @@ function JobForm() {
 			})
 			.then(({ data }) => {
 				console.log({ data });
-				//todo: data.filename 
+				//todo: data.filename
 				// setFormData({ ...formData, companyLogo: data.filename });
 			})
 			.catch((err) => console.log(err))
