@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
 import axios from "axios";
 import salaryRange from "./salaryRange";
-
+import { useNavigate } from "react-router-dom";
 function JobForm() {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -26,7 +26,7 @@ function JobForm() {
 		applicationsDeadline: "",
 		numberOfStudentsCanApply: 0,
 	});
-
+	const navigate = useNavigate();
 	const handleForm = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
@@ -59,6 +59,7 @@ function JobForm() {
 				...formData,
 			});
 			console.log({ resData });
+			navigate("/admin");
 		} catch (err) {
 			console.log({ err });
 		}
