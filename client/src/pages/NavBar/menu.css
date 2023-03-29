@@ -4,7 +4,7 @@ body {
 
 .MenuRow {
 	display: flex;
-	background-color: #efefef;
+	background-color: white;
 	height: 70px;
 	width: 100%;
 }
