@@ -15,7 +15,7 @@ body {
 	color: black;
 	margin-left: -5px;
 	/* This is the background used for the animation */
-	background-image: url("image.jpg");
+	/* background-image: url("image.jpg"); */
 	/* Align the background image position to the left of the link */
 	background-position: left;
 	-webkit-transition: all 0.8s ease-in-out;

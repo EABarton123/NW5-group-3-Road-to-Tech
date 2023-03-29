@@ -81,9 +81,8 @@ router.post("/job", async (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  const username = req.query.username;
-  const password = req.query.password;
-
+	const username = req.query.username;
+	const password = req.query.password;
   const query = `SELECT * FROM user_data WHERE username='${username}' AND password='${password}'`;
   db.query(query, (error, results) => {
     if (error) {
@@ -97,6 +96,29 @@ router.get("/", (req, res) => {
     }
   });
 });
+
+app.post("/login", (req, res) => {
+	const { email, password } = req.body;
+	const query = `
+    SELECT * FROM users
+    WHERE email = '${email}' AND password = '${password}'
+  `;
+	db.query(query, (error, results) => {
+
+		if (error) {
+			console.error(error);
+			res.status(500).send("Internal Server Error");
+			return;
+		}
+		if (results.length === 0) {
+			res.status(401).send("Unauthorized");
+			return;
+		}
+		// Login successful!
+		res.send("Welcome, " + results[0].email);
+	});
+});
+
 
 router.get("/signup", (request, response) => {
 	db.query("select * from  user_data")

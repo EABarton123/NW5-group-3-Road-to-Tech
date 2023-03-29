@@ -6,32 +6,63 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 function Login() {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-	const [loading, setLoading] = useState(false);
+	const [userData, setUserData] = useState({ username: " ", password: " " });
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		if (username || !password) {
-			return toast.error("Please provide email and password");
-		}
-		try {
-			setLoading(true);
-			const { data } = await axios.post("/api", {
-				username,
-				password,
-			});
-			setLoading(false);
-			toast.success(data.message);
-		} catch (err) {
-			setLoading(false);
-			toast.error(
-				err.response && err.response.data.message
-					? err.response.data.message
-					: err.message
-			);
-		}
-	};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (userData.username === "valid_username" && userData.password === "valid_password") {
+      console.log("Login successful");
+    } else {
+      console.log("Login failed");
+    }
+  };
+	// const [username, setUsername] = useState("");
+	// const [password, setPassword] = useState("");
+	// const [loading, setLoading] = useState(false);
+
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault();
+	// 	if (
+	// 		axios
+	// 			.post("https://starter-kit-nqe2.onrender.com/api/", subFormDate)
+	// 			.then((res) => {
+	// 				console.log(res.data);
+	// 				alert("Signup successful!");
+
+	// 				setSubFormDate({
+	// 					email: "",
+	// 					username: "",
+	// 					role: "",
+	// 					password: "",
+	// 				});
+	// 			})
+	// 	) {
+	// 		navigate("/");
+	// 	}
+
+	// const handleSubmit = async (event) => {
+	// 	event.preventDefault();
+	// 	if (username || !password) {
+	// 		return toast.error("Please provide email and password");
+	// 	}
+	// 	try {
+	// 		setLoading(true);
+	// 		const { data } = await axios.post("/api", {
+	// 			username,
+	// 			password,
+	// 		});
+	// 		setLoading(false);
+	// 		toast.success(data.message);
+	// 	} catch (err) {
+	// 		setLoading(false);
+	// 		toast.error(
+	// 			err.response && err.response.data.message
+	// 				? err.response.data.message
+	// 				: err.message
+	// 		);
+	// 	}
+	// };
 	return (
 		<>
 			<div className="login_image_box">
@@ -45,9 +76,11 @@ function Login() {
 							type="text"
 							placeholder="Enter Username"
 							name="uname"
-							value={username}
+							value={userData.username}
 							required
-							onChange={(event) => setUsername(event.target.value)}
+							onChange={(event) =>
+								setUserData({ ...userData, username: event.target.value })
+							}
 						/>
 						<label htmlFor="psw">
 							<b>Password</b>
@@ -56,9 +89,11 @@ function Login() {
 							type="password"
 							placeholder="Enter Password"
 							name="psw"
-							value={password}
+							value={userData.password}
 							required
-							onChange={(event) => setPassword(event.target.value)}
+							onChange={(event) =>
+								setUserData({ ...userData, password: event.target.value })
+							}
 						></input>
 						<button
 							disabled={loading}

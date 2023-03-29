@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Buttons from "./Buttons/Buttons";
+import Button from "./button/Button";
 import "./Signup.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -112,7 +112,7 @@ export const Signup = () => {
 						}
 					/>
 				</div>
-				<Buttons Type={"submit"} text={"Sign Up"} />
+				<Button Type={"submit"} text={"Sign Up"} />
 			</form>
 		</div>
 	);
