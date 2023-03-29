@@ -82,6 +82,7 @@
 		"mailgun-js": "^0.22.0",
 		"mailgun.js": "^8.2.1",
 		"morgan": "^1.10.0",
+		"multer": "^1.4.5-lts.1",
 		"pg": "^8.9.0",
 		"react-bootstrap": "^2.7.2",
 		"react-toastify": "^9.1.1",

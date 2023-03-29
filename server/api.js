@@ -1,6 +1,24 @@
 import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
+import multer from "multer";
+import path from "path";
+
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, path.join(__dirname, "/images/"));
+	},
+	filename: (req, file, cb) => {
+		//console.log(file);
+		const imageName = Date.now() + path.extname(file.originalname);
+		cb(null, imageName);
+	},
+});
+
+const upload = multer({ storage, limits: { fileSize: 3000000 } }).single(
+	"image"
+);
+
 const express = require("express");
 const mg = require("mailgun-js");
 
@@ -41,6 +59,18 @@ router.post("/verify", (request, response) => {
 				return response.send({ message: "Verified. Please check email" });
 			}
 		});
+});
+router.post("/upload", (req, res) => {
+	upload(req, res, (err) => {
+		if (err) {
+			res.status(500);
+		} else {
+			return res.status(201).json({
+				host: "http://localhost:3100/images/",
+				filename: req.file.filename,
+			});
+		}
+	});
 });
 
 router.post("/job", async (req, res) => {
