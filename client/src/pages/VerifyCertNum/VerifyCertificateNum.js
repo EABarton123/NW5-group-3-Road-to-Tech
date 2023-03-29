@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./VerifyCertificateNum.css";
+import "./VerifyCertificateNum.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export function VerifyCertificateNum() {
@@ -83,7 +82,6 @@ export function VerifyCertificateNum() {
 						className="btn btn-secondary"
 					>
 						{loading ? "Sending ..." : "Submit"}
-						<Link to="/signup">Sign Up</Link>
 					</button>
 				</div>
 			</form>

@@ -1,12 +1,15 @@
 import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
-const express = require("express");
+// const express = require("express");
 const mg = require("mailgun-js");
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const dotenv = require("dotenv");
+dotenv.config();
+
+// const app = express();
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 const router = Router();
 
 const mailgun = () =>
@@ -87,6 +90,35 @@ router.get("/signup", (request, response) => {
 			// console.error(err);
 			response.status(500).send(err);
 		});
+});
+
+router.post("/login", (request, response) => {
+	const email = request.body.email;
+	const password = request.body.password;
+	const role = request.body.role;
+
+	if (!email || !password) {
+		return response
+			.status(400)
+			.json({ error: "Email and password are required" });
+	}
+
+	db.query(
+		"SELECT * FROM user_data WHERE lower(email)=lower($1) AND password=$2 AND lower(role)=lower($3)",
+		[email, password, role],
+		(err, result) => {
+			if (err) {
+				return response.status(500).send("Internal Server Error");
+			}
+			if (result.rows.length === 0) {
+				return response
+					.status(400)
+					.json({ message: "Email or password not found" });
+			} else {
+				return response.status(201).json({ message: "successfully logged in" });
+			}
+		}
+	);
 });
 
 router.post("/signup", (request, response) => {
