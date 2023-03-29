@@ -93,7 +93,9 @@ router.get("/signup", (request, response) => {
 });
 
 router.post("/login", (request, response) => {
-	const { email, password, role } = request.body;
+	const email = request.body.email;
+	const password = request.body.password;
+	const role = request.body.role;
 
 	if (!email || !password) {
 		return response
@@ -102,13 +104,16 @@ router.post("/login", (request, response) => {
 	}
 
 	db.query(
-		"SELECT * FROM users WHERE email = $1 AND password = $2 AND role = $3",
+		"SELECT * FROM user_data WHERE lower(email)=lower($1) AND password=$2 AND lower(role)=lower($3)",
 		[email, password, role],
 		(err, result) => {
-			if (result === 0) {
+			if (err) {
+				return response.status(500).send("Internal Server Error");
+			}
+			if (result.rows.length === 0) {
 				return response
 					.status(400)
-					.json({ error: "Email or password incorrect" });
+					.json({ message: "Email or password not found" });
 			} else {
 				return response.status(201).json({ message: "successfully logged in" });
 			}
