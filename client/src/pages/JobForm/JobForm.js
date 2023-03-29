@@ -18,7 +18,7 @@ function JobForm() {
 		salaryRange: { min: 0, max: 0 },
 		contactName: "",
 		contactEmail: "",
-		contactPhone: 123456789,
+		contactPhone: 0,
 		companyName: "",
 		companyWebSite: "",
 		companyLogo: "",

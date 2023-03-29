@@ -83,6 +83,23 @@ router.post("/job", async (req, res) => {
 	}
 });
 
+// router.get("/job", (request, response) => {
+// 	db.query("select * from job")
+// 	.then((job) => response.status(201).json(job.rows))
+// 	.catch((err) => {
+// 		response.status.send(err);
+// 	});
+
+// }
+// );
+
+router.get("/job/:id", (request, response) => {
+	const { id } = request.params;
+	const job = db.get(`job.${id}`).value();
+	response.json(job);
+});
+
+
 router.get("/signup", (request, response) => {
 	db.query("select * from  user_data")
 		.then((grads) => response.status(200).json(grads.rows))
