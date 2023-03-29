@@ -1,7 +1,4 @@
-
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap");
 
 .signUpInfoContainer {
 	box-shadow: inset 0 0 10px var(--ifm-color-primary-darkest);
@@ -20,19 +17,19 @@
 	text-align: center;
 	justify-content: center;
 	background: #dad7d7;
-	padding:5rem;
+	padding: 5rem;
 	border-radius: 2rem;
 }
-.signUpInfoContainer h2{
-     font-family:Open Sans ;
+.signUpInfoContainer h2 {
+	font-family: Open Sans;
 	display: grid;
-	background-color:rgb(218, 216, 216);
+	background-color: rgb(218, 216, 216);
 	color: #e50303;
 	font-size: 2.5rem;
-	font-weight:bolder ;
+	font-weight: bolder;
 }
 
-.emailLabel label{
+.emailLabel label {
 	margin-top: 50px;
 	color: #e50303;
 	font-family: Open Sans;
@@ -41,9 +38,8 @@
 	height: 50px;
 	margin-left: 50px;
 	margin-bottom: 0;
-
 }
-.graduateLabel label{
+.graduateLabel label {
 	color: #e50303;
 	font-family: Open Sans;
 	font-weight: bold;
@@ -51,40 +47,37 @@
 	margin-left: 50px;
 	margin-bottom: 0;
 }
-.graduateLabel ::placeholder{
+.graduateLabel ::placeholder {
 	font-size: 1rem;
 	padding-left: 15px;
-
 }
-.emailLabel ::placeholder{
+.emailLabel ::placeholder {
 	font-size: 1rem;
 	padding-left: 20px;
 }
-#certificateNumHelp{
+#certificateNumHelp {
 	font-family: Open Sans;
 	font-size: 1rem;
-	color:rgb(151, 150, 150);
+	color: rgb(151, 150, 150);
 }
-input  placeholder{
+input placeholder {
 	width: 500px;
 	padding: 15px;
 	display: inline-block;
 	border: none;
 	background: var(--ifm-color-secondary-contrast-background);
 	border-radius: 2rem;
-
 }
 
-.emailLabel input{
+.emailLabel input {
 	background: var(--ifm-color-secondary-contrast-background);
 	border-radius: 2rem;
 	width: 500px;
 	height: 60px;
 	margin-top: 0;
 	margin-bottom: 50px;
-
 }
-.graduateLabel input{
+.graduateLabel input {
 	background: var(--ifm-color-secondary-contrast-background);
 	border-radius: 2rem;
 	width: 500px;
@@ -92,19 +85,19 @@ input  placeholder{
 }
 
 .signUpHeader {
-font-size: 1rem;
+	font-size: 1rem;
 }
 form > div {
-margin: 0.5rem;
+	margin: 0.5rem;
 }
 
 form > div > label {
 	margin: 0.5rem;
 }
- form > div > input {
- padding: 0.5rem;
- min-width: 20rem;
- /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+form > div > input {
+	padding: 0.5rem;
+	min-width: 20rem;
+	/* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 .btn_secondary {
 	margin-top: 100px;
@@ -121,7 +114,7 @@ form > div > label {
 	text-align: center;
 	position: relative;
 	justify-content: center;
-    padding-top: 1rem;
+	padding-top: 1rem;
 }
 
 .btn_secondary:hover {
