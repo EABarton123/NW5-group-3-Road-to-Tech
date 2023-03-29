@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
 import axios from "axios";
 import salaryRange from "./salaryRange";
-
+import Spinner from "react-bootstrap/Spinner";
 function JobForm() {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -51,6 +51,36 @@ function JobForm() {
 		console.log({ formData });
 		e.preventDefault();
 		postJob(formData);
+	};
+
+
+
+	const [isUploadingImage, setIsUploadingImage] = useState(false);
+ const [logoName,setLogoName] = useState("");
+	const handleFileUpload = (e) => {
+		console.log({ companyLogo: e.target.files[0].name });
+		// setFormData({ ...formData, companyLogo: e.target.files[0].name });
+		// setLogoName(e.target.files[0].name);
+		const fd = new FormData();
+		fd.append("image", e.target.files[0], e.target.files[0].name);
+		setIsUploadingImage(true);
+		axios
+			.post("api/upload", fd, {
+				onUploadProgress: (progressEvent) => {
+					console.log(
+						"UploadProgress" +
+							Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+							"%"
+					);
+				},
+			})
+			.then(({ data }) => {
+				console.log({ data });
+				//todo: data.filename 
+				// setFormData({ ...formData, companyLogo: data.filename });
+			})
+			.catch((err) => console.log(err))
+			.finally(() => setIsUploadingImage(false));
 	};
 
 	const postJob = async (formData) => {
@@ -259,11 +289,12 @@ function JobForm() {
 						<Form.Label className="formLabel">LOGO:</Form.Label>
 						<Form.Control
 							name="companyLogo"
-							type="number"
+							type="file"
 							placeholder="Enter companyLogo"
-							value={formData.companyLogo}
-							onChange={handleForm}
+							value={logoName}
+							onChange={handleFileUpload}
 						/>
+						{isUploadingImage && <Spinner animation="grow" />}
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">
@@ -279,7 +310,12 @@ function JobForm() {
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end p-2">
-						<Button variant="danger" type="submit" onClick={handleSubmit}>
+						<Button
+							variant="danger"
+							type="submit"
+							onClick={handleSubmit}
+							disabled={isUploadingImage}
+						>
 							PUBLISH
 						</Button>
 					</div>
