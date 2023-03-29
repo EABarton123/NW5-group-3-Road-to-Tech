@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import styles from "./VerifyCertificateNum.module.css";
+import "./VerifyCertificateNum.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function VerifyCertificateNum() {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [certificateNum, setCertificateNum] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -13,16 +15,22 @@ export function VerifyCertificateNum() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!email || !certificateNum) {
-			return toast.error("Please provide email and certificate Number");
+			return toast.error("Please provide email and certificate number");
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post("/api", {
-				email,
-				certificateNum,
-			});
+			const { data } = await axios.post(
+				"https://starter-kit-nqe2.onrender.com/api/verify",
+				{
+					email,
+					certificateNum,
+				}
+			);
 			setLoading(false);
 			toast.success(data.message);
+			{
+				navigate("/signup");
+			}
 		} catch (err) {
 			setLoading(false);
 			toast.error(
@@ -34,12 +42,11 @@ export function VerifyCertificateNum() {
 	};
 
 	return (
-		<div className={styles.signUpInfoContainer}>
+		<div className="signUpInfoContainer">
 			<ToastContainer position="bottom-center" limit={1} />
-
+			<h2 className="signUpHeader"> Sign Up As A Graduate </h2>
 			<form onSubmit={handleSubmit}>
-			<h2 className="signUpHeader"> Graduate Verification </h2>
-				<div className={styles.emailLabel}>
+				<div>
 					<label htmlFor="email"> Email</label>
 					<br></br>
 					<input
@@ -50,7 +57,7 @@ export function VerifyCertificateNum() {
 						onChange={(event) => setEmail(event.target.value)}
 					/>
 				</div>
-				<div className={styles.graduateLabel}>
+				<div>
 					<label htmlFor="certificateNumber">
 						{" "}
 						Graduation Certificate Number
@@ -65,7 +72,7 @@ export function VerifyCertificateNum() {
 					/>
 				</div>
 
-				<div id={styles.certificateNumHelp}>
+				<div id="certificateNumHelp">
 					We will never share your certificate number with anyone else.
 				</div>
 
@@ -73,10 +80,10 @@ export function VerifyCertificateNum() {
 					<button
 						disabled={loading}
 						type="submit"
-						className={styles.btn_secondary}
+						className="btn btn-secondary"
 					>
 						{loading ? "Sending ..." : "Submit"}
-						{/* <Link to="/signup">Sign Up</Link> */}
+						<Link to="/signup">Sign Up</Link>
 					</button>
 				</div>
 			</form>
