@@ -29,7 +29,7 @@ export function VerifyCertificateNum() {
 			setLoading(false);
 			toast.success(data.message);
 			{
-				navigate("/signup");
+				navigate("signup");
 			}
 		} catch (err) {
 			setLoading(false);
