@@ -20,7 +20,7 @@ function Main() {
 		try {
 			setLoading(true);
 			const { data } = await axios.post(
-				"https://starter-kit-nqe2.onrender.com/api/",
+				"/api/login",
 				{
 					email,
 					password,
@@ -30,11 +30,11 @@ function Main() {
 			setLoading(false);
 			toast.success(data.message);
 			{
-				if (role.toLowerCase() === "graduate") {
-					navigate("/grad");
+				if (role === "graduate") {
+					return navigate("/grad");
 				}
 				if (role.toLowerCase() === "admin") {
-					navigate("/admin");
+					return navigate("/admin");
 				}
 			}
 		} catch (err) {
@@ -87,7 +87,7 @@ function Main() {
 							<input
 								type="radio"
 								value="graduate"
-								checked={setRole === "graduate"}
+								// checked={setRole === "graduate"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Graduate
@@ -96,7 +96,7 @@ function Main() {
 							<input
 								type="radio"
 								value="admin"
-								checked={setRole === "admin"}
+								// checked={setRole === "admin"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Admin

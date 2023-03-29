@@ -1,15 +1,15 @@
-import e, { response, Router } from "express";
+import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
-const express = require("express");
+// const express = require("express");
 const mg = require("mailgun-js");
 
 const dotenv = require("dotenv");
 dotenv.config();
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// const app = express();
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 const router = Router();
 
 const mailgun = () =>
@@ -92,11 +92,11 @@ router.get("/signup", (request, response) => {
 		});
 });
 
-app.post("/", (req, res) => {
-	const { email, password, role } = req.body;
+router.post("/login", (request, response) => {
+	const { email, password, role } = request.body;
 
 	if (!email || !password) {
-		return res
+		return response
 			.status(400)
 			.json({ error: "Email and password are required" });
 	}
@@ -110,7 +110,7 @@ app.post("/", (req, res) => {
 					.status(400)
 					.json({ error: "Email or password incorrect" });
 			} else {
-				return response.status(400).json("successfully logged in");
+				return response.status(201).json({ message: "successfully logged in" });
 			}
 		}
 	);
