@@ -151,7 +151,7 @@
 			"responsibilities": "Partner globally with sponsors, users and engineering colleagues across multiple divisions to create end-to-end solutions, Learn from experts,Leverage various technologies depending on the team including; Java, JavaScript, TypeScript, React, APIs, GraphQL, Elastic Search, Kafka, Kubernetes, Machine Learning.Be able to innovate and incubate new ideas,.Have an opportunity to work on a broad range of problems, often dealing with large data sets, including real-time processing, messaging, workflow and UI/UXBe involved in the full life cycle; defining, designing, implementing, testing, deploying, and maintaining software across our products.",
 			"numberOfGitCommits": 4,
 			"codewarKataLevel": 5,
-			"codewarPoints":600,
+			"codewarPoints": 600,
 			"codalitiy_test_points": 789,
 			"category": "Software Engineer",
 			"salaryRange": "25000 -30000",
