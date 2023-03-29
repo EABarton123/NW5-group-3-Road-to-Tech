@@ -1,4 +1,4 @@
-import SearchJobs from "./SearchJobs/SearchJobs";
+import SearchJobs from "../JobsList/SearchJobs";
 
 function AdminJobs() {
 	return (

@@ -1,10 +1,10 @@
-
+import "./GradDashboard/GradJobs.css";
 
 function GradAppliedJobs() {
 	const jobApplied = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 	return (
-		<div className="containergrad">
+		<div>
 			<h2>Jobs you have applied for</h2>
 			{jobApplied.map((job) => (
 				<div key={job.id} id="job-card-applied">
