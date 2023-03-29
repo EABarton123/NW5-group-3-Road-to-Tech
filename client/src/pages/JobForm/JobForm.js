@@ -4,6 +4,7 @@ import "./JobForm.css";
 import axios from "axios";
 import salaryRange from "./salaryRange";
 import { useNavigate } from "react-router-dom";
+import { object, string, number, date, InferType } from "yup";
 function JobForm() {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -23,10 +24,35 @@ function JobForm() {
 		companyWebSite: "",
 		companyLogo: "",
 		requirements: "",
-		applicationsDeadline: "",
+		applicationsDeadline: "",//todo:calender yaptik nasil olacak bu/ date mi olacak
 		numberOfStudentsCanApply: 0,
 	});
+
 	const navigate = useNavigate();
+
+	const jobSchema = object({
+		title: string(),
+		type: string(),
+		description: string(),
+		responsibilities: string(),
+		numberOfGitCommits: number().positive().integer(),
+		codewarKataLevel: number().positive().integer(),
+		codewarPoints: number().positive().integer(),
+		codalitiyTestPoints: number().positive().integer(),
+		category: string(),
+		salaryRange: { min: number().positive(), max: number().positive() },
+		contactName: string(),
+		contactEmail: string().email(),
+		contactPhone: number(),
+		companyName: string(),
+		companyWebSite: string().url().nullable(),
+		companyLogo: "", // todo: upload image bak
+		requirements: string(),
+		applicationsDeadline: date(),
+		numberOfStudentsCanApply: number().positive().integer(),
+	});
+	
+
 	const handleForm = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
@@ -50,11 +76,13 @@ function JobForm() {
 	const handleSubmit = (e) => {
 		console.log({ formData });
 		e.preventDefault();
+ // jobSchema.validate(formData);
 		postJob(formData);
 	};
 
 	const postJob = async (formData) => {
 		try {
+			jobSchema.validate(formData);
 			const { resData } = await axios.post("/api/job", {
 				...formData,
 			});
