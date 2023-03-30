@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MainCSS from "./Main.module.css";
+import { auto } from "@popperjs/core";
 
 function Main() {
 	const navigate = useNavigate();
@@ -80,7 +81,8 @@ function Main() {
 							required
 							onChange={(event) => setPassword(event.target.value)}
 						/>
-						<label>
+						<div className={MainCSS.role}>
+							<label htmlFor="role"> Role:</label>
 							<input
 								type="radio"
 								value="graduate"
@@ -88,8 +90,6 @@ function Main() {
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Graduate
-						</label>
-						<label>
 							<input
 								type="radio"
 								value="admin"
@@ -97,7 +97,7 @@ function Main() {
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Admin
-						</label>
+						</div>
 
 						<button
 							className={MainCSS.formbutton}
@@ -110,8 +110,8 @@ function Main() {
 				</div>
 				<div className={MainCSS.video1}>
 					<iframe
-						width="100%"
-						height="178"
+					width="100%"
+					height="100%"
 						src="https://www.youtube.com/embed/jz87O1kap7s"
 						title="Code Your Future"
 					></iframe>
