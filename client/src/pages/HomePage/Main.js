@@ -19,11 +19,14 @@ function Main() {
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post("/api/login", {
-				email,
-				password,
-				role,
-			});
+			const { data } = await axios.post(
+				"https://starter-kit-nqe2.onrender.com/api/login",
+				{
+					email,
+					password,
+					role,
+				}
+			);
 			setLoading(false);
 			toast.success(data.message);
 			{
