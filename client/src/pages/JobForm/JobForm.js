@@ -3,8 +3,11 @@ import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
 import axios from "axios";
 import salaryRange from "./salaryRange";
+import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
-import { object, string, number, date, InferType } from "yup";
+import { object, string, number, date } from "yup";
+
+
 function JobForm() {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -78,6 +81,29 @@ function JobForm() {
 		e.preventDefault();
  // jobSchema.validate(formData);
 		postJob(formData);
+	};
+
+	const [isUploadingImage, setIsUploadingImage] = useState(false);
+	const [logoName] = useState("");
+	const handleFileUpload = (e) => {
+		const fd = new FormData();
+		fd.append("image", e.target.files[0], e.target.files[0].name);
+		setIsUploadingImage(true);
+		axios
+			.post("api/upload", fd, {
+				onUploadProgress: (progressEvent) => {
+					console.log(
+						"UploadProgress" +
+							Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+							"%"
+					);
+				},
+			})
+			.then(({ data }) => {
+				console.log({ data });
+			})
+			.catch((err) => console.log(err))
+			.finally(() => setIsUploadingImage(false));
 	};
 
 	const postJob = async (formData) => {
@@ -288,11 +314,12 @@ function JobForm() {
 						<Form.Label className="formLabel">LOGO:</Form.Label>
 						<Form.Control
 							name="companyLogo"
-							type="number"
+							type="file"
 							placeholder="Enter companyLogo"
-							value={formData.companyLogo}
-							onChange={handleForm}
+							value={logoName}
+							onChange={handleFileUpload}
 						/>
+						{isUploadingImage && <Spinner animation="grow" />}
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">
@@ -308,7 +335,12 @@ function JobForm() {
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end p-2">
-						<Button variant="danger" type="submit" onClick={handleSubmit}>
+						<Button
+							variant="danger"
+							type="submit"
+							onClick={handleSubmit}
+							disabled={isUploadingImage}
+						>
 							PUBLISH
 						</Button>
 					</div>

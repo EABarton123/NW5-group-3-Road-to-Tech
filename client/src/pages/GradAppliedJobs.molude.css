@@ -1,0 +1,48 @@
+:root {
+	--ifm-color-primary: #d12f2f;
+	--ifm-color-primary-darkest: #932020;
+	--ifm-color-primary-light: #d64444;
+	--ifm-color-primary: #3578e5;
+	--ifm-color-secondary: #ebedf0;
+	--ifm-color-success: #00a400;
+	--ifm-color-secondary-dark: #d4d5d8;
+	--ifm-color-secondary-darker: #c8c9cc;
+	--ifm-color-secondary-darkest: #a4a6a8;
+	--ifm-color-secondary-light: #eef0f2;
+	--ifm-color-secondary-lightest: #f5f6f8;
+	--ifm-color-secondary-contrast-background: #fdfdfe;
+	--ifm-color-secondary-contrast-foreground: #474748;
+}
+
+.container {
+	background-color: #d4d5d8;
+	justify-content: center;
+	margin: 100px;
+	padding: 100px;
+	box-shadow: inset 0 0 5px #d12f2f;
+}
+.containerTitle {
+	text-align: center;
+	justify-content: center;
+	background-color: #eef0f2;
+	color: #e50303;
+	font-weight: Open Sans;
+	font-weight: bolder;
+	border-radius: 10px;
+	box-shadow: inset 0 0 5px #d12f2f;
+	padding-left: 25px;
+}
+.jobTile {
+	background-color: #d7dadd;
+	box-shadow: inset 0 0 5px #d12f2f;
+	border-radius: 10px;
+	color: #e50303;
+	padding-left: 25px;
+	justify-content: center;
+	text-align: center;
+}
+.containerPar {
+	color: #5f5f60;
+	padding-bottom: 25px;
+	padding-left: 10px;
+}
