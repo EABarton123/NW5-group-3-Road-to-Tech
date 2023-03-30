@@ -33,7 +33,7 @@ function JobForm() {
 	const navigate = useNavigate();
 
 	const jobSchema = object({
-		title: string(),
+		title: string().required("Title field is required"),
 		type: string(),
 		description: string(),
 		responsibilities: string(),
@@ -42,9 +42,9 @@ function JobForm() {
 		codewarPoints: number().positive().integer(),
 		codalityTestPoints: number().positive().integer(),
 		category: string(),
-		salaryRange: { min: number().positive(), max: number().positive() },
+		salaryRange: object({ min: number().positive(), max: number().positive() }),
 		contactName: string(),
-		contactEmail: string().email(),
+		contactEmail: string().email("Must be a valid email"),
 		contactPhone: number(),
 		companyName: string(),
 		companyWebSite: string().url().nullable(),
