@@ -2,9 +2,7 @@ import { useState } from "react";
 import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
 import roles from "../roles.json";
-
 const defaultJobs = roles.jobs;
-
 function SearchJobs() {
 	const [jobs, setJobs] = useState(defaultJobs);
 	const [selectedJob, setSelectedJob] = useState({});

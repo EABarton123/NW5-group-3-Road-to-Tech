@@ -7,7 +7,7 @@ function SignupMenu() {
 		<div className="dropdown" style={{ marginLeft: "700px" }}>
 			<button className="dropbtn">SIGN UP</button>
 			<div className="dropdown-content">
-				<Link to="/signupadmin">EMPLOYABILITY</Link>
+				<Link to="/signup">EMPLOYABILITY</Link>
 				<Link to="/verify">GRADUATE</Link>
 			</div>
 		</div>
