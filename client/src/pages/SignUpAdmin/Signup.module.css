@@ -1,8 +1,7 @@
 .formConteiner {
 	display: flex;
-    text-align: center;
+	text-align: center;
 	justify-content: center;
-
 }
 
 .formConteiner form {
@@ -15,7 +14,7 @@
 	padding: 5rem;
 	border-radius: 2rem;
 }
-.formConteiner h1{
+.formConteiner h1 {
 	color: #e50303;
 	font-weight: bold;
 }
@@ -63,12 +62,10 @@ button {
 	font-weight: bold;
 	vertical-align: middle;
 	text-align: center;
-	}
-
+}
 
 button:hover {
-	background-color:#e50303 ;
+	background-color: #e50303;
 	color: white;
-	border: solid 4px  white;
-
+	border: solid 4px white;
 }
