@@ -28,39 +28,37 @@
 	color: #e50303;
 	font-weight: bold;
 }
-.containerRole{
- display: flex;
- background-color: rgb(233, 233, 236);
- padding: 1rem;
- margin: 1rem;
- box-shadow: inset 0 0 5px #d12f2f;
- border-radius: 10px;
-
+.containerRole {
+	display: flex;
+	background-color: rgb(233, 233, 236);
+	padding: 1rem;
+	margin: 1rem;
+	box-shadow: inset 0 0 5px #d12f2f;
+	border-radius: 10px;
 }
 .radioLabel {
 	margin-right: 5rem;
-
-  }
-  .radioInput input[type=radio]{
+}
+.radioInput input[type="radio"] {
 	margin-right: 5rem;
-  }
-  .radioLabel input[type=radio]{
-     margin-left: 0rem;
-     padding: 2rem;
-     justify-content: center;
-     text-align: center;
-  }
-  .radioLabel input[name]{
-    margin-left: 2rem;
-  }
-  .radioLabel input[value]{
-    margin-right: 3rem;
-  }
-  .containerRole input{
+}
+.radioLabel input[type="radio"] {
+	margin-left: 0rem;
+	padding: 2rem;
+	justify-content: center;
+	text-align: center;
+}
+.radioLabel input[name] {
+	margin-left: 2rem;
+}
+.radioLabel input[value] {
+	margin-right: 3rem;
+}
+.containerRole input {
 	width: 20px;
 	height: 20px;
 	box-shadow: none;
-  }
+}
 
 label {
 	color: rgb(108, 106, 106);
@@ -105,4 +103,5 @@ button:hover {
 	background-color: #e50303;
 	color: white;
 	border: solid 4px white;
+
 }
