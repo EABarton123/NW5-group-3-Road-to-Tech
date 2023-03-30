@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./VerifyCertificateNum.module.css";
+import style from "./VerifyCertificateNum.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -41,11 +41,12 @@ export function VerifyCertificateNum() {
 	};
 
 	return (
-		<div className="signUpInfoContainer">
+		<div className={style.signUpInfoContainer}>
 			<ToastContainer position="bottom-center" limit={1} />
-			<h2 className="signUpHeader"> Sign Up As A Graduate </h2>
+
 			<form onSubmit={handleSubmit}>
-				<div>
+			<h2 className={style.signUpHeader}> Sign Up As A Graduate </h2>
+				<div className={style.emailLabel}>
 					<label htmlFor="email"> Email</label>
 					<br></br>
 					<input
@@ -56,7 +57,7 @@ export function VerifyCertificateNum() {
 						onChange={(event) => setEmail(event.target.value)}
 					/>
 				</div>
-				<div>
+				<div className= {style.graduateLabel}>
 					<label htmlFor="certificateNumber">
 						{" "}
 						Graduation Certificate Number
@@ -79,7 +80,7 @@ export function VerifyCertificateNum() {
 					<button
 						disabled={loading}
 						type="submit"
-						className="btn btn-secondary"
+						className={style.btn_secondary}
 					>
 						{loading ? "Sending ..." : "Submit"}
 					</button>
