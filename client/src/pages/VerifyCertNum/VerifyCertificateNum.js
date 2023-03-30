@@ -45,7 +45,7 @@ export function VerifyCertificateNum() {
 			<ToastContainer position="bottom-center" limit={1} />
 
 			<form onSubmit={handleSubmit}>
-			<h2 className={style.signUpHeader}> Sign Up As A Graduate </h2>
+				<h2 className={style.signUpHeader}> Sign Up As A Graduate </h2>
 				<div className={style.emailLabel}>
 					<label htmlFor="email"> Email</label>
 					<br></br>
@@ -57,7 +57,7 @@ export function VerifyCertificateNum() {
 						onChange={(event) => setEmail(event.target.value)}
 					/>
 				</div>
-				<div className= {style.graduateLabel}>
+				<div className={style.graduateLabel}>
 					<label htmlFor="certificateNumber">
 						{" "}
 						Graduation Certificate Number
