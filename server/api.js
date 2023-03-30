@@ -1,15 +1,33 @@
 import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
-// const express = require("express");
+import multer from "multer";
+import path from "path";
+
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, path.join(__dirname, "/images/"));
+	},
+	filename: (req, file, cb) => {
+		//console.log(file);
+		const imageName = Date.now() + path.extname(file.originalname);
+		cb(null, imageName);
+	},
+});
+
+const upload = multer({ storage, limits: { fileSize: 3000000 } }).single(
+	"image"
+);
+
+const express = require("express");
 const mg = require("mailgun-js");
 
 const dotenv = require("dotenv");
 dotenv.config();
 
-// const app = express();
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const router = Router();
 
 const mailgun = () =>
@@ -44,6 +62,20 @@ router.post("/verify", (request, response) => {
 				return response.send({ message: "Verified. Please check email" });
 			}
 		});
+});
+router.post("/upload", (req, res) => {
+	upload(req, res, (err) => {
+		if (err) {
+			res.status(500).send({
+				message:
+					"Image cannot be uploaded.Please check your image file and try again.",
+			});
+		} else {
+			return res.status(201).json({
+				filename: req.file.filename,
+			});
+		}
+	});
 });
 
 router.post("/job", async (req, res) => {
