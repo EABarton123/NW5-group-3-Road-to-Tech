@@ -19,11 +19,14 @@ function Main() {
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post("/api/login", {
-				email,
-				password,
-				role,
-			});
+			const { data } = await axios.post(
+				"https://starter-kit-nqe2.onrender.com/api/login",
+				{
+					email,
+					password,
+					role,
+				}
+			);
 			setLoading(false);
 			toast.success(data.message);
 			{
@@ -80,7 +83,7 @@ function Main() {
 							required
 							onChange={(event) => setPassword(event.target.value)}
 						/>
-						<label>
+						<label className={MainCSS.RoleContainer}>
 							<input
 								type="radio"
 								value="graduate"
@@ -89,7 +92,7 @@ function Main() {
 							/>
 							Graduate
 						</label>
-						<label>
+						<label className={MainCSS.RoleContainer1}>
 							<input
 								type="radio"
 								value="admin"

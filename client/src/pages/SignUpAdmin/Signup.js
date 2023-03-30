@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Signup.module.css";
+import style from "./Signup.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -33,9 +33,9 @@ const Signup = () => {
 		}
 	};
 	return (
-		<div className="form-container">
+		<div className={style.formConteiner}>
 			<form onSubmit={signupSubmit}>
-				<h1> Sign Up</h1>
+				<h1 className={style.formContenerTlitle}> Sign Up</h1>
 				<div>
 					<label htmlFor="email"> Email: </label>
 					<input
@@ -68,32 +68,37 @@ const Signup = () => {
 						}
 					/>
 				</div>
-				<div>
-					<label htmlFor="role"> Role:</label>
-					<input
-						onChange={(e) =>
-							setSubFormDate({
-								...subFormDate,
-								role: e.target.value,
-							})
-						}
-						type="radio"
-						value="Admin"
-						name="role"
-					/>{" "}
-					Admin
-					<input
-						onChange={(e) =>
-							setSubFormDate({
-								...subFormDate,
-								role: e.target.value,
-							})
-						}
-						type="radio"
-						value="Graduate"
-						name="role"
-					/>{" "}
-					Graduate
+				<div className={style.containerRole}>
+					<label htmlFor="role" className={style.radioLabel}>
+						{" "}
+						Role:
+						<input
+							className={style.radioInput}
+							onChange={(e) =>
+								setSubFormDate({
+									...subFormDate,
+									role: e.target.value,
+								})
+							}
+							type="radio"
+							value="Admin"
+							name="role"
+						/>{" "}
+						Admin
+						<input
+							className={style.radioInput}
+							onChange={(e) =>
+								setSubFormDate({
+									...subFormDate,
+									role: e.target.value,
+								})
+							}
+							type="radio"
+							value="Graduate"
+							name="role"
+						/>{" "}
+						Graduate
+					</label>
 				</div>
 				<div>
 					<label htmlFor="password"> Password:</label>
