@@ -83,7 +83,7 @@ function Main() {
 							required
 							onChange={(event) => setPassword(event.target.value)}
 						/>
-						<label>
+						<label className={MainCSS.RoleContainer}>
 							<input
 								type="radio"
 								value="graduate"
@@ -92,7 +92,7 @@ function Main() {
 							/>
 							Graduate
 						</label>
-						<label>
+						<label className={MainCSS.RoleContainer1}>
 							<input
 								type="radio"
 								value="admin"
