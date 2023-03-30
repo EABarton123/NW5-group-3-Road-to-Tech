@@ -16,7 +16,7 @@ function JobForm() {
 		numberOfGitCommits: 0,
 		codewarKataLevel: 0,
 		codewarPoints: 0,
-		codalitiyTestPoints: 0,
+		codalityTestPoints: 0,
 		category: "",
 		salaryRange: { min: 0, max: 0 },
 		contactName: "",
@@ -40,7 +40,7 @@ function JobForm() {
 		numberOfGitCommits: number().positive().integer(),
 		codewarKataLevel: number().positive().integer(),
 		codewarPoints: number().positive().integer(),
-		codalitiyTestPoints: number().positive().integer(),
+		codalityTestPoints: number().positive().integer(),
 		category: string(),
 		salaryRange: { min: number().positive(), max: number().positive() },
 		contactName: string(),
@@ -173,7 +173,7 @@ function JobForm() {
 							name="numberOfGitCommits"
 							type="number"
 							min="0"
-							placeholder="Enter responsibilities"
+							placeholder="Enter numberOfGitCommits"
 							value={formData.numberOfGitCommits}
 							onChange={handleForm}
 						/>
@@ -262,7 +262,7 @@ function JobForm() {
 						<Form.Control
 							name="contactName"
 							type="text"
-							placeholder="Enter contactName"
+							placeholder="Enter Contact Name"
 							value={formData.contactName}
 							onChange={handleForm}
 						/>
@@ -293,7 +293,7 @@ function JobForm() {
 						<Form.Control
 							name="companyName"
 							type="text"
-							placeholder="Enter companyName"
+							placeholder="Enter Company Name"
 							value={formData.companyName}
 							onChange={handleForm}
 						/>
@@ -303,7 +303,7 @@ function JobForm() {
 						<Form.Control
 							name="companyWebSite"
 							type="text"
-							placeholder="Enter companyWebSite"
+							placeholder="Enter Company WebSite"
 							value={formData.companyWebSite}
 							onChange={handleForm}
 						/>
