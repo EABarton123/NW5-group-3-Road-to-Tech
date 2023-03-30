@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import Buttons from "./Buttons/Buttons";
-import "./Signup.css";
+import "./Signup.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const Signup = () => {
+const Signup = () => {
 	const navigate = useNavigate();
 	const [subFormDate, setSubFormDate] = useState({
 		email: "",
@@ -112,8 +111,10 @@ export const Signup = () => {
 						}
 					/>
 				</div>
-				<Buttons Type={"submit"} text={"Sign Up"} />
+				<button type={"submit"}>Submit</button>
 			</form>
 		</div>
 	);
 };
+
+export default Signup;
