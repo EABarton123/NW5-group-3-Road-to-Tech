@@ -63,10 +63,14 @@ router.post("/verify", (request, response) => {
 router.post("/upload", (req, res) => {
 	upload(req, res, (err) => {
 		if (err) {
-			res.status(500);
+			res
+				.status(500)
+				.send({
+					message:
+						"Image cannot be uploaded.Please check your image file and try again.",
+				});
 		} else {
 			return res.status(201).json({
-				host: "http://localhost:3100/images/",
 				filename: req.file.filename,
 			});
 		}
