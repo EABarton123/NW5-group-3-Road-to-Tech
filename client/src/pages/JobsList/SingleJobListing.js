@@ -1,4 +1,5 @@
 import React from "react";
+import GradAppliedJobs from "../GradAppliedJobs";
 
 function SingleJobListing({ job }) {
 	const {
@@ -22,6 +23,8 @@ function SingleJobListing({ job }) {
 		applicationsDeadline,
 		numberOfStudentsCanApply,
 	} = job;
+
+	console.log(job);
 
 	function handleClick() {
 		window.location.href = job.companyWebSite;
@@ -53,6 +56,7 @@ function SingleJobListing({ job }) {
 				<button onClick={handleClick} type="Submit">
 					Apply
 				</button>
+				<GradAppliedJobs job={job} />
 			</div>
 		</div>
 	);
