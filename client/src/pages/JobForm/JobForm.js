@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
-import axios from "axios";
-import salaryRange from "./salaryRange";
+import salaryRange from "./salaryRange.json";
 import { useNavigate } from "react-router-dom";
-function JobForm() {
+function JobForm({ updateJob }) {
 	const [formData, setFormData] = useState({
 		title: "",
 		type: "",
@@ -18,7 +17,7 @@ function JobForm() {
 		salaryRange: { min: 0, max: 0 },
 		contactName: "",
 		contactEmail: "",
-		contactPhone: 123456789,
+		contactPhone: 0,
 		companyName: "",
 		companyWebSite: "",
 		companyLogo: "",
@@ -26,6 +25,7 @@ function JobForm() {
 		applicationsDeadline: "",
 		numberOfStudentsCanApply: 0,
 	});
+
 	const navigate = useNavigate();
 	const handleForm = (e) => {
 		const { name, value } = e.target;
@@ -45,25 +45,15 @@ function JobForm() {
 		} else {
 			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
 			setFormData({ ...formData, salaryRange: { min, max } });
+			console.log(min, max);
 		}
 	};
 	const handleSubmit = (e) => {
-		console.log({ formData });
 		e.preventDefault();
-		postJob(formData);
+		console.log({ formData });
+		updateJob(formData);
 	};
 
-	const postJob = async (formData) => {
-		try {
-			const { resData } = await axios.post("/api/job", {
-				...formData,
-			});
-			console.log({ resData });
-			navigate("/admin");
-		} catch (err) {
-			console.log({ err });
-		}
-	};
 	return (
 		<div className="container">
 			<h1 className="heading">POST A JOB</h1>

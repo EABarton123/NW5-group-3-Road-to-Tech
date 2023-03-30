@@ -1,24 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
-import roles from "../roles.json";
-const defaultJobs = roles.jobs;
-function SearchJobs() {
-	const [jobs, setJobs] = useState(defaultJobs);
+import axios from "axios";
+
+// useEffect(() => {
+// 	axios
+// 		.get("https://starter-kit-nqe2.onrender.com/api/job")
+// 		.then((response) => {
+// 			setJobs(response.jobs);
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// }, []);
+
+// useEffect(() => {
+// 	axios
+// 		.get("https://starter-kit-nqe2.onrender.com/api/job/")
+// 		// .then((response) => response.json())
+// 		.then((data) => setJobs(data))
+// 		.catch((error) => console.error(error));
+// }, [jobId]);
+
+function SearchJobs({ jobs }) {
+	// const [data, setData] = useState({});
+
 	const [selectedJob, setSelectedJob] = useState({});
+
+	useEffect(() => {
+		axios
+			.get("/api/job")
+			.then((response) => {
+				// setJobs(response.data);
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	}, []);
+	console.log(jobs);
 
 	const handleSubmit = (event) => {
 		const search = event.target.value;
 		event.preventDefault();
 		if (search === "") {
-			setJobs(defaultJobs);
+			// setJobs(jobs);
 			return;
 		}
 		// Filter the job listings based on the search term
-		const filteredJobs = defaultJobs.filter((job) =>
-			job.title.toLowerCase().includes(search.toLowerCase())
-		);
-		setJobs(filteredJobs);
+		// const filteredJobs = jobs.filter((job) =>
+		// 	job.title.toLowerCase().includes(search.toLowerCase())
+		// );
+		// setJobs(filteredJobs);
 	};
 
 	function handleJobExpand(job) {
