@@ -20,7 +20,7 @@ body {
 	font-family: "Raleway", sans-serif;
 }
 .container {
-	background-color: var(--ifm-color-secondary-darker);
+	background-color: var(--ifm-color-secondary-dark);
 	margin: 0 auto;
 	padding: 2rem;
 	width: 100%;

@@ -7,7 +7,6 @@ import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 import { object, string, number, date } from "yup";
 
-
 function JobForm() {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -27,7 +26,7 @@ function JobForm() {
 		companyWebSite: "",
 		companyLogo: "",
 		requirements: "",
-		applicationsDeadline: "",//todo:calender yaptik nasil olacak bu/ date mi olacak
+		applicationsDeadline: "", //todo:calender yaptik nasil olacak bu/ date mi olacak
 		numberOfStudentsCanApply: 0,
 	});
 
@@ -54,7 +53,6 @@ function JobForm() {
 		applicationsDeadline: date(),
 		numberOfStudentsCanApply: number().positive().integer(),
 	});
-	
 
 	const handleForm = (e) => {
 		const { name, value } = e.target;
@@ -79,7 +77,7 @@ function JobForm() {
 	const handleSubmit = (e) => {
 		console.log({ formData });
 		e.preventDefault();
- // jobSchema.validate(formData);
+		// jobSchema.validate(formData);
 		postJob(formData);
 	};
 
