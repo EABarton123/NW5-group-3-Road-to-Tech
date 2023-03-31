@@ -49,9 +49,10 @@
 	justify-content: center;
 	text-align: center;
 }
+
 .RoleContainer {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	color: #d12f2f;
 	font-weight: bold;
 }
@@ -59,11 +60,12 @@
 .RoleContainer input {
 	margin-left: 1rem;
 	display: flex;
+	justify-content: center;
 	width: 20px;
 	height: 20px;
 	box-shadow: none;
-	margin-right: 1rem;
 }
+
 .RoleContainer1 {
 	display: flex;
 	justify-content: center;
@@ -75,7 +77,9 @@
 	width: 20px;
 	height: 20px;
 	box-shadow: none;
-	margin-right: 1rem;
+}
+input[type="radio"] {
+	margin-right: 0;
 }
 
 .mainform {
@@ -110,11 +114,22 @@
 	text-align: center;
 	background-color: #d12f2f;
 	color: white;
-	padding: 10px;
+	padding: 0px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	background-color: red;
+	/* vertical-align: middle;
+	margin-left: 5.5rem;
+	border: solid 1px rgb(99, 98, 98); */
+	height: 40px;
+	width: 120px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.formbutton hover {
+	background-color: #e50303;
 	color: white;
 	padding: 0px;
 	font-size: 16px;
