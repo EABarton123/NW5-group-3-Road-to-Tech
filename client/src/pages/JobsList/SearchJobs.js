@@ -1,44 +1,49 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
-import axios from "axios";
+// import axios from "axios";
 
-function SearchJobs({ jobId }) {
-	// const [data, setData] = useState([]);
-	const [jobs, setJobs] = useState([]);
-	const [selectedJob, setSelectedJob] = useState({});
+// useEffect(() => {
+// 	axios
+// 		.get("https://starter-kit-nqe2.onrender.com/api/job")
+// 		.then((response) => {
+// 			setJobs(response.jobs);
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// }, []);
 
-	useEffect(() => {
-		axios
-			.get("https://starter-kit-nqe2.onrender.com/api/job/")
-			// .then((response) => response.json())
-			.then((data) => setJobs(data))
-			.catch((error) => console.error(error));
-	}, [jobId]);
+// useEffect(() => {
+// 	axios
+// 		.get("https://starter-kit-nqe2.onrender.com/api/job/")
+// 		// .then((response) => response.json())
+// 		.then((data) => setJobs(data))
+// 		.catch((error) => console.error(error));
+// }, [jobId]);
 
-	// useEffect(() => {
-	// 	axios
-	// 		.get("https://starter-kit-nqe2.onrender.com/api/job")
-	// 		.then((response) => {
-	// 			setData(response.data);
-	// 		})
-	// 		.catch((error) => {
-	// 			console.error(error);
-	// 		});
-	// }, []);
+function SearchJobs({ fetchData }) {
+	const [data, setData] = useState([]);
+	const [selectedJob, setSelectedJob] = useState([]);
+
+	fetchData().then((data) => {
+		setData(data);
+	});
 
 	const handleSubmit = (event) => {
 		const search = event.target.value;
 		event.preventDefault();
 		if (search === "") {
-			setJobs(jobs);
+			setData(data);
+			console.log(data);
 			return;
 		}
-		// Filter the job listings based on the search term
-		const filteredJobs = jobs.filter((job) =>
+
+		const filteredJobs = fetchData.filter((job) =>
 			job.title.toLowerCase().includes(search.toLowerCase())
 		);
-		setJobs(filteredJobs);
+		setData(filteredJobs);
 	};
 
 	function handleJobExpand(job) {
@@ -56,7 +61,7 @@ function SearchJobs({ jobId }) {
 						onChange={handleSubmit}
 					/>
 				</form>
-				{jobs.map((job) => (
+				{data.map((job) => (
 					<div key={job.id} id="job-card">
 						<h2>title: {job.title}</h2>
 						<p>description: {job.description}</p>
