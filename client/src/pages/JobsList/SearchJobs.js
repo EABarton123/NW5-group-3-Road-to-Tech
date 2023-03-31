@@ -38,14 +38,14 @@ function SearchJobs() {
 				</form>
 				{jobs.map((job) => (
 					<div key={job.id} id="job-card">
-						<h2>title: {job.title}</h2>
-						<p>description: {job.description}</p>
-						<p>category: {job.category}</p>
+						<h2>Title: {job.title}</h2>
+						<p>Description: {job.description}</p>
+						<p>Category: {job.category}</p>
 						<div id="container">
 							<p id="type">{job.type}</p>
 							<p id="salary">{job.salaryRange}</p>
 						</div>
-						<p>company: {job.companyName}</p>
+						<p>Company: {job.companyName}</p>
 						<button
 							onClick={() => {
 								handleJobExpand(job);
