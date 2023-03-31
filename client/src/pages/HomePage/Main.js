@@ -83,19 +83,22 @@ function Main() {
 							required
 							onChange={(event) => setPassword(event.target.value)}
 						/>
+
 						<label className={MainCSS.RoleContainer}>
+							{" "}
+							Role:
 							<input
 								type="radio"
 								value="graduate"
+								name="role"
 								// checked={setRole === "graduate"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Graduate
-						</label>
-						<label className={MainCSS.RoleContainer1}>
 							<input
 								type="radio"
 								value="admin"
+								name="role"
 								// checked={setRole === "admin"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
