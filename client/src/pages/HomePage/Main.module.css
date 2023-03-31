@@ -3,7 +3,7 @@
 .main {
 	display: flex;
 	justify-content: space-between;
-	/* align-items: flex-start; */
+
 	padding: 20px;
 	height: calc(100vh - 80px);
 	gap: 0.5%;
@@ -24,7 +24,7 @@
 
 .right {
 	width: 30%;
-	/* height: auto; */
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -33,7 +33,7 @@
 .login {
 	background-color: #f2f2f2;
 	padding: 60px;
-	/* margin-bottom: 20px; */
+
 	box-shadow: inset 0 0 5px #d12f2f;
 }
 
@@ -91,16 +91,13 @@
 
 .inputemail[type="email"],
 .inputpassword[type="password"] {
-	/* padding: 10px;
-	margin: 10px; */
 	display: block;
 	background-color: #c3b8b8;
 }
-.role{
+.role {
 	display: flex;
 	font-size: 12px;
 }
-
 
 .formbutton {
 	justify-content: center;
@@ -127,15 +124,6 @@
 }
 
 .video1 {
-	/* max-width: 100%; */
 	height: 100%;
 	margin-top: 5px;
-	/* position: relative;
-	width: 100%; */
 }
-
-/* .video1 iframe {
-	position: absolute;
-	min-width: 29%;
-	min-height: 50%;
-} */
