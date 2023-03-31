@@ -1,61 +1,112 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
-import salaryRange from "./salaryRange.json";
-import { useNavigate } from "react-router-dom";
-function JobForm({ updateJob }) {
-	const [formData, setFormData] = useState({
-		title: "",
-		type: "",
-		description: "",
-		responsibilities: "",
-		numberOfGitCommits: 0,
-		codewarKataLevel: 0,
-		codewarPoints: 0,
-		codalitiyTestPoints: 0,
-		category: "",
-		salaryRange: { min: 0, max: 0 },
-		contactName: "",
-		contactEmail: "",
-		contactPhone: 0,
-		companyName: "",
-		companyWebSite: "",
-		companyLogo: "",
-		requirements: "",
-		applicationsDeadline: "",
-		numberOfStudentsCanApply: 0,
-	});
+import salaryRangeJson from "./salaryRange.json";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-	const navigate = useNavigate();
-	const handleForm = (e) => {
-		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
+function JobForm() {
+	const [title, setTitle] = useState("");
+	const [type, setType] = useState("");
+	const [description, setDescription] = useState("");
+	const [responsibilities, setResponsibilities] = useState("");
+	const [numberOfGitCommits, setNumberOfGitCommits] = useState(0);
+	const [codewarKataLevel, setCodewarKataLevel] = useState(0);
+	const [codewarPoints, setCodewarPoints] = useState(0);
+	const [codalityTestPoints, setCodalityTestPoints] = useState(0);
+	const [category, setCategory] = useState("");
+	const [salaryRange, setSalaryRange] = useState({ min: 0, max: 0 });
+	const [contactName, setContactName] = useState("");
+	const [contactEmail, setContactEmail] = useState("");
+	const [contactPhone, setContactPhone] = useState(0);
+	const [companyName, setCompanyName] = useState("");
+	const [companyWebSite, setCompanyWebSite] = useState("");
+	const [companyLogo, setCompanyLogo] = useState("");
+	const [requirements, setRequirements] = useState("");
+	const [applicationsDeadline, setApplicationsDeadline] = useState("");
+	const [numberOfStudentsCanApply, setNumberOfStudentsCanApply] = useState(0);
+
+	// const [salaryMin, setSalaryMin] = useState(0);
+	// const ....blablabla
+	// 	const [formData, setFormData] = useState({
+	// title: "",
+	// type: "",
+	// description: "",
+	// responsibilities: "",
+	// numberOfGitCommits: 0,
+	// codewarKataLevel: 0,
+	// codewarPoints: 0,
+	// codalitiyTestPoints: 0,
+	// category: "",
+	// salaryRange: { min: 0, max: 0 },
+	// contactName: "",
+	// contactEmail: "",
+	// contactPhone: 0,
+	// companyName: "",
+	// companyWebSite: "",
+	// companyLogo: "",
+	// requirements: "",
+	// applicationsDeadline: "",
+	// numberOfStudentsCanApply: 0,
+	// 	});
+
+	const postJob = async () => {
+		try {
+			await axios.post("/api/job", {
+				title,
+				type,
+				description,
+				responsibilities,
+				numberOfGitCommits,
+				codewarKataLevel,
+				codewarPoints,
+				codalityTestPoints,
+				category,
+				salaryRange,
+				contactName,
+				contactEmail,
+				contactPhone,
+				companyName,
+				companyWebSite,
+				companyLogo,
+				requirements,
+				applicationsDeadline,
+				numberOfStudentsCanApply,
+			});
+		} catch (err) {
+			console.log({ err });
+		}
 	};
+
+	// const handleForm = (e) => {
+	// 	const { name, value } = e.target;
+	// 	setFormData({ ...formData, [name]: value });
+	// };
 	const handleCategory = (e) => {
 		if (e.target.value == "none") {
-			setFormData({ ...formData, category: "" });
+			setCategory(category);
 		} else {
-			setFormData({ ...formData, category: e.target.value });
+			setCategory(e.target.value);
 		}
 	};
 	const handleSalary = (e) => {
 		const value = parseInt(e.target.value);
 		if (value == -1) {
-			setFormData({ ...formData, salaryRange: { min: 0, max: 0 } });
+			setSalaryRange({ salaryRange: { min: 0, max: 0 } });
 		} else {
-			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
-			setFormData({ ...formData, salaryRange: { min, max } });
-			console.log(min, max);
+			const { min, max } = salaryRangeJson.filter((item) => item.id == value)[0];
+			setSalaryRange({ salaryRange: { min, max } });
 		}
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		updateJob;
-		navigate("/admin");
+		postJob().then(() => toast.success("Job posted!"));
 	};
 
 	return (
 		<div className="container">
+			<ToastContainer position="bottom-center" limit={1} />
 			<h1 className="heading">POST A JOB</h1>
 			<div className="jobform p-2">
 				<div className="section mx-4 my-2">
@@ -65,8 +116,8 @@ function JobForm({ updateJob }) {
 							name="title"
 							type="text"
 							placeholder="Enter title"
-							value={formData.title}
-							onChange={handleForm}
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -75,8 +126,8 @@ function JobForm({ updateJob }) {
 							name="type"
 							type="text"
 							placeholder="Enter type"
-							value={formData.type}
-							onChange={handleForm}
+							value={type}
+							onChange={(e) => setType(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="description">
@@ -85,8 +136,8 @@ function JobForm({ updateJob }) {
 							name="description"
 							as="textarea"
 							placeholder="Enter description"
-							value={formData.description}
-							onChange={handleForm}
+							value={description}
+							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group
@@ -98,8 +149,8 @@ function JobForm({ updateJob }) {
 							name="responsibilities"
 							as="textarea"
 							placeholder="Enter responsibilities"
-							value={formData.responsibilities}
-							onChange={handleForm}
+							value={responsibilities}
+							onChange={(e) => setResponsibilities(e.target.value)}
 						/>
 					</Form.Group>
 					<h3 className="mb-4">CONSTRAINTS:</h3>
@@ -112,8 +163,8 @@ function JobForm({ updateJob }) {
 							type="number"
 							min="0"
 							placeholder="Enter responsibilities"
-							value={formData.numberOfGitCommits}
-							onChange={handleForm}
+							value={numberOfGitCommits}
+							onChange={(e) => setNumberOfGitCommits(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex">
@@ -123,8 +174,8 @@ function JobForm({ updateJob }) {
 							type="number"
 							min="0"
 							placeholder="Enter codewarKataLevel"
-							value={formData.codewarKataLevel}
-							onChange={handleForm}
+							value={codewarKataLevel}
+							onChange={(e) => setCodewarKataLevel(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex">
@@ -134,8 +185,8 @@ function JobForm({ updateJob }) {
 							type="number"
 							min="0"
 							placeholder="Enter codewarPoints"
-							value={formData.codewarPoints}
-							onChange={handleForm}
+							value={codewarPoints}
+							onChange={(e) => setCodewarPoints(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="mgroup mb-3 d-flex">
@@ -145,8 +196,8 @@ function JobForm({ updateJob }) {
 							type="number"
 							min="0"
 							placeholder="Enter codalitiyTestPoints"
-							value={formData.codalityTestPoints}
-							onChange={handleForm}
+							value={codalityTestPoints}
+							onChange={(e) => setCodalityTestPoints(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -155,8 +206,8 @@ function JobForm({ updateJob }) {
 							name="requirements"
 							type="text"
 							placeholder="Enter requirements"
-							value={formData.requirements}
-							onChange={handleForm}
+							value={requirements}
+							onChange={(e) => setRequirements(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -167,8 +218,8 @@ function JobForm({ updateJob }) {
 							name="applicationsDeadline"
 							type="date"
 							placeholder="Enter applicationsDeadline"
-							value={formData.applicationsDeadline}
-							onChange={handleForm}
+							value={applicationsDeadline}
+							onChange={(e) => setApplicationsDeadline(e.target.value)}
 						/>
 					</Form.Group>
 				</div>
@@ -187,7 +238,7 @@ function JobForm({ updateJob }) {
 						<Form.Label className="formLabel">SALARY RANGE:</Form.Label>
 						<Form.Select onChange={handleSalary}>
 							<option value="-1">Disabled select</option>
-							{salaryRange.map((salary) => (
+							{salaryRangeJson.map((salary) => (
 								<option value={salary.id} key={salary.id}>
 									Min: {salary.min} - Max: {salary.max}
 								</option>
@@ -201,8 +252,8 @@ function JobForm({ updateJob }) {
 							name="contactName"
 							type="text"
 							placeholder="Enter contactName"
-							value={formData.contactName}
-							onChange={handleForm}
+							value={contactName}
+							onChange={(e) => setContactName(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -211,8 +262,8 @@ function JobForm({ updateJob }) {
 							name="contactEmail"
 							type="email"
 							placeholder="name@example.com"
-							value={formData.contactEmail}
-							onChange={handleForm}
+							value={contactEmail}
+							onChange={(e) => setContactEmail(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -221,8 +272,8 @@ function JobForm({ updateJob }) {
 							name="contactPhone"
 							type="number"
 							placeholder="Enter contactPhone"
-							value={formData.contactPhone}
-							onChange={handleForm}
+							value={contactPhone}
+							onChange={(e) => setContactPhone(e.target.value)}
 						/>
 					</Form.Group>
 					<h3 className="mb-4">COMPANY INFORMATION:</h3>
@@ -232,8 +283,8 @@ function JobForm({ updateJob }) {
 							name="companyName"
 							type="text"
 							placeholder="Enter companyName"
-							value={formData.companyName}
-							onChange={handleForm}
+							value={companyName}
+							onChange={(e) => setCompanyName(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -242,8 +293,8 @@ function JobForm({ updateJob }) {
 							name="companyWebSite"
 							type="text"
 							placeholder="Enter companyWebSite"
-							value={formData.companyWebSite}
-							onChange={handleForm}
+							value={companyWebSite}
+							onChange={(e) => setCompanyWebSite(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -252,8 +303,8 @@ function JobForm({ updateJob }) {
 							name="companyLogo"
 							type="number"
 							placeholder="Enter companyLogo"
-							value={formData.companyLogo}
-							onChange={handleForm}
+							value={companyLogo}
+							onChange={(e) => setCompanyLogo(e.target.value)}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -265,8 +316,8 @@ function JobForm({ updateJob }) {
 							type="number"
 							min="0"
 							placeholder="Enter numberOfStudentsCanApply"
-							value={formData.numberOfStudentsCanApply}
-							onChange={handleForm}
+							value={numberOfStudentsCanApply}
+							onChange={(e) => setNumberOfStudentsCanApply(e.target.value)}
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end p-2">

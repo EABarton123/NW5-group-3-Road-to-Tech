@@ -6,41 +6,47 @@ import SingleJobListing from "./SingleJobListing";
 
 // useEffect(() => {
 // 	axios
-// 		.get("https://starter-kit-nqe2.onrender.com/api/job")
-// 		.then((response) => {
-// 			setJobs(response.jobs);
-// 		})
-// 		.catch((error) => {
-// 			console.error(error);
-// 		});
-// }, []);
-
-// useEffect(() => {
-// 	axios
 // 		.get("https://starter-kit-nqe2.onrender.com/api/job/")
 // 		// .then((response) => response.json())
 // 		.then((data) => setJobs(data))
 // 		.catch((error) => console.error(error));
 // }, [jobId]);
 
-function SearchJobs({ fetchData }) {
+function SearchJobs({ jobs }) {
 	const [data, setData] = useState([]);
 	const [selectedJob, setSelectedJob] = useState([]);
 
-	fetchData().then((data) => {
-		setData(data);
-	});
+	function fetchData() {
+		return axios
+			.get("/api/job")
+			.then((response) => setData(response.data))
+			.catch((error) => console.log(error));
+	}
+
+	console.log(jobs);
+
+	//     useEffect(() => {
+	// 	.then((response) => {
+	// 		fetchData
+
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error(error);
+	// 		});
+	// }, []);
+	useEffect(() => {
+		fetchData();
+	}, []);
 
 	const handleSubmit = (event) => {
 		const search = event.target.value;
 		event.preventDefault();
 		if (search === "") {
-			setData(data);
-			console.log(data);
+			fetchData();
 			return;
 		}
 
-		const filteredJobs = fetchData.filter((job) =>
+		const filteredJobs = data.filter((job) =>
 			job.title.toLowerCase().includes(search.toLowerCase())
 		);
 		setData(filteredJobs);
