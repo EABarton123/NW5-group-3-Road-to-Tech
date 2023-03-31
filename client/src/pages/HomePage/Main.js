@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MainCSS from "./Main.module.css";
-import { auto } from "@popperjs/core";
+// import { auto } from "@popperjs/core";
 
 function Main() {
 	const navigate = useNavigate();

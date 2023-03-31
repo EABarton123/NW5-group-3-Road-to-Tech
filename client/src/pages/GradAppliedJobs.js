@@ -3,7 +3,6 @@ import style from "./GradAppliedJobs.molude.css";
 function GradAppliedJobs({ job }) {
 	const jobApplied = [{ job }];
 	console.log(jobApplied);
-	const { id, title, type, description } = jobApplied;
 
 	return (
 		<div className={style.container}>
@@ -14,7 +13,7 @@ function GradAppliedJobs({ job }) {
 					<p className={style.containerPar}>description: {job.description}</p>
 					<p className={style.containerPar}>category: {job.category}</p>
 					<div id="container1">
-						<p id="type1">{type}</p>
+						<p id="type1">{job.type}</p>
 						<p id="salary1">{job.salaryRange}</p>
 					</div>
 					<p className={style.containerPar}>company: {job.companyName}</p>
