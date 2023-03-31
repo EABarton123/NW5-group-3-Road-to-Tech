@@ -33,28 +33,28 @@ function SingleJobListing({ job }) {
 	return (
 		<div>
 			<div key={id}>
-				<h2>title: {title}</h2>
-				<p>type: {type}</p>
-				<p>description: {description}</p>
-				<p>category: {category}</p>
-				<p>link: {companyWebSite}</p>
-				<p>requirements: {requirements}</p>
-				<p>posting date: {postingDate}</p>
-				<p>deadline: {applicationsDeadline}</p>
+				<h2>Title: {title}</h2>
+				<p>Type: {type}</p>
+				<p>Description: {description}</p>
+				<p>Category: {category}</p>
+				<p>Link: {companyWebSite}</p>
+				<p>Requirements: {requirements}</p>
+				<p>Posting Date: {postingDate}</p>
+				<p>Deadline: {applicationsDeadline}</p>
 				<p>
-					number of students application can take: {numberOfStudentsCanApply}
+					Number of students application can take: {numberOfStudentsCanApply}
 				</p>
-				<p>salary: {salaryRange}</p>
-				<p>company: {companyName}</p>
-				<p>responsibilities: {responsibilities}</p>
-				<p>number of git commits: {numberOfGitCommits}</p>
-				<p>codewar kata level: {codewarKataLevel}</p>
-				<p>codewar points: {codewarPoints}</p>
-				<p>contact name: {contactName}</p>
-				<p>contact email: {contactEmail}</p>
-				<p>contact phone number: {contactPhone}</p>
+				<p>Salary: {salaryRange}</p>
+				<p>Company: {companyName}</p>
+				<p>Responsibilities: {responsibilities}</p>
+				<p>Number of git commits: {numberOfGitCommits}</p>
+				<p>Codewars kata level: {codewarKataLevel}</p>
+				<p>Codewars points: {codewarPoints}</p>
+				<p>Contact name: {contactName}</p>
+				<p>Contact email: {contactEmail}</p>
+				<p>Contact phone number: {contactPhone}</p>
 				<button onClick={handleClick} type="Submit">
-					Apply
+					APPLY
 				</button>
 				<GradAppliedJobs job={job} />
 			</div>

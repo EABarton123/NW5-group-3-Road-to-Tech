@@ -20,11 +20,14 @@ function Main() {
 		}
 		try {
 			setLoading(true);
-			const { data } = await axios.post("/api/login", {
-				email,
-				password,
-				role,
-			});
+			const { data } = await axios.post(
+				"https://starter-kit-nqe2.onrender.com/api/login",
+				{
+					email,
+					password,
+					role,
+				}
+			);
 			setLoading(false);
 			toast.success(data.message);
 			{
@@ -81,8 +84,7 @@ function Main() {
 							required
 							onChange={(event) => setPassword(event.target.value)}
 						/>
-						<div className={MainCSS.role}>
-							<label htmlFor="role"> Role:</label>
+						<label className={MainCSS.RoleContainer}>
 							<input
 								type="radio"
 								value="graduate"
@@ -90,6 +92,8 @@ function Main() {
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Graduate
+						</label>
+						<label className={MainCSS.RoleContainer1}>
 							<input
 								type="radio"
 								value="admin"
@@ -97,7 +101,7 @@ function Main() {
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Admin
-						</div>
+						</label>
 
 						<button
 							className={MainCSS.formbutton}
@@ -110,8 +114,8 @@ function Main() {
 				</div>
 				<div className={MainCSS.video1}>
 					<iframe
-					width="100%"
-					height="100%"
+						width="100%"
+						height="100%"
 						src="https://www.youtube.com/embed/jz87O1kap7s"
 						title="Code Your Future"
 					></iframe>

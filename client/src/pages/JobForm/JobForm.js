@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
-import salaryRange from "./salaryRange.json";
+import axios from "axios";
+import salaryRange from "./salaryRange";
+import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
-function JobForm({ updateJob }) {
+import { object, string, number, date } from "yup";
+
+function JobForm() {
 	const [formData, setFormData] = useState({
 		title: "",
 		type: "",
@@ -12,7 +16,7 @@ function JobForm({ updateJob }) {
 		numberOfGitCommits: 0,
 		codewarKataLevel: 0,
 		codewarPoints: 0,
-		codalitiyTestPoints: 0,
+		codalityTestPoints: 0,
 		category: "",
 		salaryRange: { min: 0, max: 0 },
 		contactName: "",
@@ -22,11 +26,34 @@ function JobForm({ updateJob }) {
 		companyWebSite: "",
 		companyLogo: "",
 		requirements: "",
-		applicationsDeadline: "",
+		applicationsDeadline: "", //todo:calender yaptik nasil olacak bu/ date mi olacak
 		numberOfStudentsCanApply: 0,
 	});
 
 	const navigate = useNavigate();
+
+	const jobSchema = object({
+		title: string().required("Title field is required"),
+		type: string(),
+		description: string(),
+		responsibilities: string(),
+		numberOfGitCommits: number().positive().integer(),
+		codewarKataLevel: number().positive().integer(),
+		codewarPoints: number().positive().integer(),
+		codalityTestPoints: number().positive().integer(),
+		category: string(),
+		salaryRange: object({ min: number().positive(), max: number().positive() }),
+		contactName: string(),
+		contactEmail: string().email("Must be a valid email"),
+		contactPhone: number(),
+		companyName: string(),
+		companyWebSite: string().url().nullable(),
+		companyLogo: "", // todo: upload image bak
+		requirements: string(),
+		applicationsDeadline: date(),
+		numberOfStudentsCanApply: number().positive().integer(),
+	});
+
 	const handleForm = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
@@ -51,9 +78,46 @@ function JobForm({ updateJob }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log({ formData });
-		updateJob(formData);
+		e.preventDefault();
+		// jobSchema.validate(formData);
+		postJob(formData);
 	};
 
+	const [isUploadingImage, setIsUploadingImage] = useState(false);
+	const [logoName] = useState("");
+	const handleFileUpload = (e) => {
+		const fd = new FormData();
+		fd.append("image", e.target.files[0], e.target.files[0].name);
+		setIsUploadingImage(true);
+		axios
+			.post("api/upload", fd, {
+				onUploadProgress: (progressEvent) => {
+					console.log(
+						"UploadProgress" +
+							Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+							"%"
+					);
+				},
+			})
+			.then(({ data }) => {
+				console.log({ data });
+			})
+			.catch((err) => console.log(err))
+			.finally(() => setIsUploadingImage(false));
+	};
+
+	const postJob = async (formData) => {
+		try {
+			jobSchema.validate(formData);
+			const { resData } = await axios.post("/api/job", {
+				...formData,
+			});
+			console.log({ resData });
+			navigate("/admin");
+		} catch (err) {
+			console.log({ err });
+		}
+	};
 	return (
 		<div className="container">
 			<h1 className="heading">POST A JOB</h1>
@@ -111,7 +175,7 @@ function JobForm({ updateJob }) {
 							name="numberOfGitCommits"
 							type="number"
 							min="0"
-							placeholder="Enter responsibilities"
+							placeholder="Enter numberOfGitCommits"
 							value={formData.numberOfGitCommits}
 							onChange={handleForm}
 						/>
@@ -200,7 +264,7 @@ function JobForm({ updateJob }) {
 						<Form.Control
 							name="contactName"
 							type="text"
-							placeholder="Enter contactName"
+							placeholder="Enter Contact Name"
 							value={formData.contactName}
 							onChange={handleForm}
 						/>
@@ -231,7 +295,7 @@ function JobForm({ updateJob }) {
 						<Form.Control
 							name="companyName"
 							type="text"
-							placeholder="Enter companyName"
+							placeholder="Enter Company Name"
 							value={formData.companyName}
 							onChange={handleForm}
 						/>
@@ -241,7 +305,7 @@ function JobForm({ updateJob }) {
 						<Form.Control
 							name="companyWebSite"
 							type="text"
-							placeholder="Enter companyWebSite"
+							placeholder="Enter Company WebSite"
 							value={formData.companyWebSite}
 							onChange={handleForm}
 						/>
@@ -250,11 +314,12 @@ function JobForm({ updateJob }) {
 						<Form.Label className="formLabel">LOGO:</Form.Label>
 						<Form.Control
 							name="companyLogo"
-							type="number"
+							type="file"
 							placeholder="Enter companyLogo"
-							value={formData.companyLogo}
-							onChange={handleForm}
+							value={logoName}
+							onChange={handleFileUpload}
 						/>
+						{isUploadingImage && <Spinner animation="grow" />}
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
 						<Form.Label className="formLabel">
@@ -270,7 +335,12 @@ function JobForm({ updateJob }) {
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end p-2">
-						<Button variant="danger" type="submit" onClick={handleSubmit}>
+						<Button
+							variant="danger"
+							type="submit"
+							onClick={handleSubmit}
+							disabled={isUploadingImage}
+						>
 							PUBLISH
 						</Button>
 					</div>
