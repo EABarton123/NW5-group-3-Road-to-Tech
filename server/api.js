@@ -80,9 +80,8 @@ router.post("/upload", (req, res) => {
 
 router.post("/job", async (req, res) => {
 	const reqBody = req.body;
-
 	const sqlQuery =
-		"INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codalitiy_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
+		"INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codality_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
 
 	const values = [
 		reqBody.title,
@@ -92,7 +91,7 @@ router.post("/job", async (req, res) => {
 		reqBody.numberOfGitCommits,
 		reqBody.codewarKataLevel,
 		reqBody.codewarPoints,
-		reqBody.codalitiyTestPoints,
+		reqBody.codalityTestPoints,
 		reqBody.category,
 		reqBody.salaryRange.min,
 		reqBody.salaryRange.max,
