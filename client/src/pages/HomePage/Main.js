@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MainCSS from "./Main.module.css";
+// import { auto } from "@popperjs/core";
 
 function Main() {
 	const navigate = useNavigate();
@@ -117,7 +118,7 @@ function Main() {
 				<div className={MainCSS.video1}>
 					<iframe
 						width="100%"
-						height="178"
+						height="100%"
 						src="https://www.youtube.com/embed/jz87O1kap7s"
 						title="Code Your Future"
 					></iframe>

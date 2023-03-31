@@ -1,7 +1,8 @@
 import style from "./GradAppliedJobs.molude.css";
 
-function GradAppliedJobs() {
-	const jobApplied = [{ id: 1 }, { id: 2 }, { id: 3 }];
+function GradAppliedJobs({ job }) {
+	const jobApplied = [{ job }];
+	console.log(jobApplied);
 
 	return (
 		<div className={style.container}>
