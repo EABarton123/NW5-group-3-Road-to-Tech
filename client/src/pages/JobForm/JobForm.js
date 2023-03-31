@@ -21,7 +21,7 @@ function JobForm() {
 		salaryRange: { min: 0, max: 0 },
 		contactName: "",
 		contactEmail: "",
-		contactPhone: 123456789,
+		contactPhone: 0,
 		companyName: "",
 		companyWebSite: "",
 		companyLogo: "",
@@ -72,9 +72,11 @@ function JobForm() {
 		} else {
 			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
 			setFormData({ ...formData, salaryRange: { min, max } });
+			console.log(min, max);
 		}
 	};
 	const handleSubmit = (e) => {
+		e.preventDefault();
 		console.log({ formData });
 		e.preventDefault();
 		// jobSchema.validate(formData);
