@@ -24,8 +24,6 @@ function SingleJobListing({ job }) {
 		numberOfStudentsCanApply,
 	} = job;
 
-	console.log(job);
-
 	function handleClick() {
 		window.location.href = job.companyWebSite;
 	}
