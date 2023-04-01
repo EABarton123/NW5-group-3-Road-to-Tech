@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { object, string, number, date } from "yup";
 
-function JobForm() {
+function JobForm({ setIsUpdateData }) {
 	const [formData, setFormData] = useState({
 		title: "",
 		type: "",
@@ -28,15 +28,13 @@ function JobForm() {
 		companyWebSite: "",
 		companyLogo: "",
 		requirements: "",
-		applicationsDeadline: "", //todo:calender yaptik nasil olacak bu/ date mi olacak
+		applicationsDeadline: "",
 		numberOfStudentsCanApply: 0,
 	});
 
 	const [file, setFile] = useState();
 	const [isUploadingImage, setIsUploadingImage] = useState(false);
 	const [logoName, setLogoName] = useState();
-
-	const navigate = useNavigate();
 
 	const jobSchema = object({
 		title: string().required("Title field is required"),
@@ -54,7 +52,7 @@ function JobForm() {
 		contactPhone: number(),
 		companyName: string(),
 		companyWebSite: string().url().nullable(),
-		companyLogo: "", // todo: upload image bak
+		companyLogo: "",
 		requirements: string(),
 		applicationsDeadline: date(),
 		numberOfStudentsCanApply: number().positive().integer(),
@@ -80,7 +78,9 @@ function JobForm() {
 		if (value == -1) {
 			setFormData({ ...formData, salaryRange: { min: 0, max: 0 } });
 		} else {
-			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
+			const { min, max } = salaryRangeJson.filter(
+				(item) => item.id == value
+			)[0];
 			setFormData({ ...formData, salaryRange: { min, max } });
 			console.log(min, max);
 		}
@@ -110,11 +110,14 @@ function JobForm() {
 	const postJob = async (formData) => {
 		try {
 			jobSchema.validate(formData);
-			const { resData } = await axios.post("/api/job", {
+			const response = await axios.post("/api/job", {
 				...formData,
 			});
-			console.log({ resData });
-			navigate("/admin");
+
+			toast.success("Job posted");
+			if (response.status === 200) {
+				setIsUpdateData((prev) => !prev);
+			}
 		} catch (err) {
 			console.log({ err });
 		}
@@ -131,8 +134,8 @@ function JobForm() {
 							name="title"
 							type="text"
 							placeholder="Enter title"
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
+							value={formData.title}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -141,8 +144,8 @@ function JobForm() {
 							name="type"
 							type="text"
 							placeholder="Enter type"
-							value={type}
-							onChange={(e) => setType(e.target.value)}
+							value={formData.type}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="description">
@@ -151,8 +154,8 @@ function JobForm() {
 							name="description"
 							as="textarea"
 							placeholder="Enter description"
-							value={description}
-							onChange={(e) => setDescription(e.target.value)}
+							value={formData.description}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group
@@ -164,8 +167,8 @@ function JobForm() {
 							name="responsibilities"
 							as="textarea"
 							placeholder="Enter responsibilities"
-							value={responsibilities}
-							onChange={(e) => setResponsibilities(e.target.value)}
+							value={formData.responsibilities}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<h3 className="mb-4">CONSTRAINTS:</h3>
@@ -189,8 +192,8 @@ function JobForm() {
 							type="number"
 							min="0"
 							placeholder="Enter codewarKataLevel"
-							value={codewarKataLevel}
-							onChange={(e) => setCodewarKataLevel(e.target.value)}
+							value={formData.codewarKataLevel}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex">
@@ -200,8 +203,8 @@ function JobForm() {
 							type="number"
 							min="0"
 							placeholder="Enter codewarPoints"
-							value={codewarPoints}
-							onChange={(e) => setCodewarPoints(e.target.value)}
+							value={formData.codewarPoints}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="mgroup mb-3 d-flex">
@@ -211,8 +214,8 @@ function JobForm() {
 							type="number"
 							min="0"
 							placeholder="Enter codalitiyTestPoints"
-							value={codalityTestPoints}
-							onChange={(e) => setCodalityTestPoints(e.target.value)}
+							value={formData.codalityTestPoints}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -221,8 +224,8 @@ function JobForm() {
 							name="requirements"
 							type="text"
 							placeholder="Enter requirements"
-							value={requirements}
-							onChange={(e) => setRequirements(e.target.value)}
+							value={formData.requirements}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -233,8 +236,8 @@ function JobForm() {
 							name="applicationsDeadline"
 							type="date"
 							placeholder="Enter applicationsDeadline"
-							value={applicationsDeadline}
-							onChange={(e) => setApplicationsDeadline(e.target.value)}
+							value={formData.applicationsDeadline}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 				</div>
@@ -277,8 +280,8 @@ function JobForm() {
 							name="contactEmail"
 							type="email"
 							placeholder="name@example.com"
-							value={contactEmail}
-							onChange={(e) => setContactEmail(e.target.value)}
+							value={formData.contactEmail}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<Form.Group className="group mb-3 d-flex" controlId="title">
@@ -287,8 +290,8 @@ function JobForm() {
 							name="contactPhone"
 							type="number"
 							placeholder="Enter contactPhone"
-							value={contactPhone}
-							onChange={(e) => setContactPhone(e.target.value)}
+							value={formData.contactPhone}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<h3 className="mb-4">COMPANY INFORMATION:</h3>
@@ -331,8 +334,8 @@ function JobForm() {
 							type="number"
 							min="0"
 							placeholder="Enter numberOfStudentsCanApply"
-							value={numberOfStudentsCanApply}
-							onChange={(e) => setNumberOfStudentsCanApply(e.target.value)}
+							value={formData.numberOfStudentsCanApply}
+							onChange={handleForm}
 						/>
 					</Form.Group>
 					<div className="d-flex justify-content-end p-2">

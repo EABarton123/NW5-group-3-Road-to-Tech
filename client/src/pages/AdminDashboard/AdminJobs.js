@@ -1,41 +1,14 @@
-// import JobForm from "../JobForm/JobForm";
+import JobForm from "../JobForm/JobForm";
 import SearchJobs from "../JobsList/SearchJobs";
-// import { useState, useEffect } from "react";
-// import axios from "axios";
+import { useState } from "react";
 
 function AdminJobs() {
-	// const [jobs, setJobs] = useState([]);
-
-	// const postJob = async (formData) => {
-	// 	const originalJobs = { ...jobs };
-
-	// 	try {
-	// 		setJobs({ ...jobs, formData });
-
-	// 		await axios.post("/api/job", {
-	// 			...formData,
-	// 		});
-	// 	} catch (err) {
-	// 		console.log({ err });
-	// 		setJobs(originalJobs);
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	axios
-	// 		.get("/api/job")
-	// 		.then((response) => {
-	// 			setJobs(response.jobs);
-	// 		})
-	// 		.catch((error) => {
-	// 			console.error(error);
-	// 		});
-	// }, []);
+	const [isUpdateData, setIsUpdateData] = useState(false);
 
 	return (
 		<div>
-			<SearchJobs />
-			{/* <JobForm /> */}
+			<SearchJobs isUpdateData={isUpdateData} />
+			<JobForm setIsUpdateData={setIsUpdateData} />
 		</div>
 	);
 }

@@ -3,7 +3,7 @@ import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
 import axios from "axios";
 
-function SearchJobs() {
+function SearchJobs({ isUpdateData=false }) {
 	const [data, setData] = useState([]);
 	const [filteredData, setFilteredData] = useState([]);
 	const [selectedJob, setSelectedJob] = useState({});
@@ -18,7 +18,7 @@ function SearchJobs() {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [isUpdateData]);
 
 	const handleChange = (event) => {
 		const search = event.target.value;
