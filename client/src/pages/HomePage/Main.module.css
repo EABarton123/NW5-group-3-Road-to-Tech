@@ -5,6 +5,7 @@
 	justify-content: space-between;
 
 	padding: 20px;
+	height: calc(119.7vh - 80px);
 	height: calc(100vh - 80px);
 	gap: 0.5%;
 }
