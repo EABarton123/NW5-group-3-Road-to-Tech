@@ -66,7 +66,7 @@ router.post("/job", async (request, response) => {
 		reqBody.numberOfGitCommits,
 		reqBody.codewarKataLevel,
 		reqBody.codewarPoints,
-		reqBody.codalitiyTestPoints,
+		reqBody.codalityTestPoints,
 		reqBody.category,
 		reqBody.salaryRange.min,
 		reqBody.salaryRange.max,

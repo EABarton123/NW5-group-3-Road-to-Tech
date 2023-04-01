@@ -7,72 +7,73 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function JobForm() {
-	const [title, setTitle] = useState("");
-	const [type, setType] = useState("");
-	const [description, setDescription] = useState("");
-	const [responsibilities, setResponsibilities] = useState("");
-	const [numberOfGitCommits, setNumberOfGitCommits] = useState(0);
-	const [codewarKataLevel, setCodewarKataLevel] = useState(0);
-	const [codewarPoints, setCodewarPoints] = useState(0);
-	const [codalityTestPoints, setCodalityTestPoints] = useState(0);
-	const [category, setCategory] = useState("");
-	const [salaryRange, setSalaryRange] = useState({ min: 0, max: 0 });
-	const [contactName, setContactName] = useState("");
-	const [contactEmail, setContactEmail] = useState("");
-	const [contactPhone, setContactPhone] = useState(0);
-	const [companyName, setCompanyName] = useState("");
-	const [companyWebSite, setCompanyWebSite] = useState("");
-	const [companyLogo, setCompanyLogo] = useState("");
-	const [requirements, setRequirements] = useState("");
-	const [applicationsDeadline, setApplicationsDeadline] = useState("");
-	const [numberOfStudentsCanApply, setNumberOfStudentsCanApply] = useState(0);
+	// const [title, setTitle] = useState("");
+	// const [type, setType] = useState("");
+	// const [description, setDescription] = useState("");
+	// const [responsibilities, setResponsibilities] = useState("");
+	// const [numberOfGitCommits, setNumberOfGitCommits] = useState(0);
+	// const [codewarKataLevel, setCodewarKataLevel] = useState(0);
+	// const [codewarPoints, setCodewarPoints] = useState(0);
+	// const [codalityTestPoints, setCodalityTestPoints] = useState(0);
+	// const [category, setCategory] = useState("");
+	// const [salaryRange, setSalaryRange] = useState({ min: 0, max: 0 });
+	// const [contactName, setContactName] = useState("");
+	// const [contactEmail, setContactEmail] = useState("");
+	// const [contactPhone, setContactPhone] = useState(0);
+	// const [companyName, setCompanyName] = useState("");
+	// const [companyWebSite, setCompanyWebSite] = useState("");
+	// const [companyLogo, setCompanyLogo] = useState("");
+	// const [requirements, setRequirements] = useState("");
+	// const [applicationsDeadline, setApplicationsDeadline] = useState("");
+	// const [numberOfStudentsCanApply, setNumberOfStudentsCanApply] = useState(0);
 
 	// const [salaryMin, setSalaryMin] = useState(0);
 	// const ....blablabla
-	// 	const [formData, setFormData] = useState({
-	// title: "",
-	// type: "",
-	// description: "",
-	// responsibilities: "",
-	// numberOfGitCommits: 0,
-	// codewarKataLevel: 0,
-	// codewarPoints: 0,
-	// codalitiyTestPoints: 0,
-	// category: "",
-	// salaryRange: { min: 0, max: 0 },
-	// contactName: "",
-	// contactEmail: "",
-	// contactPhone: 0,
-	// companyName: "",
-	// companyWebSite: "",
-	// companyLogo: "",
-	// requirements: "",
-	// applicationsDeadline: "",
-	// numberOfStudentsCanApply: 0,
-	// 	});
+		const [formData, setFormData] = useState({
+	title: "",
+	type: "",
+	description: "",
+	responsibilities: "",
+	numberOfGitCommits: 0,
+	codewarKataLevel: 0,
+	codewarPoints: 0,
+	codalitiyTestPoints: 0,
+	category: "",
+	salaryRange: { min: 0, max: 0 },
+	contactName: "",
+	contactEmail: "",
+	contactPhone: 0,
+	companyName: "",
+	companyWebSite: "",
+	companyLogo: "",
+	requirements: "",
+	applicationsDeadline: "",
+	numberOfStudentsCanApply: 0,
+		});
 
 	const postJob = async () => {
 		try {
 			await axios.post("/api/job", {
-				title,
-				type,
-				description,
-				responsibilities,
-				numberOfGitCommits,
-				codewarKataLevel,
-				codewarPoints,
-				codalityTestPoints,
-				category,
-				salaryRange,
-				contactName,
-				contactEmail,
-				contactPhone,
-				companyName,
-				companyWebSite,
-				companyLogo,
-				requirements,
-				applicationsDeadline,
-				numberOfStudentsCanApply,
+				// title,
+				// type,
+				// description,
+				// responsibilities,
+				// numberOfGitCommits,
+				// codewarKataLevel,
+				// codewarPoints,
+				// codalityTestPoints,
+				// category,
+				// salaryRange,
+				// contactName,
+				// contactEmail,
+				// contactPhone,
+				// companyName,
+				// companyWebSite,
+				// companyLogo,
+				// requirements,
+				// applicationsDeadline,
+				// numberOfStudentsCanApply,
+				...formData,
 			});
 		} catch (err) {
 			console.log({ err });
@@ -85,7 +86,7 @@ function JobForm() {
 	// };
 	const handleCategory = (e) => {
 		if (e.target.value == "none") {
-			setCategory(category);
+			setFormData(...formData, se);
 		} else {
 			setCategory(e.target.value);
 		}
@@ -101,6 +102,7 @@ function JobForm() {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setFormData(formData);
 		postJob().then(() => toast.success("Job posted!"));
 	};
 
