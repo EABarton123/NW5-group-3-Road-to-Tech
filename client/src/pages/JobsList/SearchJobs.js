@@ -3,7 +3,7 @@ import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
 import axios from "axios";
 
-function SearchJobs({ isUpdateData=false }) {
+function SearchJobs({ isUpdateData = false }) {
 	const [data, setData] = useState([]);
 	const [filteredData, setFilteredData] = useState([]);
 	const [selectedJob, setSelectedJob] = useState({});
