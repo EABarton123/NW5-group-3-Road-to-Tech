@@ -14,8 +14,8 @@ function SingleJobListing({ job }) {
 		codewar_points,
 		codality_test_points,
 		category,
-		// salary_range_max,
-		// salary_range_min,
+		salary_range_max,
+		salary_range_min,
 		contact_name,
 		contact_email,
 		contact_phone,
@@ -42,9 +42,12 @@ function SingleJobListing({ job }) {
 				<p>Requirements: {requirements}</p>
 				<p>Deadline: {applications_deadline}</p>
 				<p>
-					Number of students application can take: {number_of_students_can_apply}
+					Number of students application can take:{" "}
+					{number_of_students_can_apply}
 				</p>
-				{/* <p>Salary: Min:{salary_range_min} - Max: {salary_range_max}</p> */}
+				<p>
+					Salary: Min:{salary_range_min} - Max: {salary_range_max}
+				</p>
 				<p>Company: {company_name}</p>
 				<p>Responsibilities: {responsibilities}</p>
 				<p>Number of git commits: {number_of_gitcommits}</p>

@@ -63,9 +63,6 @@ function JobForm({ setIsUpdateData }) {
 		setFormData({ ...formData, [name]: value });
 	};
 
-	// const handleForm = (e) => {
-	// 	const { name, value } = e.target;
-	// 	setFormData({ ...formData, [name]: value });
 	const handleCategory = (e) => {
 		if (e.target.value == "none") {
 			setFormData({ ...formData, category: "" });

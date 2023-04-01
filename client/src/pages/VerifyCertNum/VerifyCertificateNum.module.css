@@ -101,7 +101,6 @@ form > div > label {
 form > div > input {
 	padding: 0.5rem;
 	min-width: 20rem;
-	/* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 .btn_secondary {
 	margin-top: 50px;

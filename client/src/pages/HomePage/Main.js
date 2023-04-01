@@ -5,7 +5,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MainCSS from "./Main.module.css";
 import cyfClassImage from "./cyf-class-in-session1.jpg";
-// import { auto } from "@popperjs/core";
 
 function Main() {
 	const navigate = useNavigate();
@@ -90,7 +89,6 @@ function Main() {
 								type="radio"
 								value="graduate"
 								name="role"
-								// checked={setRole === "graduate"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Graduate
@@ -98,7 +96,6 @@ function Main() {
 								type="radio"
 								value="admin"
 								name="role"
-								// checked={setRole === "admin"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Admin
@@ -113,14 +110,6 @@ function Main() {
 						</button>
 					</form>
 				</div>
-				{/* <div className={MainCSS.video1}>
-					<iframe
-						width="100%"
-						height="100%"
-						src="https://www.youtube.com/embed/jz87O1kap7s"
-						title="Code Your Future"
-					></iframe>
-				</div> */}
 			</div>
 		</main>
 	);
