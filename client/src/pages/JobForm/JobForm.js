@@ -21,7 +21,7 @@ function JobForm() {
 		salaryRange: { min: 0, max: 0 },
 		contactName: "",
 		contactEmail: "",
-		contactPhone: 123456789,
+		contactPhone: 0,
 		companyName: "",
 		companyWebSite: "",
 		companyLogo: "",
@@ -29,6 +29,10 @@ function JobForm() {
 		applicationsDeadline: "", //todo:calender yaptik nasil olacak bu/ date mi olacak
 		numberOfStudentsCanApply: 0,
 	});
+
+	const [file, setFile] = useState();
+	const [isUploadingImage, setIsUploadingImage] = useState(false);
+	const [logoName, setLogoName] = useState();
 
 	const navigate = useNavigate();
 
@@ -72,36 +76,29 @@ function JobForm() {
 		} else {
 			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
 			setFormData({ ...formData, salaryRange: { min, max } });
+			console.log(min, max);
 		}
 	};
 	const handleSubmit = (e) => {
+		e.preventDefault();
 		console.log({ formData });
 		e.preventDefault();
 		// jobSchema.validate(formData);
-		postJob(formData);
-	};
-
-	const [isUploadingImage, setIsUploadingImage] = useState(false);
-	const [logoName] = useState("");
-	const handleFileUpload = (e) => {
 		const fd = new FormData();
-		fd.append("image", e.target.files[0], e.target.files[0].name);
+		fd.append("image", file, file.name);
 		setIsUploadingImage(true);
 		axios
-			.post("api/upload", fd, {
-				onUploadProgress: (progressEvent) => {
-					console.log(
-						"UploadProgress" +
-							Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-							"%"
-					);
-				},
-			})
+			.post("api/upload", fd, {})
 			.then(({ data }) => {
-				console.log({ data });
+				postJob({ ...formData, companyLogo: data.imageUrl });
 			})
 			.catch((err) => console.log(err))
 			.finally(() => setIsUploadingImage(false));
+	};
+
+	const handleFileUpload = (e) => {
+		setFile(e.target.files[0]);
+		setLogoName(e.target.files[0].name);
 	};
 
 	const postJob = async (formData) => {
@@ -313,8 +310,7 @@ function JobForm() {
 						<Form.Control
 							name="companyLogo"
 							type="file"
-							placeholder="Enter companyLogo"
-							value={logoName}
+							placeholder={logoName || "Enter companyLogo"}
 							onChange={handleFileUpload}
 						/>
 						{isUploadingImage && <Spinner animation="grow" />}
