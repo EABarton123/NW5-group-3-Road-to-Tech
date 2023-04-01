@@ -49,7 +49,7 @@ function JobForm({ setIsUpdateData }) {
 		salaryRange: object({ min: number().positive(), max: number().positive() }),
 		contactName: string(),
 		contactEmail: string().email("Must be a valid email"),
-		contactPhone: number(),
+		contactPhone: string(),
 		companyName: string(),
 		companyWebSite: string().url().nullable(),
 		companyLogo: "",
@@ -288,7 +288,7 @@ function JobForm({ setIsUpdateData }) {
 						<Form.Label className="formLabel">PHONE:</Form.Label>
 						<Form.Control
 							name="contactPhone"
-							type="number"
+							type="text"
 							placeholder="Enter contactPhone"
 							value={formData.contactPhone}
 							onChange={handleForm}
