@@ -89,7 +89,7 @@ function JobForm() {
 		e.preventDefault();
 		console.log({ formData });
 		e.preventDefault();
-		// jobSchema.validate(formData);
+
 		const fd = new FormData();
 		fd.append("image", file, file.name);
 		setIsUploadingImage(true);
