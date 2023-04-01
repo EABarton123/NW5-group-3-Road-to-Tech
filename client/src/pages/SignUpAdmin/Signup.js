@@ -15,19 +15,17 @@ const Signup = () => {
 	const signupSubmit = (e) => {
 		e.preventDefault();
 		if (
-			axios
-				.post("/api/signup", subFormDate)
-				.then((res) => {
-					console.log(res.data);
-					alert("Signup successful!");
+			axios.post("/api/signup", subFormDate).then((res) => {
+				console.log(res.data);
+				alert("Signup successful!");
 
-					setSubFormDate({
-						email: "",
-						username: "",
-						role: "",
-						password: "",
-					});
-				})
+				setSubFormDate({
+					email: "",
+					username: "",
+					role: "",
+					password: "",
+				});
+			})
 		) {
 			navigate("/");
 		}

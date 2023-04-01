@@ -1,5 +1,5 @@
 import React from "react";
-import GradAppliedJobs from "../GradAppliedJobs";
+// import GradAppliedJobs from "../GradAppliedJobs";
 
 function SingleJobListing({ job }) {
 	const {
@@ -56,7 +56,7 @@ function SingleJobListing({ job }) {
 				<button onClick={handleClick} type="Submit">
 					APPLY
 				</button>
-				<GradAppliedJobs job={job} />
+				{/* <GradAppliedJobs job={job} /> */}
 			</div>
 		</div>
 	);

@@ -87,6 +87,7 @@
 		"pg": "^8.9.0",
 		"react-bootstrap": "^2.7.2",
 		"react-toastify": "^9.1.1",
+		"uuid": "^9.0.0",
 		"winston": "^3.8.2",
 		"xml2js-parser": "^1.1.1",
 		"yup": "^1.0.2"
