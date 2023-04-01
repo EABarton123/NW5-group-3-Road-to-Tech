@@ -2,22 +2,12 @@ import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
 import multer from "multer";
-import path from "path";
+import { uploadFirebase } from "./firebase.config";
 
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, path.join(__dirname, "/images/"));
-	},
-	filename: (req, file, cb) => {
-		//console.log(file);
-		const imageName = Date.now() + path.extname(file.originalname);
-		cb(null, imageName);
-	},
-});
-
-const upload = multer({ storage, limits: { fileSize: 3000000 } }).single(
-	"image"
-);
+const upload = multer({
+	storage: multer.memoryStorage(),
+	limits: { fileSize: 3000000 },
+}).single("image");
 
 const express = require("express");
 const mg = require("mailgun-js");
@@ -63,26 +53,24 @@ router.post("/verify", (request, response) => {
 			}
 		});
 });
-router.post("/upload", (req, res) => {
-	upload(req, res, (err) => {
-		if (err) {
-			res.status(500).send({
-				message:
-					"Image cannot be uploaded.Please check your image file and try again.",
-			});
-		} else {
-			return res.status(201).json({
-				filename: req.file.filename,
-			});
-		}
-	});
+router.post("/upload", upload, async (req, res) => {
+	try {
+		const downloadUrl = await uploadFirebase(req.file);
+
+		res.status(200).send({ imageUrl: downloadUrl });
+	} catch (error) {
+		res.status(400).send({
+			message:
+				"Image cannot be uploaded.Please check your image file and try again.",
+			error,
+		});
+	}
 });
 
 router.post("/job", async (req, res) => {
 	const reqBody = req.body;
-
 	const sqlQuery =
-		"INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codalitiy_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
+		"INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codality_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
 
 	const values = [
 		reqBody.title,
@@ -92,7 +80,7 @@ router.post("/job", async (req, res) => {
 		reqBody.numberOfGitCommits,
 		reqBody.codewarKataLevel,
 		reqBody.codewarPoints,
-		reqBody.codalitiyTestPoints,
+		reqBody.codalityTestPoints,
 		reqBody.category,
 		reqBody.salaryRange.min,
 		reqBody.salaryRange.max,
