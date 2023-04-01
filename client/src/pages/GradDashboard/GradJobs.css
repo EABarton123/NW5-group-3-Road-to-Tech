@@ -1,0 +1,42 @@
+body {
+	font-family: "Raleway", sans-serif;
+}
+
+#job-card-applied {
+	border: 0.5px solid transparent;
+	border-radius: 10px;
+	background-color: #f1f1f1;
+	color: red;
+	padding: 12px;
+	margin-top: 15px;
+	font-weight: 700;
+}
+
+#container1 {
+	display: flex;
+	padding: 10px;
+}
+
+#type1 {
+	background-color: #f1f1f1;
+	color: red;
+	padding: 10px;
+	border-radius: 12px;
+	flex: 1;
+	margin-right: 20px;
+}
+
+#salary1 {
+	background-color: #f1f1f1;
+	color: red;
+	padding: 10px;
+	border-radius: 12px;
+	flex: 1;
+}
+
+h2 {
+	color: white;
+	background-color: red;
+	padding: 10px;
+	border-radius: 10px;
+}

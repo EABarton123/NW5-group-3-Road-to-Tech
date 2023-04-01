@@ -1,0 +1,184 @@
+#div-main {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+#div-left {
+	flex: 1;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: 650px;
+	grid-gap: 20px;
+	/* overflow-y: scroll; */
+}
+
+#div-right {
+	flex: 1;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: top;
+}
+
+#job-card {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+}
+
+#job-card:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
+}
+
+#job-card h2 {
+	margin: 0;
+	font-size: 1.2rem;
+	background-color: red;
+	border-radius: 10px;
+}
+
+#job-card p {
+	margin: 10px 0;
+	font-size: 0.9rem;
+	line-height: 1.4rem;
+	color: #666;
+}
+
+#container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#type {
+	font-weight: bold;
+}
+
+#salary {
+	font-style: italic;
+}
+
+#searchbar {
+	margin-bottom: 20px;
+}
+
+#searchbar input[type="text"] {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	font-size: 1rem;
+}
+
+#searchbar input[type="text"]:focus {
+	outline: none;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
+}
+
+#single-job-listing {
+	max-width: 600px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#single-job-listing h2 {
+	margin: 0;
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+}
+
+#single-job-listing p {
+	margin: 10px 0;
+	font-size: 1rem;
+	line-height: 1.4rem;
+	color: #666;
+}
+
+#single-job-listing button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	background-color: #4285f4;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+#single-job-listing button:hover {
+	background-color: #3367d6;
+}
+
+/* body {
+	font-family: "Raleway", sans-serif;
+}
+
+#div-main {
+	display: flex;
+	justify-content: center;
+	background-color: #f1f1f1;
+}
+
+#div-left {
+	flex: 1;
+	padding: 10px;
+}
+
+#div-right {
+	flex: 1;
+	padding: 10px;
+	border: black 0.5px solid;
+	border-radius: 5%;
+	margin-top: 40px;
+	background-color: white;
+}
+
+#searchbar {
+	padding: 10px;
+	border-radius: 5%;
+}
+
+#job-card {
+	border: 0.5px solid transparent;
+	border-radius: 10px;
+	background-color: red;
+	color: white;
+	padding: 12px;
+	margin-top: 15px;
+	font-weight: 700;
+}
+
+#container {
+	display: flex;
+	padding: 10px;
+	border-radius: 5%;
+}
+
+#type {
+	background-color: #f1f1f1;
+	color: red;
+	padding: 10px;
+	border-radius: 12px;
+	flex: 1;
+	margin-right: 20px;
+}
+
+#salary {
+	background-color: #f1f1f1;
+	color: red;
+	padding: 10px;
+	border-radius: 12px;
+	flex: 1;
+} */
