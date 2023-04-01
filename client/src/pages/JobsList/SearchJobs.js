@@ -1,8 +1,18 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
-// import axios from "axios";
+import axios from "axios";
+
+// useEffect(() => {
+// 	axios
+// 		.get("https://starter-kit-nqe2.onrender.com/api/job")
+// 		.then((response) => {
+// 			setJobs(response.jobs);
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// }, []);
 
 // useEffect(() => {
 // 	axios
@@ -13,35 +23,28 @@ import SingleJobListing from "./SingleJobListing";
 // }, [jobId]);
 
 function SearchJobs({ jobs }) {
-	const [data, setData] = useState([]);
-	const [selectedJob, setSelectedJob] = useState([]);
+	// const [data, setData] = useState({});
 
-	function fetchData() {
-		return axios
-			.get("/api/job")
-			.then((response) => setData(response.data))
-			.catch((error) => console.log(error));
-	}
+	const [selectedJob, setSelectedJob] = useState({});
 
-	console.log(jobs);
-
-	//     useEffect(() => {
-	// 	.then((response) => {
-	// 		fetchData
-
-	// 		})
-	// 		.catch((error) => {
-	// 			console.error(error);
-	// 		});
-	// }, []);
 	useEffect(() => {
-		fetchData();
+		axios
+			.get("/api/job")
+			.then((response) => {
+				// setJobs(response.data);
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 	}, []);
+	console.log(jobs);
 
 	const handleSubmit = (event) => {
 		const search = event.target.value;
 		event.preventDefault();
 		if (search === "") {
+			// setJobs(jobs);
 			fetchData();
 			return;
 		}
@@ -69,14 +72,14 @@ function SearchJobs({ jobs }) {
 				</form>
 				{data.map((job) => (
 					<div key={job.id} id="job-card">
-						<h2>title: {job.title}</h2>
-						<p>description: {job.description}</p>
-						<p>category: {job.category}</p>
+						<h2>Title: {job.title}</h2>
+						<p>Description: {job.description}</p>
+						<p>Category: {job.category}</p>
 						<div id="container">
 							<p id="type">{job.type}</p>
 							<p id="salary">{job.salaryRange}</p>
 						</div>
-						<p>company: {job.companyName}</p>
+						<p>Company: {job.companyName}</p>
 						<button
 							onClick={() => {
 								handleJobExpand(job);

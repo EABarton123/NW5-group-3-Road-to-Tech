@@ -4,7 +4,7 @@ import "./signupMenu.css";
 
 function SignupMenu() {
 	return (
-		<div className="dropdown" style={{ marginLeft: "700px" }}>
+		<div className="dropdown" style={{ marginLeft: "750px" }}>
 			<button className="dropbtn">SIGN UP</button>
 			<div className="dropdown-content">
 				<Link to="/signup">EMPLOYABILITY</Link>

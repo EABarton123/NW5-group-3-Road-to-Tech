@@ -1,6 +1,14 @@
 import { Router } from "express";
 import db from "./db";
 import logger from "./utils/logger";
+import multer from "multer";
+import { uploadFirebase } from "./firebase.config";
+
+const upload = multer({
+	storage: multer.memoryStorage(),
+	limits: { fileSize: 3000000 },
+}).single("image");
+
 const express = require("express");
 const mg = require("mailgun-js");
 
@@ -44,6 +52,19 @@ router.post("/verify", (request, response) => {
 				return response.send({ message: "Verified. Please check email" });
 			}
 		});
+});
+router.post("/upload", upload, async (req, res) => {
+	try {
+		const downloadUrl = await uploadFirebase(req.file);
+
+		res.status(200).send({ imageUrl: downloadUrl });
+	} catch (error) {
+		res.status(400).send({
+			message:
+				"Image cannot be uploaded.Please check your image file and try again.",
+			error,
+		});
+	}
 });
 
 router.post("/job", async (request, response) => {

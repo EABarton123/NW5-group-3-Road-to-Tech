@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MainCSS from "./Main.module.css";
+import cyfClassImage from "./cyf-class-in-session1.jpg";
+// import { auto } from "@popperjs/core";
 
 function Main() {
 	const navigate = useNavigate();
@@ -52,7 +54,7 @@ function Main() {
 			<div className={MainCSS.photo}>
 				<img
 					className={MainCSS.photo1}
-					src="https://codeyourfuture.io/wp-content/uploads/2022/03/cyf-class-in-session.jpg"
+					src={cyfClassImage}
 					alt="CodeYourFuture class in session"
 				/>
 			</div>
@@ -83,19 +85,22 @@ function Main() {
 							required
 							onChange={(event) => setPassword(event.target.value)}
 						/>
-						<label>
+
+						<label className={MainCSS.RoleContainer}>
+							{" "}
+							Role:
 							<input
 								type="radio"
 								value="graduate"
+								name="role"
 								// checked={setRole === "graduate"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
 							Graduate
-						</label>
-						<label>
 							<input
 								type="radio"
 								value="admin"
+								name="role"
 								// checked={setRole === "admin"}
 								onChange={(event) => setRole(event.target.value)}
 							/>
@@ -111,14 +116,14 @@ function Main() {
 						</button>
 					</form>
 				</div>
-				<div className={MainCSS.video1}>
+				{/* <div className={MainCSS.video1}>
 					<iframe
 						width="100%"
-						height="178"
+						height="100%"
 						src="https://www.youtube.com/embed/jz87O1kap7s"
 						title="Code Your Future"
 					></iframe>
-				</div>
+				</div> */}
 			</div>
 		</main>
 	);
