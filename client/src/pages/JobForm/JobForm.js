@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./JobForm.css";
+import salaryRangeJson from "./salaryRange.json";
 import axios from "axios";
-import salaryRange from "./salaryRange";
 import Spinner from "react-bootstrap/Spinner";
-import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { object, string, number, date } from "yup";
 
-function JobForm() {
+function JobForm({ setIsUpdateData }) {
 	const [formData, setFormData] = useState({
 		title: "",
 		type: "",
@@ -26,15 +28,13 @@ function JobForm() {
 		companyWebSite: "",
 		companyLogo: "",
 		requirements: "",
-		applicationsDeadline: "", //todo:calender yaptik nasil olacak bu/ date mi olacak
+		applicationsDeadline: "",
 		numberOfStudentsCanApply: 0,
 	});
 
 	const [file, setFile] = useState();
 	const [isUploadingImage, setIsUploadingImage] = useState(false);
 	const [logoName, setLogoName] = useState();
-
-	const navigate = useNavigate();
 
 	const jobSchema = object({
 		title: string().required("Title field is required"),
@@ -52,7 +52,7 @@ function JobForm() {
 		contactPhone: number(),
 		companyName: string(),
 		companyWebSite: string().url().nullable(),
-		companyLogo: "", // todo: upload image bak
+		companyLogo: "",
 		requirements: string(),
 		applicationsDeadline: date(),
 		numberOfStudentsCanApply: number().positive().integer(),
@@ -62,6 +62,10 @@ function JobForm() {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
+
+	// const handleForm = (e) => {
+	// 	const { name, value } = e.target;
+	// 	setFormData({ ...formData, [name]: value });
 	const handleCategory = (e) => {
 		if (e.target.value == "none") {
 			setFormData({ ...formData, category: "" });
@@ -74,7 +78,9 @@ function JobForm() {
 		if (value == -1) {
 			setFormData({ ...formData, salaryRange: { min: 0, max: 0 } });
 		} else {
-			const { min, max } = salaryRange.filter((item) => item.id == value)[0];
+			const { min, max } = salaryRangeJson.filter(
+				(item) => item.id == value
+			)[0];
 			setFormData({ ...formData, salaryRange: { min, max } });
 			console.log(min, max);
 		}
@@ -83,7 +89,7 @@ function JobForm() {
 		e.preventDefault();
 		console.log({ formData });
 		e.preventDefault();
-		// jobSchema.validate(formData);
+
 		const fd = new FormData();
 		fd.append("image", file, file.name);
 		setIsUploadingImage(true);
@@ -104,17 +110,21 @@ function JobForm() {
 	const postJob = async (formData) => {
 		try {
 			jobSchema.validate(formData);
-			const { resData } = await axios.post("/api/job", {
+			const response = await axios.post("/api/job", {
 				...formData,
 			});
-			console.log({ resData });
-			navigate("/admin");
+
+			toast.success("Job posted");
+			if (response.status === 200) {
+				setIsUpdateData((prev) => !prev);
+			}
 		} catch (err) {
 			console.log({ err });
 		}
 	};
 	return (
 		<div className="container">
+			<ToastContainer position="bottom-center" limit={1} />
 			<h1 className="heading">POST A JOB</h1>
 			<div className="jobform p-2">
 				<div className="section mx-4 my-2">
@@ -246,7 +256,7 @@ function JobForm() {
 						<Form.Label className="formLabel">SALARY RANGE:</Form.Label>
 						<Form.Select onChange={handleSalary}>
 							<option value="-1">Disabled select</option>
-							{salaryRange.map((salary) => (
+							{salaryRangeJson.map((salary) => (
 								<option value={salary.id} key={salary.id}>
 									Min: {salary.min} - Max: {salary.max}
 								</option>

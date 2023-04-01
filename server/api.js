@@ -67,8 +67,9 @@ router.post("/upload", upload, async (req, res) => {
 	}
 });
 
-router.post("/job", async (req, res) => {
-	const reqBody = req.body;
+router.post("/job", async (request, response) => {
+	const reqBody = request.body;
+
 	const sqlQuery =
 		"INSERT INTO job(title,type,description,responsibilities,number_of_gitcommits,codewar_kata_level,codewar_points,codality_test_points,category,salary_range_min,salary_range_max,contact_name,contact_email,contact_phone,company_name,company_web_site,company_logo,requirements,applications_deadline,number_of_students_can_apply) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,  $16, $17, $18, $19, $20) RETURNING *";
 
@@ -97,10 +98,18 @@ router.post("/job", async (req, res) => {
 
 	try {
 		const dbData = await db.query(sqlQuery, values);
-		res.status(200).json(dbData.rows);
+		response.status(200).json(dbData.rows);
 	} catch (error) {
-		res.status(500).json({ error });
+		response.status(500).json({ error });
 	}
+});
+
+router.get("/job", (request, response) => {
+	db.query("select * from job")
+		.then((job) => response.status(201).json(job.rows))
+		.catch((err) => {
+			response.status.send(err);
+		});
 });
 
 router.get("/signup", (request, response) => {

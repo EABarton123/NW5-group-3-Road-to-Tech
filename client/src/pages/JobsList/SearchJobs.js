@@ -3,55 +3,29 @@ import "./SearchJobs.css";
 import SingleJobListing from "./SingleJobListing";
 import axios from "axios";
 
-// useEffect(() => {
-// 	axios
-// 		.get("https://starter-kit-nqe2.onrender.com/api/job")
-// 		.then((response) => {
-// 			setJobs(response.jobs);
-// 		})
-// 		.catch((error) => {
-// 			console.error(error);
-// 		});
-// }, []);
-
-// useEffect(() => {
-// 	axios
-// 		.get("https://starter-kit-nqe2.onrender.com/api/job/")
-// 		// .then((response) => response.json())
-// 		.then((data) => setJobs(data))
-// 		.catch((error) => console.error(error));
-// }, [jobId]);
-
-function SearchJobs({ jobs }) {
-	// const [data, setData] = useState({});
-
+function SearchJobs({ isUpdateData = false }) {
+	const [data, setData] = useState([]);
+	const [filteredData, setFilteredData] = useState([]);
 	const [selectedJob, setSelectedJob] = useState({});
 
 	useEffect(() => {
 		axios
 			.get("/api/job")
 			.then((response) => {
-				// setJobs(response.data);
-				console.log(response.data);
+				setData(response.data);
+				setFilteredData(response.data);
 			})
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
-	console.log(jobs);
+	}, [isUpdateData]);
 
-	const handleSubmit = (event) => {
+	const handleChange = (event) => {
 		const search = event.target.value;
-		event.preventDefault();
-		if (search === "") {
-			// setJobs(jobs);
-			return;
-		}
-		// Filter the job listings based on the search term
-		// const filteredJobs = jobs.filter((job) =>
-		// 	job.title.toLowerCase().includes(search.toLowerCase())
-		// );
-		// setJobs(filteredJobs);
+		const filteredJobs = data.filter((job) =>
+			job.title.toLowerCase().includes(search.toLowerCase())
+		);
+		setFilteredData(filteredJobs);
 	};
 
 	function handleJobExpand(job) {
@@ -62,14 +36,13 @@ function SearchJobs({ jobs }) {
 	return (
 		<div id="div-main">
 			<div id="div-left">
-				<form id="searchbar">
-					<input
-						type="text"
-						placeholder="Search Jobs"
-						onChange={handleSubmit}
-					/>
-				</form>
-				{jobs.map((job) => (
+				<input
+					id="searchbar"
+					type="text"
+					placeholder="Search Jobs"
+					onChange={handleChange}
+				/>
+				{filteredData.map((job) => (
 					<div key={job.id} id="job-card">
 						<h2>Title: {job.title}</h2>
 						<p>Description: {job.description}</p>
