@@ -61,8 +61,6 @@ export function VerifyCertificateNum() {
 					</label>
 					<br></br>
 					<input
-						// required
-						type="text"
 						placeholder="Enter Certificate Number"
 						value={certificateNum}
 						onChange={(event) => setCertificateNum(event.target.value)}

@@ -1,6 +1,5 @@
 import React from "react";
 
-// Functional Componenet
 const Input = ({ type, placeholder, value, onChange }) => {
 	return (
 		<Input

@@ -43,12 +43,10 @@ router.post("/verify", (request, response) => {
 		.messages()
 		.send(messageData, (error) => {
 			if (error) {
-				// console.log(error)
 				response
 					.status(500)
 					.send({ message: "Not Registered Graduate. Error in sending email" });
 			} else {
-				// console.log(body)
 				return response.send({ message: "Verified. Please check email" });
 			}
 		});
@@ -116,7 +114,6 @@ router.get("/signup", (request, response) => {
 	db.query("select * from  user_data")
 		.then((grads) => response.status(200).json(grads.rows))
 		.catch((err) => {
-			// console.error(err);
 			response.status(500).send(err);
 		});
 });
@@ -174,7 +171,6 @@ router.post("/signup", (request, response) => {
 	const newUserName = request.body.username;
 	const newPassword = request.body.password;
 
-	// console.log({newEmail, newCertificateNum, newUserName, newPassword});
 	if (!newEmail || !newUserName || !newRole || !newPassword) {
 		return response.status(400).json({ failureObject });
 	}
@@ -197,12 +193,9 @@ router.post("/signup", (request, response) => {
 					[newEmail, newUserName, newRole, newPassword],
 					(err) => {
 						if (err) {
-							// throw error;
-							// console.error(err);
 							return response.status(400).json({ errorFound });
 						}
 						return response.status(200).send("Grads registered");
-						//  console.log(results.rows);
 					}
 				);
 			}

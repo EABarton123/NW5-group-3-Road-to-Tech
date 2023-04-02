@@ -19,7 +19,6 @@ class App extends Component {
 				</div>
 				<div>
 					<Routes>
-						{/* <Route path="/" element={<Home />} /> */}
 						<Route path="/admin" element={<AdminJobs />} />
 						<Route path="/grad" element={<GradJobs />} />
 						<Route path="/verify" element={<VerifyCertificateNum />} />

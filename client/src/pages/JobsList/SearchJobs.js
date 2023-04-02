@@ -36,33 +36,43 @@ function SearchJobs({ isUpdateData = false }) {
 	return (
 		<div id="div-main">
 			<div id="div-left">
-				<input
-					id="searchbar"
-					type="text"
-					placeholder="Search Jobs"
-					onChange={handleChange}
-				/>
-				{filteredData.map((job) => (
-					<div key={job.id} id="job-card">
-						<h2>Title: {job.title}</h2>
-						<p>Description: {job.description}</p>
-						<p>Category: {job.category}</p>
-						<div id="container">
-							<p id="type">{job.type}</p>
-							<p id="salary">{job.salaryRange}</p>
-						</div>
-						<p>Company: {job.companyName}</p>
-						<button
-							onClick={() => {
-								handleJobExpand(job);
-							}}
-							type="Submit"
-						>
-							Show more information
-						</button>
+				<div>
+					<input
+						id="searchbar"
+						type="text"
+						placeholder="Search Jobs"
+						onChange={handleChange}
+					/>
+				</div>
+
+				<div>
+					<div>
+						{filteredData.map((job) => (
+							<div key={job.id} id="job-card">
+								<h2>Title: {job.title}</h2>
+								<p>Description: {job.description}</p>
+								<p>Category: {job.category}</p>
+								<div id="container">
+									<p id="type">{job.type}</p>
+									<p id="salary">
+										Min:{job.salary_range_min} - Max:{job.salary_range_max}
+									</p>
+								</div>
+								<p>Company: {job.company_name}</p>
+								<button
+									onClick={() => {
+										handleJobExpand(job);
+									}}
+									type="Submit"
+								>
+									Show more information
+								</button>
+							</div>
+						))}
 					</div>
-				))}
+				</div>
 			</div>
+
 			<div id="div-right">
 				<SingleJobListing job={selectedJob} />
 			</div>
