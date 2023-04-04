@@ -1,18 +1,27 @@
+:root {
+	--ifm-color-Beige: #f9f5eb;
+	--ifm-color-Grey: #e4dccf;
+	--ifm-color-Red: #ea5455;
+	--ifm-color-Navy: #002b5b;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap");
 
 .main {
+	margin-top: 0.5%;
 	display: flex;
 	justify-content: space-between;
-
-	padding: 20px;
-	height: calc(119.7vh - 80px);
-	height: calc(100vh - 80px);
+	height: 100%;
+	height: 100%;
 	gap: 0.5%;
+	background-color: var(--ifm-color-Beige);
+	box-shadow: inset 0 0 10px var(--ifm-color-Navy);
 }
 
 .photo {
+	padding: 50px;
 	width: 70%;
-	height: auto;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -24,29 +33,32 @@
 }
 
 .right {
+	padding: 50px 70px 50px 0px;
 	width: 30%;
-
+	height: 120%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 
 .login {
-	background-color: #f2f2f2;
-	padding: 60px;
-
-	box-shadow: inset 0 0 5px #d12f2f;
+	background-color: var(--ifm-color-Grey);
+	padding: 10%;
+	box-shadow: inset 0 0 10px var(--ifm-color-Grey);
+	height: 100%;
+	padding-top: 20%;
 }
 
 .logh2 {
+	background-color: #002b5b;
+	height: 100%;
 	text-align: center;
-	margin-bottom: 10px;
-	background-color: #d7dadd;
-	box-shadow: inset 0 0 5px #d12f2f;
+	margin-bottom: 15%;
+	background-color: var(--ifm-color-Beige);
+	box-shadow: inset 0 0 5px;
 	border-radius: 10px;
-	color: #e50303;
+	color: var(--ifm-color-Navy);
 	font-weight: bolder;
-	padding-left: 25px;
 	justify-content: center;
 	text-align: center;
 }
@@ -54,31 +66,34 @@
 .RoleContainer {
 	display: flex;
 	justify-content: space-around;
-	color: #d12f2f;
-	font-weight: bold;
+	color: var(--ifm-color-Navy);
+	font-weight: bolder;
+	font-size: 1.5rem;
 }
 
 .RoleContainer input {
 	margin-left: 1rem;
 	display: flex;
 	justify-content: center;
-	width: 20px;
-	height: 20px;
+	width: 20%;
+	height: 20%;
 	box-shadow: none;
+	margin-bottom: 25%;
 }
 
 .RoleContainer1 {
 	display: flex;
 	justify-content: center;
-	color: #d12f2f;
 	font-weight: bold;
 }
 .RoleContainer1 input {
 	display: flex;
-	width: 20px;
-	height: 20px;
+	width: 20%;
+	height: 20%;
 	box-shadow: none;
+	color: var(--ifm-color-Navy);
 }
+
 input[type="radio"] {
 	margin-right: 0;
 }
@@ -90,14 +105,13 @@ input[type="radio"] {
 
 .labelform {
 	margin-bottom: 5px;
-	color: #d12f2f;
-	font-weight: bold;
+	color: var(--ifm-color-Navy);
+	font-weight: bolder;
 }
 
 .inputemail[type="email"],
 .inputpassword[type="password"] {
 	display: block;
-	background-color: #c3b8b8;
 }
 .role {
 	display: flex;
@@ -106,37 +120,28 @@ input[type="radio"] {
 
 .formbutton {
 	justify-content: center;
-	text-align: center;
+	align-items: center;
 	margin-top: 1rem;
+	margin-left: 35%;
 }
 
-.formbutton {
-	justify-content: center;
-	text-align: center;
-	background-color: #d12f2f;
-	color: white;
-	padding: 0px;
-	border: none;
+.formbutton button {
+	background-color: var(--ifm-color-Red);
+	color: var(--ifm-color-Navy);
 	border-radius: 5px;
 	cursor: pointer;
-	height: 40px;
-	width: 120px;
-	text-align: center;
-	font-size: 16px;
-	font-weight: bold;
+	height: 80px;
+	width: 150px;
+	font-size: 2rem;
+	font-weight: bolder;
 }
 
 .formbutton hover {
-	background-color: #e50303;
+	background-color: var(--ifm-color-Navy);
 	color: white;
 	padding: 0px;
 	font-size: 16px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-}
-
-.video1 {
-	height: 100%;
-	margin-top: 5px;
 }

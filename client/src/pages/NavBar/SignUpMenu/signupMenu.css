@@ -1,9 +1,14 @@
 body {
 	font-family: "Raleway", sans-serif;
 }
+:root {
+	--ifm-color-Beige: #f9f5eb;
+	--ifm-color-Grey: #e4dccf;
+	--ifm-color-Red: #ea5455;
+	--ifm-color-Navy: #002b5b;
+}
 
 .dropbtn {
-	background-color: red;
 	color: white;
 	padding: 0px;
 	font-size: 16px;
