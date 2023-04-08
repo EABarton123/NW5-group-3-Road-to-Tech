@@ -1,5 +1,6 @@
 import React from "react";
 // import GradAppliedJobs from "../GradAppliedJobs";
+import "./SingleJobListing.css";
 
 function SingleJobListing({ job }) {
 	const {
@@ -31,7 +32,7 @@ function SingleJobListing({ job }) {
 	}
 
 	return (
-		<div>
+		<div className="single_container">
 			<div key={id}>
 				<img src={company_logo} alt="company logo"></img>
 				<h2>Title: {title}</h2>

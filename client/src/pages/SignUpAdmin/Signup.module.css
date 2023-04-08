@@ -9,6 +9,7 @@
 	display: flex;
 	text-align: center;
 	justify-content: center;
+	background-color: var(--color-primary-light);
 }
 
 .formConteiner form {
@@ -21,6 +22,7 @@
 	margin: 1%;
 	padding: 5rem;
 	border-radius: 2rem;
+
 }
 .formContenerTlitle {
 	background-color: var(--color-whit);
