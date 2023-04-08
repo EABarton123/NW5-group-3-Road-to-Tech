@@ -32,7 +32,6 @@ function CustomHeader({ MenuItemTexts }) {
 					</div>
 				);
 			})}
-
 			<SignupMenu />
 		</div>
 	);

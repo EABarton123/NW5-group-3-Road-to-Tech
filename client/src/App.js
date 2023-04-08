@@ -9,6 +9,7 @@ import GradJobs from "./pages/GradDashboard/GradJobs";
 import VerifyCertificateNum from "./pages/VerifyCertNum/VerifyCertificateNum";
 import Signup from "./pages/SignUpAdmin/Signup";
 import JobForm from "./pages/JobForm/JobForm";
+import Footer from "./pages/Footer/Footer";
 class App extends Component {
 	MenuItemTexts = [];
 	render() {
@@ -27,6 +28,7 @@ class App extends Component {
 						<Route path="/" element={<Main />} />
 					</Routes>
 				</div>
+				<Footer />
 			</div>
 		);
 	}

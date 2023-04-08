@@ -1,13 +1,13 @@
 body {
 	font-family: "Raleway", sans-serif;
-}:root {
+}
+:root {
 	--color-success: #b80c2f;
 	--color-primary: #626160;
 	--color-primary-darkest: #e8e3e3;
 	--color-primary-light: #f2f2f2;
 	--color-whit: #fffffd;
 }
-
 
 #job-card-applied {
 	border: 0.5px solid transparent;
