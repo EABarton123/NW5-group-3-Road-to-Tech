@@ -1,25 +1,25 @@
 :root {
-	--ifm-color-Beige: #f9f5eb;
-	--ifm-color-Grey: #e4dccf;
-	--ifm-color-Red: #ea5455;
-	--ifm-color-Navy: #002b5b;
+	--color-success: #b80c2f;
+	--color-primary: #626160;
+	--color-primary-darkest: #e8e3e3;
+	--color-primary-light: #f2f2f2;
+	--color-whit: #fffffd;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap");
 
 .main {
-	margin-top: 0.5%;
+	margin-top: 1%;
+	padding: 4%;
 	display: flex;
+	gap: 2%;
 	justify-content: space-between;
 	height: 100%;
 	height: 100%;
-	gap: 0.5%;
-	background-color: var(--ifm-color-Beige);
-	box-shadow: inset 0 0 10px var(--ifm-color-Navy);
+	background-color: var(--color-whit);
 }
 
 .photo {
-	padding: 50px;
 	width: 70%;
 	height: 100%;
 	display: flex;
@@ -33,40 +33,39 @@
 }
 
 .right {
-	padding: 50px 70px 50px 0px;
+	display: grid;
 	width: 30%;
-	height: 120%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 
 .login {
-	background-color: var(--ifm-color-Grey);
-	padding: 10%;
-	box-shadow: inset 0 0 10px var(--ifm-color-Grey);
-	height: 100%;
-	padding-top: 20%;
+	border-radius: 10%;
+	padding: 15%;
+	box-shadow: inset 0 0 10px var(--color-primary);
+	padding-top: 15%;
+	background-color: #e8e3e3;
 }
 
 .logh2 {
-	background-color: #002b5b;
 	height: 100%;
 	text-align: center;
-	margin-bottom: 15%;
-	background-color: var(--ifm-color-Beige);
+	background-color: var(--color-whit);
 	box-shadow: inset 0 0 5px;
 	border-radius: 10px;
-	color: var(--ifm-color-Navy);
+	color: var(--color-primary);
 	font-weight: bolder;
 	justify-content: center;
 	text-align: center;
+	box-shadow: inset 0 0 5px var(--color-success);
 }
 
 .RoleContainer {
 	display: flex;
 	justify-content: space-around;
-	color: var(--ifm-color-Navy);
+	color: var(--color-primary);
 	font-weight: bolder;
 	font-size: 1.5rem;
 }
@@ -91,7 +90,7 @@
 	width: 20%;
 	height: 20%;
 	box-shadow: none;
-	color: var(--ifm-color-Navy);
+	color: var(--color-whit);
 }
 
 input[type="radio"] {
@@ -105,13 +104,20 @@ input[type="radio"] {
 
 .labelform {
 	margin-bottom: 5px;
-	color: var(--ifm-color-Navy);
+	color: var(--color-primary);
 	font-weight: bolder;
+	font-size: 1.5rem;
 }
 
 .inputemail[type="email"],
 .inputpassword[type="password"] {
 	display: block;
+	border-radius: 10px;
+	box-shadow: inset 0 0 5px var(--color-primary);
+	background-color: var(--color-whit);
+}
+.inputpassword {
+	margin-bottom: 10%;
 }
 .role {
 	display: flex;
@@ -121,27 +127,27 @@ input[type="radio"] {
 .formbutton {
 	justify-content: center;
 	align-items: center;
-	margin-top: 1rem;
-	margin-left: 35%;
+	/* margin-top: 1rem; */
+	margin-left: 34%;
 }
 
-.formbutton button {
-	background-color: var(--ifm-color-Red);
-	color: var(--ifm-color-Navy);
+.formbutton {
+	box-shadow: inset 0 0 10px var(--color-success);
+	background-color: var(--color-success);
+	color: var(--color-whit);
 	border-radius: 5px;
 	cursor: pointer;
-	height: 80px;
+	height: 8%;
 	width: 150px;
 	font-size: 2rem;
 	font-weight: bolder;
 }
 
-.formbutton hover {
-	background-color: var(--ifm-color-Navy);
-	color: white;
+.formbutton button hover {
 	padding: 0px;
 	font-size: 16px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: inset 0 0 5px var(--color-primary);
 }

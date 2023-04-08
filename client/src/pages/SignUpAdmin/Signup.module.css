@@ -1,3 +1,10 @@
+:root {
+	--color-success: #b80c2f;
+	--color-primary: #626160;
+	--color-primary-darkest: #e8e3e3;
+	--color-primary-light: #f2f2f2;
+	--color-whit: #fffffd;
+}
 .formConteiner {
 	display: flex;
 	text-align: center;
@@ -9,14 +16,19 @@
 	height: 800px;
 	text-align: center;
 	justify-content: center;
-	background: #dad7d7;
-	margin: 5rem;
+	background: var(--color-primary-darkest);
+	box-shadow: inset 0 0 10px var(--color-primary);
+	margin: 1%;
 	padding: 5rem;
 	border-radius: 2rem;
 }
 .formContenerTlitle {
-	color: #e50303;
+	background-color: var(--color-whit);
+	color: var(--color-primary);
 	font-weight: bold;
+	box-shadow: inset 0 0 5px var(--color-success);
+	padding: 3%;
+	border-radius: 10px;
 }
 
 .formConteiner label {
@@ -25,16 +37,17 @@
 	font-size: 1.5rem;
 	margin-left: 1.5rem;
 	padding: 5px;
-	color: #e50303;
 	font-weight: bold;
+	color: var(--color-primary);
 }
 .containerRole {
 	display: flex;
-	background-color: rgb(233, 233, 236);
+	background-color: var(--color-whit);
 	padding: 1rem;
 	margin: 1rem;
-	box-shadow: inset 0 0 5px #d12f2f;
+	box-shadow: inset 0 0 5px;
 	border-radius: 10px;
+	box-shadow: inset 0 0 3px var(--color-primary);
 }
 .radioLabel {
 	margin-right: 5rem;
@@ -56,7 +69,7 @@
 }
 .containerRole input {
 	width: 20px;
-	height: 20px;
+	height: 40px;
 	box-shadow: none;
 }
 
@@ -82,13 +95,15 @@ input {
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
-	background: #efeded;
+	background-color: var(--color-whit);
 	border-radius: 10px;
-	box-shadow: inset 0 0 3px #d12f2f;
+	box-shadow: inset 0 0 3px var(--color-primary);
 }
 button {
-	background-color: #e50303;
-	color: white;
+	background-color: var(--color-success);
+	border: #b80c2f;
+	color: var(--color-whit);
+	font-size: 1.5rem;
 	border-radius: 12px;
 	cursor: pointer;
 	width: 8rem;
@@ -100,7 +115,7 @@ button {
 }
 
 button:hover {
-	background-color: #e50303;
+	background-color: var(--color-success);
 	color: white;
 	border: solid 4px white;
 }
